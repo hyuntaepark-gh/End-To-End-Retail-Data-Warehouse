@@ -131,7 +131,7 @@ Dashboards are designed to reflect how analytics outputs are consumed in real bu
 
 ## 🗂️ Repository Structure
 
-'''
+```
 
 /data
 /raw (sample or reference only)
@@ -148,7 +148,7 @@ demand_forecast.ipynb
 README.md
 requirements.txt
 
-'''
+```
 
 ---
 
