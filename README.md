@@ -129,29 +129,6 @@ Dashboards are designed to reflect how analytics outputs are consumed in real bu
 
 ---
 
-## 🗂️ Repository Structure
-
-```
-
-/data
-/raw (sample or reference only)
-/staging
-/docs (ERD, diagrams, documentation)
-/data_pipeline
-/src (extract, transform, load, quality)
-/sql
-/ddl
-/analytics
-/analysis
-demand_forecast.ipynb
-/dashboard
-README.md
-requirements.txt
-
-```
-
----
-
 ## 🚀 How to Run
 1. Download the dataset (see Data Sources)
 2. Configure database connection
@@ -177,3 +154,25 @@ This project demonstrates the ability to:
 - Build reliable ETL pipelines
 - Translate raw data into business decisions
 - Bridge analytics, engineering, and ERP-style thinking
+---
+
+## 🗂️ Repository Structure
+
+```
+
+/data
+/raw (sample or reference only)
+/staging
+/docs (ERD, diagrams, documentation)
+/data_pipeline
+/src (extract, transform, load, quality)
+/sql
+/ddl
+/analytics
+/analysis
+demand_forecast.ipynb
+/dashboard
+README.md
+requirements.txt
+
+```
