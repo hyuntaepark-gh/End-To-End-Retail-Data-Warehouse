@@ -1,0 +1,4 @@
+SELECT
+  COUNT(*) FILTER (WHERE revenue <= 0) AS non_positive_revenue_rows,
+  COUNT(*) AS total_rows
+FROM dw.fact_sales;
