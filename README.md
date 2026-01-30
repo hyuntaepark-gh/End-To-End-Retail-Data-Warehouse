@@ -1,178 +1,162 @@
 # 📊 End-to-End Retail Data Warehouse & Analytics Project
 
-## 📌 Project Overview
-This project demonstrates a **full end-to-end data analytics system**, starting from raw retail transaction data and transforming it into a **decision-ready data warehouse**.
+End-to-end retail analytics project that demonstrates how raw transactional data is transformed into a **data warehouse**, **SQL-based business analytics**, and **demand forecasting outputs** for decision-making.
 
-Rather than focusing on isolated analysis, the project emphasizes:
-- Data pipeline design
-- Dimensional modeling (Star Schema)
-- SQL-based business analytics
-- Demand forecasting
-- Executive-level decision support
+This project is designed to mirror real-world analytics workflows:
 
-The goal is to replicate how **real-world retail / e-commerce data flows from transactional systems (ERP-like sources) into analytics and planning layers**.
+**Raw Data → ETL → Data Warehouse → SQL Analytics → Forecasting → Insights**
 
 ---
 
-## 🧠 Business Questions
-This project is designed to answer **decision-driven business questions**, such as:
+## ⚙️ How to Use This Repository
 
-1. How do sales and order volumes change over time (weekly / monthly / seasonal)?
-2. Which products and categories drive the highest repeat purchases?
-3. How long do customers remain active after their first purchase?
-4. How does demand vary across regions and time periods?
-5. What is the expected demand in the next few weeks?
-6. How can demand forecasts support inventory and replenishment planning?
+### 1️⃣ Database Setup
+- Create a PostgreSQL (or compatible) database
+- Run scripts in the `schema/` folder to initialize schemas and base tables
 
----
+### 2️⃣ Data Foundation (ETL & Cleaning)
+- Use scripts in `data_foundation/` to:
+  - Validate raw data
+  - Clean and standardize fields
+  - Perform deduplication and integrity checks
+  - Prepare staging-level tables
 
-## 🏗️ System Architecture
-**Raw Data → ETL Pipeline → Data Warehouse → Analytics → Forecasting → Dashboard**
+### 3️⃣ Data Modeling (Warehouse Layer)
+- Use `data_modeling/` to:
+  - Build fact and dimension tables
+  - Apply star schema design
+  - Enable efficient analytical queries
 
-- Raw CSV files are ingested and validated
-- Python-based ETL pipelines transform and clean data
-- Data is loaded into a relational database using a **Star Schema**
-- SQL queries generate business KPIs and insights
-- Python models forecast future demand
-- Dashboards present insights for decision-makers
-
----
-
-## 🗂️ Data Sources
-- Retail / E-commerce transactional dataset (Kaggle)
-- Supplemental datasets:
-  - U.S. holiday calendar
-  - Weather data (optional extension)
-
-> Raw datasets are not fully stored in this repository due to size and licensing.  
-> Sample data and download instructions are provided instead.
+### 4️⃣ Business Analytics (SQL)
+- Run SQL files in `business_analytics/` to answer key business questions
+- Queries are written with **business intent**, not just technical aggregation
 
 ---
 
-## 🧱 Data Modeling (Star Schema)
-The data warehouse is designed using **dimensional modeling principles**.
+## 🧱 Data Warehouse Design
+
+The warehouse follows a **star schema** optimized for analytics:
 
 ### Fact Tables
-- `fact_order_items` – transaction-level sales data
+- Transaction-level retail data (orders, sales, quantities, revenue)
 
 ### Dimension Tables
-- `dim_product`
-- `dim_customer`
-- `dim_date`
-- `dim_location` (if applicable)
-- `dim_weather` (optional)
+- Product
+- Customer
+- Date
+- Location (region/country where applicable)
 
-### Why Star Schema?
-- Optimized for analytical queries
-- Clear separation between facts and dimensions
-- Commonly used in enterprise data warehouses and BI systems
-- Aligns with ERP-to-analytics data flows
+This design supports:
+- Time-series analysis
+- Product and customer segmentation
+- KPI reporting and trend analysis
 
 ---
 
-## 🔄 ETL Pipeline
-ETL is implemented in Python with a clear separation of concerns:
+## 📊 Business Analytics (SQL)
 
-### 1. Extract
-- Load raw CSV files
+SQL analyses focus on **decision-driven questions**, including:
 
-### 2. Transform
-- Data type enforcement
-- Deduplication
-- Missing value handling
-- Key normalization
+- Sales and revenue trends over time
+- Top-performing products and categories
+- Customer purchase behavior and repeat activity
+- Regional performance differences
+- Operational signals derived from transactional data
 
-### 3. Load
-- Insert into staging tables
-- Load into warehouse fact and dimension tables
-
-### Data Quality Checks
-- Primary key uniqueness
-- Foreign key integrity
-- Null and invalid value detection
-- Volume and range validation
+Each SQL file is structured with:
+- Clear business purpose
+- Readable logic and aliases
+- Outputs suitable for reporting or dashboards
 
 ---
 
-## 📈 SQL Analytics
-Business analytics are performed using SQL, including:
+## 📈 Demand Forecasting
 
-- Sales and revenue trends
-- Repeat purchase and retention analysis
-- Product and category performance
-- Time-based and regional demand analysis
+Forecasting components are designed to support **planning and operational decisions**.
 
-Queries are written with **readability and maintainability** in mind and structured around business questions rather than raw metrics.
+Key characteristics:
+- Time-aware data splits
+- Baseline forecasting approaches
+- Evaluation using metrics such as MAE / MAPE
+- Outputs intended to guide inventory and demand planning discussions
 
----
-
-## 🔮 Demand Forecasting
-Demand forecasting is implemented using Python to support operational decision-making.
-
-- Baseline models (moving average / seasonal patterns)
-- Time-aware train-validation split
-- Evaluation using MAE / MAPE
-- Forecast outputs designed to support inventory planning discussions
-
-The focus is not on maximizing model complexity, but on **practical, interpretable forecasts**.
+*(Forecasting scripts or notebooks can be linked or expanded as the project evolves.)*
 
 ---
 
-## 📊 Dashboard
-Dashboards summarize key insights for non-technical stakeholders:
+## 🔍 Data Quality & Validation
 
-- Executive sales overview
-- Demand trends and forecasts
-- Product and category performance
+Data quality is treated as a first-class concern:
 
-Dashboards are designed to reflect how analytics outputs are consumed in real business environments.
+- Null and invalid value checks
+- Key integrity validation
+- Volume and consistency checks
+- Pre-analytics verification to ensure trustworthy insights
 
----
-
-## 🚀 How to Run
-1. Download the dataset (see Data Sources)
-2. Configure database connection
-3. Run the ETL pipeline
-4. Execute SQL analytics queries
-5. Run the forecasting notebook
-6. Explore dashboards
+Validation logic lives primarily in `data_foundation/`.
 
 ---
 
-## 🔧 Future Improvements
-- Incremental ETL and scheduling
-- Additional external data integration
-- Inventory optimization modeling
-- Cloud-based deployment
-- Automated data quality monitoring
+## 🚀 Why This Project Matters
+
+This repository demonstrates:
+
+- End-to-end analytics thinking (not isolated queries)
+- Practical data warehouse design
+- Business-focused SQL analytics
+- Foundations for scalable analytics systems
+- Skills aligned with analytics engineering and BI roles
+
+It is structured to be **reviewer-friendly**, **interview-ready**, and **extensible**.
 
 ---
 
-## 🎯 Key Takeaways
-This project demonstrates the ability to:
-- Design analytics-ready data models
-- Build reliable ETL pipelines
-- Translate raw data into business decisions
-- Bridge analytics, engineering, and ERP-style thinking
+## 🛠️ Tech Stack
+
+- **SQL** (PostgreSQL)
+- **Python** (ETL & forecasting)
+- **Dimensional Modeling**
+- **Analytics Engineering**
+- **Retail / E-commerce Analytics**
+
+---
+
+## 🗺️ Future Enhancements
+
+- Incremental ETL & scheduling
+- External data enrichment (holidays, weather)
+- Inventory optimization analytics
+- Dashboard integration (Tableau / Power BI)
+- Cloud deployment and orchestration
+
 ---
 
 ## 🗂️ Repository Structure
 
 ```
 
-/data
-/raw (sample or reference only)
-/staging
-/docs (ERD, diagrams, documentation)
-/data_pipeline
-/src (extract, transform, load, quality)
-/sql
-/ddl
-/analytics
-/analysis
-demand_forecast.ipynb
-/dashboard
-README.md
-requirements.txt
+End-To-End-Retail-Data-Warehouse/
+│
+├── data_foundation/
+│ ├── Raw data validation and cleaning
+│ ├── Staging and foundational transformations
+│ └── Data quality checks
+│
+├── data_modeling/
+│ ├── Dimensional modeling (Star Schema)
+│ ├── Fact and dimension table creation
+│ └── Warehouse-ready structures
+│
+├── business_analytics/
+│ ├── SQL-based KPI analysis
+│ ├── Trend and performance analysis
+│ ├── Customer and product insights
+│ └── Decision-oriented queries
+│
+├── schema/
+│ ├── Database and schema setup scripts
+│ └── Core DDL utilities
+│
+└── README.md
 
 ```
