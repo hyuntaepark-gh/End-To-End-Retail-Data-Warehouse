@@ -5,3 +5,4 @@ FROM dw.fact_sales;
 SELECT
   COUNT(*) FILTER (WHERE date_key IS NULL) AS null_date_key_rows
 FROM dw.fact_sales;
+
