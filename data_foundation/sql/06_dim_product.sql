@@ -6,3 +6,4 @@ SELECT DISTINCT
   description
 FROM staging.online_retail_clean
 WHERE stock_code IS NOT NULL;
+
