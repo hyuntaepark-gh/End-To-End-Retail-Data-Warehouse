@@ -16,24 +16,31 @@ forming a trusted base for downstream data modeling and analytics.
 
 ---
 
+
+---
+
 ## 1. Raw Layer (10_raw)
 
 ### Purpose
-- Preserve source data with zero transformation
+- Preserve source data with **zero transformation**
 - Enable reprocessing and traceability
 - Avoid premature assumptions about data quality
 
 ### Design Principles
-- All columns stored as TEXT
+- All columns stored as `TEXT`
 - Schema mirrors the source file
 - No filtering, casting, or business logic applied
 
-### Example Table
-- raw.online_retail
+### Evidence – Raw Execution Results
 
-### Validation
-- Row count verification after ingestion
-- Structural sanity checks only
+**Raw table creation**
+![Create Raw Tables](10_create_raw_tables.png)
+
+**CSV load execution**
+![Load Raw from CSV](11_load_raw_from_csv.png)
+
+**Raw row count verification**
+![Raw Row Count Check](12_raw_rowcount_checks.png)
 
 ---
 
@@ -46,70 +53,41 @@ forming a trusted base for downstream data modeling and analytics.
 
 ### Key Transformations
 - Trim and normalize string fields
-- Convert numeric columns using regex-based validation
-- Parse invoice_date into timestamp
+- Convert numeric fields using regex-based validation
+- Parse `invoice_date` into timestamp
 - Handle invalid or missing values explicitly
-- Flag return transactions (quantity < 0)
+- Flag return transactions (`quantity < 0`)
 
-### Example Table
-- staging.online_retail_clean
+### Evidence – Staging Execution Result
 
-### Data Quality Checks
-- NULL checks on business-critical fields
-- Minimum and maximum date validation
-- Post-transformation row count sanity checks
+**Staging clean table creation and sanity check**
+![Staging Clean Table](20_create_staging_clean.png)
 
 ---
 
 ## Why Data Foundation Matters
 
-This layer intentionally separates data correctness from
-business logic and analytics, ensuring that:
+This layer intentionally separates **data correctness** from  
+**business logic and analytics**, ensuring that:
 
 - Errors are caught early
 - Downstream models remain simple and trustworthy
 - Data modeling focuses on insights, not cleanup
 
-Clean data is not assumed — it is engineered.
+> Clean data is not assumed — it is engineered.
 
 ---
 
 ## Downstream Dependency
 
-All tables in the following layers depend exclusively on this Data Foundation:
+All tables in the following layers depend exclusively on this foundation:
 
-- 30_dw (Data Warehouse)
-- 40_marts (Analytics and KPI layer)
-
----
-
-### Raw Layer Validation
-
-The following results confirm that the source data
-was ingested into the raw layer without transformation or data loss.
-
-**Raw table creation**
-![Create Raw Tables](result/10_create_raw_tables.png)
-
-**CSV load execution**
-![Load Raw from CSV](result/11_load_raw_from_csv.png)
-
-**Row count verification**
-![Raw Row Count Check](result/12_raw_rowcount_checks.png)
+- `30_dw` (Data Warehouse)
+- `40_marts` (Analytics and KPI layer)
 
 ---
 
-### Staging Layer – Data Quality Checks
+## Related Documentation
 
-After standardization, core data quality checks were performed
-to validate critical fields, data types, and date ranges.
-
-**Staging clean table creation and sanity checks**
-![Staging Clean Table](result/20_create_staging_clean.png)
-
-
----
-
-### Portfolio Note
-This project explicitly separates Data Foundation from Data Modeling,
-following modern analytics engineering best practices.
+- `10_raw/`  
+- `20_staging/`
