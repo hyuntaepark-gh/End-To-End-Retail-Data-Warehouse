@@ -140,10 +140,10 @@ Evaluate how return behavior differs across customer segments
 and how it impacts revenue quality.
 
 ### Evidence
-![Segment Return Rate](./result/41_segment_return_rate.png)
+![Segment Return Rate](./result/42_segment_return_impact.png)
 
 **Artifacts**
-- `41_segment_return_rate.sql`
+- `42_segment_return_impact.sql`
 
 ---
 
@@ -154,10 +154,10 @@ Validate recency behavior using the dataset end date
 to avoid distortion from current-date calculations.
 
 ### Evidence
-![Segment Recency Validation](./result/42_segment_recency_validation.png)
+![Segment Recency Validation](./result/43_segment_recency_validation.png)
 
 **Artifacts**
-- `42_segment_recency_validation.sql`
+- `43_segment_recency_validation.sql`
 
 ---
 
