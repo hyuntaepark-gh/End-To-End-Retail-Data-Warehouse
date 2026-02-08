@@ -1,133 +1,169 @@
-# 📊 End-to-End Retail Data Warehouse & Analytics Project
+# 📊 End-To-End Retail Data Warehouse
 
-End-to-end retail analytics project that demonstrates how raw transactional data is transformed into a **data warehouse**, **SQL-based business analytics**, and **demand forecasting outputs** for decision-making.
+**A full implementation of an end-to-end retail data warehouse and analytical framework.**  
+This repository encompasses the entire lifecycle of data engineering and analytics —  
+from raw ingestion to business-ready insights driven by explainable analysis.
 
-This project is designed to mirror real-world analytics workflows:
+---
+
+## 🧱 Architecture Overview
+
+This project is organized into logical layers that correspond to common data platform patterns:
 
 **Raw Data → ETL → Data Warehouse → SQL Analytics → Forecasting → Insights**
 
----
 
-## ⚙️ How to Use This Repository
+Each layer has a clear purpose and separation of concerns:
 
-### 1️⃣ Database Setup
-- Create a PostgreSQL (or compatible) database
-- Run scripts in the `schema/` folder to initialize schemas and base tables
-
-### 2️⃣ Data Foundation (ETL & Cleaning)
-- Use scripts in `data_foundation/` to:
-  - Validate raw data
-  - Clean and standardize fields
-  - Perform deduplication and integrity checks
-  - Prepare staging-level tables
-
-### 3️⃣ Data Modeling (Warehouse Layer)
-- Use `data_modeling/` to:
-  - Build fact and dimension tables
-  - Apply star schema design
-  - Enable efficient analytical queries
-
-### 4️⃣ Business Analytics (SQL)
-- Run SQL files in `business_analytics/` to answer key business questions
-- Queries are written with **business intent**, not just technical aggregation
+| Layer | Responsibility |
+|-------|----------------|
+| 🔹 `data_foundation/` | Data ingestion, standardization, and quality enforcement |
+| 🔹 `data_modeling/` | Dimensional modeling: fact & dimension tables, analytical marts |
+| 🔹 `data_operations/` | Operational validation and sanity checks |
+| 🔹 `business_analytics/` | Decision-oriented analytical modules with SQL & visualization |
+| 🔹 `sql/` | Reusable SQL utilities supporting all layers |
 
 ---
 
-## 🧱 Data Warehouse Design
+## 📁 Layer Descriptions
 
-The warehouse follows a **star schema** optimized for analytics:
+### 🧰 1. Data Foundation
 
-### Fact Tables
-- Transaction-level retail data (orders, sales, quantities, revenue)
+Focuses on:
+- Ingesting raw source files
+- Standardizing data types & formats
+- Cleaning and basic validations
 
-### Dimension Tables
-- Product
-- Customer
-- Date
-- Location (region/country where applicable)
-
-This design supports:
-- Time-series analysis
-- Product and customer segmentation
-- KPI reporting and trend analysis
+📁 [`data_foundation/`](./data_foundation/)  
+👉 Detailed documentation: [Data Foundation README](./data_foundation/README.md)
 
 ---
 
-## 📊 Business Analytics (SQL)
+### 🛠 2. Data Modeling
 
-SQL analyses focus on **decision-driven questions**, including:
+Builds dimensional data models optimized for analytics.
 
-- Sales and revenue trends over time
-- Top-performing products and categories
-- Customer purchase behavior and repeat activity
-- Regional performance differences
-- Operational signals derived from transactional data
+Focuses on:
+- Fact and dimension creation
+- Key constraints
+- Base KPI marts
 
-Each SQL file is structured with:
-- Clear business purpose
-- Readable logic and aliases
-- Outputs suitable for reporting or dashboards
+📁 [`data_modeling/`](./data_modeling/)  
+👉 Detailed documentation: [Data Modeling README](./data_modeling/README.md)
 
 ---
 
-## 📈 Demand Forecasting
+### ⚙️ 3. Data Operations
 
-Forecasting components are designed to support **planning and operational decisions**.
+Ensures the data platform remains reliable and consistent.
 
-Key characteristics:
-- Time-aware data splits
-- Baseline forecasting approaches
-- Evaluation using metrics such as MAE / MAPE
-- Outputs intended to guide inventory and demand planning discussions
+Includes:
+- Schema setup
+- Optional extension checks
+- Data quality & reconciliation tests
 
-*(Forecasting scripts or notebooks can be linked or expanded as the project evolves.)*
-
----
-
-## 🔍 Data Quality & Validation
-
-Data quality is treated as a first-class concern:
-
-- Null and invalid value checks
-- Key integrity validation
-- Volume and consistency checks
-- Pre-analytics verification to ensure trustworthy insights
-
-Validation logic lives primarily in `data_foundation/`.
+📁 [`data_operations/`](./data_operations/)  
+👉 Detailed documentation: [Data Operations README](./data_operations/README.md)
 
 ---
 
-## 🚀 Why This Project Matters
+### 📊 4. Business Analytics
 
-This repository demonstrates:
+Organized analytics modules that build on validated models and generate insights.
 
-- End-to-end analytics thinking (not isolated queries)
-- Practical data warehouse design
-- Business-focused SQL analytics
-- Foundations for scalable analytics systems
-- Skills aligned with analytics engineering and BI roles
+Modules include:
+- Revenue Driver Analysis
+- Customer Segmentation
+- Product Mix Analysis
+- Returns Analysis
+- Customer Lifetime Value (LTV)
 
-It is structured to be **reviewer-friendly**, **interview-ready**, and **extensible**.
-
----
-
-## 🛠️ Tech Stack
-
-- **SQL** (PostgreSQL)
-- **Python** (ETL & forecasting)
-- **Dimensional Modeling**
-- **Analytics Engineering**
-- **Retail / E-commerce Analytics**
+📁 [`business_analytics/`](./business_analytics/)  
+👉 Detailed documentation: [Business Analytics README](./business_analytics/README.md)
 
 ---
 
-## 🗺️ Future Enhancements
+## 🧠 Core Concepts
 
-- Incremental ETL & scheduling
-- External data enrichment (holidays, weather)
-- Inventory optimization analytics
-- Dashboard integration (Tableau / Power BI)
-- Cloud deployment and orchestration
+### 🔁 Standardized Layering
+
+Each layer is designed to be:
+- **Modular**
+- **Reproducible**
+- **Auditable**
+- **Easy to validate**
+
+This makes the platform suitable for both engineering and analytical workloads.
+
+---
+
+## 📌 How to Use
+
+### Step 1 — Set Up Schema
+Run the admin scripts from `data_operations/00_admin` to ensure all target schemas exist.
+
+### Step 2 — Load & Standardize
+Use `data_foundation/10_raw` and `data_foundation/20_staging` scripts to ingest and clean source data.
+
+### Step 3 — Build Models
+Execute data modeling scripts from `data_modeling/30_dw` and `data_modeling/40_marts`.
+
+### Step 4 — Validate
+Run the quality checks in `data_operations/90_tests` to verify model correctness.
+
+### Step 5 — Analyze
+Explore analytics use cases in `business_analytics/*`. Each module contains SQL + result graphs + guidance.
+
+---
+
+## 📌 Visual Evidence
+
+The repository contains `result/` folders with result screenshots and visual artifacts
+for each analytical step and validation test,
+making it easy to verify execution outcomes.
+
+---
+
+## 📈 Why This Project Matters
+
+This project demonstrates a complete data lifecycle:
+- **Reliable data ingestion**
+- **Structured analytical models**
+- **Robust data validation**
+- **Insightful business analytics**
+
+It is suitable for:
+- **Portfolio presentations**
+- **Data engineering/analytics interviews**
+- **NIW/academic evidence of technical capability**
+
+---
+
+## 🧩 Dependencies
+
+This repository depends on:
+- PostgreSQL (or compatible SQL engine)
+- Standard SQL execution environment
+- Source data (e.g., retail dataset)
+
+Scripts assume proper database credentials and access.
+
+---
+
+## 🚀 Next Steps
+
+To extend this project:
+- Add automated orchestration (Airflow, dbt)
+- Expand analytics with predictive models
+- Add BI dashboards (Tableau, Superset, Looker)
+- Connect to reporting interfaces or API endpoints
+
+---
+
+## 💬 Feedback & Contributions
+
+Contributions are welcome! Please open an issue
+or pull request if you have suggestions or improvements.
 
 ---
 
@@ -138,24 +174,25 @@ It is structured to be **reviewer-friendly**, **interview-ready**, and **extensi
 End-To-End-Retail-Data-Warehouse/
 │
 ├── data_foundation/
-│ ├── Raw data validation and cleaning
-│ ├── Staging and foundational transformations
-│ └── Data quality checks
+│   ├── Raw data validation and cleaning
+│   ├── Staging and foundational transformations
+│   └── Early data quality checks
 │
 ├── data_modeling/
-│ ├── Dimensional modeling (Star Schema)
-│ ├── Fact and dimension table creation
-│ └── Warehouse-ready structures
+│   ├── Dimensional modeling (Star Schema)
+│   ├── Fact and dimension table creation
+│   └── Warehouse-ready analytical structures
+│
+├── data_operations/
+│   ├── Schema and environment setup
+│   ├── Data integrity and sanity validations
+│   └── Reconciliation checks across layers
 │
 ├── business_analytics/
-│ ├── SQL-based KPI analysis
-│ ├── Trend and performance analysis
-│ ├── Customer and product insights
-│ └── Decision-oriented queries
-│
-├── schema/
-│ ├── Database and schema setup scripts
-│ └── Core DDL utilities
+│   ├── Revenue driver analysis
+│   ├── Customer segmentation and LTV
+│   ├── Product mix and returns analysis
+│   └── Decision-oriented SQL analytics
 │
 └── README.md
 
