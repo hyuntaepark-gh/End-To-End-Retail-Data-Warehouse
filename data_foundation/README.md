@@ -31,12 +31,15 @@ forming a trusted base for downstream data modeling and analytics.
 ### Evidence – Raw Execution Results
 
 **Raw table creation**
+
 ![Raw Table Creation](./result/10_create_raw_tables.png)
 
 **CSV load instruction and result**
+
 ![Load Raw from CSV](./result/11_load_raw_from_csv.png)
 
 **Raw row count verification**
+
 ![Raw Row Count Check](./result/12_raw_rowcount_checks.png)
 
 ---
@@ -57,7 +60,8 @@ forming a trusted base for downstream data modeling and analytics.
 
 ### Evidence – Staging Execution Result
 
-**Staging clean table creation and checks**
+**Staging clean table creation and sanity checks**
+
 ![Staging Clean Table](./result/20_create_staging_clean.png)
 
 ---
