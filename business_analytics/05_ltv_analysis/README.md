@@ -1,8 +1,8 @@
 # Customer Lifetime Value (LTV) Analysis
 
-**A structured customer lifetime value (LTV) analysis designed to understand
-customer retention, long-term revenue contribution, and payback dynamics
-using warehouse-level data.**
+**A structured customer lifetime value analysis designed to quantify
+long-term customer value, retention dynamics, and revenue sustainability
+using warehouse-level cohort and segmentation data.**
 
 **Category:** Customer Analytics · Retention Strategy · Growth Economics
 
@@ -11,34 +11,33 @@ using warehouse-level data.**
 ## Overview
 
 This module analyzes **how customer value evolves over time**
-by measuring retention, purchase frequency, lifetime revenue,
-and payback period across cohorts and customer segments.
+by combining cohort analysis, retention behavior, purchase frequency,
+and revenue accumulation.
 
 All analyses are built on top of validated dimensional models
 and are intended to support **customer acquisition strategy,
-retention investment decisions, and long-term growth planning**.
+retention investment decisions, and long-term revenue planning**.
 
 ---
 
 ## Analysis Framework
 
-Customer lifetime value is evaluated through a cohort-based framework:
+Customer Lifetime Value is analyzed through the following lenses:
 
-- Customer cohort definition (first purchase month)
-- Retention behavior over time
-- Purchase frequency and repeat behavior
-- Lifetime revenue accumulation
-- Segment-level LTV comparison
+- Cohort-based customer grouping
+- Retention and repeat purchase behavior
+- Purchase frequency and revenue accumulation
+- LTV comparison across cohorts and segments
 - Payback period estimation
-- Data sanity and coverage validation
+- Data completeness and validation checks
 
-This framework is designed to answer questions such as:
+This framework answers questions such as:
 - Which customer cohorts generate the highest long-term value?
-- How quickly do customers repay acquisition cost assumptions?
-- Which segments are worth prioritizing for retention investments?
+- How retention patterns impact total LTV?
+- How quickly does customer acquisition cost pay back?
+- Which segments deserve higher retention investment?
 
-Each step progressively deepens understanding
-from behavioral metrics to economic insights.
+Each step progresses from **definition → behavior → value → validation**.
 
 ---
 
@@ -46,7 +45,7 @@ from behavioral metrics to economic insights.
 
 ### Purpose
 Define customer cohorts based on first purchase timing
-to enable longitudinal LTV analysis.
+to enable consistent longitudinal analysis.
 
 ### Artifacts
 - `10_cohort_definition.sql`
@@ -59,12 +58,12 @@ to enable longitudinal LTV analysis.
 ## 20. Cohort Retention Analysis
 
 ### Purpose
-Measure customer retention behavior over time
-to understand decay patterns and cohort quality.
+Measure how customer cohorts retain over time
+and identify drop-off patterns.
 
 ### Key Metrics
-- Retention rate by cohort
-- Active customer count by period
+- Retention rate by cohort and period
+- Active customer counts over time
 
 ### Artifacts
 - `20_cohort_retention.sql`
@@ -77,11 +76,11 @@ to understand decay patterns and cohort quality.
 ## 30. Purchase Frequency Analysis
 
 ### Purpose
-Analyze how frequently customers purchase
-to distinguish habitual customers from one-time buyers.
+Understand how often customers repurchase
+and how purchase cadence differs across cohorts.
 
 ### Key Metrics
-- Average purchase frequency
+- Average purchases per customer
 - Repeat purchase distribution
 
 ### Artifacts
@@ -95,12 +94,12 @@ to distinguish habitual customers from one-time buyers.
 ## 40. LTV by Cohort
 
 ### Purpose
-Measure cumulative revenue contribution
-of each customer cohort over time.
+Quantify total and cumulative lifetime value
+for each customer cohort.
 
 ### Key Metrics
-- Cumulative revenue per cohort
-- LTV growth curves
+- Cumulative revenue per customer
+- LTV growth curve by cohort
 
 ### Artifacts
 - `40_ltv_by_cohort.sql`
@@ -110,15 +109,15 @@ of each customer cohort over time.
 
 ---
 
-## 50. LTV by Customer Segment
+## 50. LTV by Segment
 
 ### Purpose
 Compare lifetime value across customer segments
-to identify high-value and low-value groups.
+to identify high-value behavioral groups.
 
 ### Key Metrics
 - Average LTV by segment
-- Segment-level revenue concentration
+- Segment-level value contribution
 
 ### Artifacts
 - `50_ltv_by_segment.sql`
@@ -128,55 +127,53 @@ to identify high-value and low-value groups.
 
 ---
 
-## 60. Payback Period by Cohort
+## 60. Payback Period Analysis
 
 ### Purpose
-Estimate how long it takes for customer cohorts
-to generate sufficient revenue to offset acquisition costs.
+Estimate how long it takes for customer revenue
+to recover acquisition or onboarding costs.
 
 ### Key Metrics
-- Payback period (months)
-- Cumulative revenue thresholds
+- Time-to-payback by cohort
+- Revenue accumulation speed
 
 ### Artifacts
 - `60_payback_period_by_cohort.sql`
 
 ### Evidence
-![Payback Period by Cohort](./result/60_payback_period_by_cohort.png)
+![Payback Period](./result/60_payback_period_by_cohort.png)
 
 ---
 
-## 90. Sanity & Coverage Checks
+## 90. Sanity & Validation Checks
 
 ### Purpose
 Ensure analytical correctness and data completeness
 before interpreting LTV results.
 
 ### Validation Areas
-- Customer base completeness
-- Segment assignment coverage
-- Missing or orphan customer records
+- Customer count reconciliation
+- Segment assignment completeness
+- Missing or orphan customer checks
 
 ### Artifacts
-- `90_1_customer_base_count.sql`
-- `90_2_segment_customer_count.sql`
-- `90_3_missing_segment_customers.sql`
+- `90_customer_base_count.sql`
+- `91_segment_customer_count.sql`
+- `92_missing_segment_customers.sql`
 
 ### Evidence
-![Customer Base Count](./result/90_1_customer_base_count.png)
-![Segment Customer Count](./result/90_2_segment_customer_count.png)
+![Customer Base Count](./result/90_1_customer_base_count.png)  
+![Segment Customer Count](./result/90_2_segment_customer_count.png)  
 ![Missing Segment Customers](./result/90_3_missing_segment_customers.png)
 
 ---
 
 ## Key Insights (Example)
 
-- Early cohorts often exhibit higher long-term value,
-  indicating improving retention quality over time.
-- A small subset of customer segments contributes
-  disproportionately to total lifetime revenue.
-- Payback periods vary significantly by cohort,
-  highlighting the importance of acquisition timing and quality.
+- Early retention has a disproportionate impact on total LTV.
+- Cohorts with similar acquisition volume can differ greatly in lifetime value.
+- High-frequency customers drive stable long-term revenue even with moderate order size.
+- Segment-level LTV differences justify differentiated retention strategies.
 
 ---
 
@@ -184,13 +181,13 @@ before interpreting LTV results.
 
 This analysis supports:
 
-- Customer acquisition budget optimization
-- Retention and loyalty investment decisions
-- Segment-level prioritization
+- Smarter customer acquisition budgeting
+- Retention and loyalty program optimization
 - Long-term revenue forecasting
+- Customer portfolio prioritization
 
-> Growth is not just about acquiring more customers —
-> it is about acquiring the *right* customers.
+> Revenue today is important —  
+> but **customer value over time determines sustainable growth**.
 
 ---
 
@@ -209,15 +206,16 @@ All inputs are validated prior to analysis.
 ## Execution Order
 
 1. Validate warehouse models and customer dimensions
-2. Define cohorts and retention structure
-3. Analyze frequency and lifetime value
-4. Estimate payback periods
-5. Confirm results with sanity checks
+2. Define customer cohorts
+3. Analyze retention and purchase behavior
+4. Compute cohort and segment LTV
+5. Estimate payback period
+6. Confirm results with sanity checks
 
 ---
 
 ## Next Steps
 
-- Incorporate acquisition cost (CAC) assumptions
-- Extend LTV modeling with predictive techniques
-- Connect cohort LTV results to BI dashboards
+- Integrate acquisition cost (CAC) for full unit economics
+- Extend LTV modeling with churn prediction
+- Feed LTV outputs into forecasting and BI dashboards
