@@ -3,6 +3,8 @@
 **A structured product mix analysis designed to understand revenue concentration,
 product performance stability, and portfolio risk using warehouse-level data.**
 
+**Category:** Product Strategy · Assortment Optimization · Risk Analysis
+
 ---
 
 ## Overview
@@ -23,10 +25,15 @@ The product mix is evaluated across multiple dimensions:
 
 - Revenue concentration (Pareto / top-N products)
 - Product stability over time
-- Return behavior and risk
+- Return behavior and product risk
 - Price vs. volume sensitivity
 - Segment-level product preferences
 - Lifecycle and dependency risk
+
+This framework is designed to answer questions such as:
+- Which products truly drive sustainable revenue?
+- Where does product concentration create operational or revenue risk?
+- Which SKUs should be expanded, optimized, or sunset?
 
 Each step progressively deepens understanding
 from descriptive metrics to strategic insights.
@@ -73,11 +80,11 @@ how much revenue is driven by a small subset of SKUs.
 ## 30. Revenue Concentration (Pareto Analysis)
 
 ### Purpose
-Measure revenue concentration and validate the 80/20 rule
+Measure revenue concentration and validate the Pareto principle
 within the product portfolio.
 
 ### Key Metrics
-- Cumulative revenue %
+- Cumulative revenue percentage
 - Product concentration curve
 
 ### Artifacts
@@ -95,7 +102,7 @@ Understand how different customer segments
 exhibit distinct product preferences.
 
 ### Key Metrics
-- Revenue share by segment & product
+- Revenue share by segment and product
 - Segment-specific top products
 
 ### Artifacts
@@ -110,7 +117,7 @@ exhibit distinct product preferences.
 
 ### Purpose
 Identify products with disproportionately high return rates
-that may signal quality or expectation mismatch issues.
+that may signal quality, pricing, or expectation mismatch issues.
 
 ### Key Metrics
 - Return rate by product
@@ -196,7 +203,7 @@ Classify products into strategic portfolio buckets
 
 ### Purpose
 Assess whether long-tail products collectively
-contribute meaningful revenue or operational overhead.
+contribute meaningful revenue relative to operational overhead.
 
 ### Artifacts
 - `86_long_tail_product_efficiency.sql`
@@ -237,7 +244,8 @@ using observed revenue and volume patterns.
 ## 90. Sanity & Validation Checks
 
 ### Purpose
-Ensure analytical correctness before drawing conclusions.
+Ensure analytical correctness and consistency
+before interpreting business results.
 
 ### Validation Areas
 - Revenue consistency
@@ -254,10 +262,12 @@ Ensure analytical correctness before drawing conclusions.
 
 ## Key Insights (Example)
 
-- A small fraction of products drives the majority of revenue.
-- Long-tail products contribute marginal revenue but increase complexity.
-- Certain products exhibit high return rates, indicating risk.
-- Core products show strong price resilience compared to peripheral SKUs.
+- When revenue concentration exceeds a small percentage of SKUs,
+  portfolio risk increases disproportionately.
+- Products with high return rates but stable sales volume
+  often indicate pricing or expectation mismatches.
+- Core products demonstrate greater price resilience
+  compared to long-tail or opportunistic SKUs.
 
 ---
 
@@ -268,10 +278,10 @@ This analysis supports:
 - Assortment optimization
 - Inventory and SKU rationalization
 - Pricing and promotion strategy
-- Risk management in revenue concentration
+- Revenue concentration risk management
 
 > Revenue growth is not only about selling more —
-> it’s about selling the *right* products.
+> it is about selling the *right* products.
 
 ---
 
@@ -287,8 +297,18 @@ All inputs are validated prior to analysis.
 
 ---
 
+## Execution Order
+
+1. Validate warehouse models and marts
+2. Run base product metrics and rankings
+3. Evaluate concentration and stability
+4. Assess risk, lifecycle, and sensitivity
+5. Confirm results with sanity checks
+
+---
+
 ## Next Steps
 
 - Integrate margin and cost data
 - Add promotion and seasonality effects
-- Connect results to BI dashboards
+- Connect insights to BI dashboards
