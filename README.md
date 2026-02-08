@@ -1,169 +1,174 @@
 # 📊 End-To-End Retail Data Warehouse
 
 **A full implementation of an end-to-end retail data warehouse and analytical framework.**  
-This repository encompasses the entire lifecycle of data engineering and analytics —  
-from raw ingestion to business-ready insights driven by explainable analysis.
+This repository demonstrates the complete lifecycle of data engineering and analytics —  
+from raw ingestion to forecasting and business insights built on validated data models.
 
 ---
 
 ## 🧱 Architecture Overview
 
-This project is organized into logical layers that correspond to common data platform patterns:
+This project follows a layered data platform architecture:
 
 **Raw Data → ETL → Data Warehouse → SQL Analytics → Forecasting → Insights**
 
-
-Each layer has a clear purpose and separation of concerns:
+Each layer has a clear responsibility and separation of concerns.
 
 | Layer | Responsibility |
-|-------|----------------|
-| 🔹 `data_foundation/` | Data ingestion, standardization, and quality enforcement |
-| 🔹 `data_modeling/` | Dimensional modeling: fact & dimension tables, analytical marts |
-| 🔹 `data_operations/` | Operational validation and sanity checks |
-| 🔹 `business_analytics/` | Decision-oriented analytical modules with SQL & visualization |
-| 🔹 `sql/` | Reusable SQL utilities supporting all layers |
+|------|----------------|
+| data_foundation | Data ingestion, standardization, and quality enforcement |
+| data_modeling | Dimensional modeling (facts & dimensions, marts) |
+| data_operations | Operational validation and reconciliation |
+| business_analytics | Decision-oriented analytics and KPI decomposition |
+| forecasting *(planned)* | Predictive modeling |
+| insights *(planned)* | Executive-ready insights |
 
 ---
 
 ## 📁 Layer Descriptions
 
-### 🧰 1. Data Foundation
+### 1. Data Foundation
 
-Focuses on:
-- Ingesting raw source files
-- Standardizing data types & formats
-- Cleaning and basic validations
+Builds a **trusted base layer** for analytics.
 
-📁 [`data_foundation/`](./data_foundation/)  
-👉 Detailed documentation: [Data Foundation README](./data_foundation/README.md)
+- Raw data ingestion
+- Standardization & cleansing
+- Foundational data quality checks
 
----
-
-### 🛠 2. Data Modeling
-
-Builds dimensional data models optimized for analytics.
-
-Focuses on:
-- Fact and dimension creation
-- Key constraints
-- Base KPI marts
-
-📁 [`data_modeling/`](./data_modeling/)  
-👉 Detailed documentation: [Data Modeling README](./data_modeling/README.md)
+Path: `data_foundation/`  
+Docs: `data_foundation/README.md`
 
 ---
 
-### ⚙️ 3. Data Operations
+### 2. Data Modeling
 
-Ensures the data platform remains reliable and consistent.
+Creates **analytics-ready dimensional models**.
 
-Includes:
-- Schema setup
-- Optional extension checks
-- Data quality & reconciliation tests
+- Star schema design
+- Fact & dimension tables
+- Analytical marts
 
-📁 [`data_operations/`](./data_operations/)  
-👉 Detailed documentation: [Data Operations README](./data_operations/README.md)
+Path: `data_modeling/`  
+Docs: `data_modeling/README.md`
 
 ---
 
-### 📊 4. Business Analytics
+### 3. Data Operations
 
-Organized analytics modules that build on validated models and generate insights.
+Ensures **platform reliability and correctness**.
 
-Modules include:
+#### data_operations/00_admin
+- Schema creation
+- Extension setup
+- Idempotent environment initialization
+
+#### data_operations/90_tests
+- Referential integrity checks
+- Fact-level sanity validation
+- Cross-layer reconciliation
+
+Path: `data_operations/`  
+Docs: `data_operations/README.md`
+
+---
+
+### 4. Business Analytics
+
+Transforms validated data into **explainable business insights**.
+
+Current modules:
 - Revenue Driver Analysis
 - Customer Segmentation
 - Product Mix Analysis
 - Returns Analysis
 - Customer Lifetime Value (LTV)
 
-📁 [`business_analytics/`](./business_analytics/)  
-👉 Detailed documentation: [Business Analytics README](./business_analytics/README.md)
+Each module includes:
+- SQL logic
+- Result screenshots
+- Business interpretation
+
+Path: `business_analytics/`  
+Docs: `business_analytics/README.md`
 
 ---
 
-## 🧠 Core Concepts
+### 5. Forecasting (Planned)
 
-### 🔁 Standardized Layering
+Extends historical analytics into **forward-looking predictions**.
 
-Each layer is designed to be:
-- **Modular**
-- **Reproducible**
-- **Auditable**
-- **Easy to validate**
-
-This makes the platform suitable for both engineering and analytical workloads.
+Planned focus:
+- Revenue forecasting
+- Trend & seasonality modeling
+- Scenario analysis
 
 ---
 
-## 📌 How to Use
+### 6. Insights (Planned)
 
-### Step 1 — Set Up Schema
-Run the admin scripts from `data_operations/00_admin` to ensure all target schemas exist.
+Converts analytics and forecasts into **actionable decisions**.
 
-### Step 2 — Load & Standardize
-Use `data_foundation/10_raw` and `data_foundation/20_staging` scripts to ingest and clean source data.
+Planned outputs:
+- Executive summaries
+- KPI narratives
+- Strategic recommendations
 
-### Step 3 — Build Models
-Execute data modeling scripts from `data_modeling/30_dw` and `data_modeling/40_marts`.
+---
 
-### Step 4 — Validate
-Run the quality checks in `data_operations/90_tests` to verify model correctness.
+## 🧠 Core Design Principles
 
-### Step 5 — Analyze
-Explore analytics use cases in `business_analytics/*`. Each module contains SQL + result graphs + guidance.
+- Layered responsibility
+- Validation before insight
+- Explainable analytics
+- Business-first thinking
+
+Clean data enables trust.  
+Trust enables decisions.
+
+---
+
+## 🚦 How to Run the Project
+
+1. Environment setup  
+   Run scripts in `data_operations/00_admin`
+
+2. Data ingestion & cleaning  
+   Execute `data_foundation/10_raw` → `data_foundation/20_staging`
+
+3. Data modeling  
+   Build models in `data_modeling/`
+
+4. Validation  
+   Run checks in `data_operations/90_tests`
+
+5. Analytics  
+   Explore `business_analytics/*`
 
 ---
 
 ## 📌 Visual Evidence
 
-The repository contains `result/` folders with result screenshots and visual artifacts
-for each analytical step and validation test,
-making it easy to verify execution outcomes.
+Each layer includes `result/` folders containing:
+- SQL execution screenshots
+- Validation outputs
+- Analytical results
+
+This makes the project auditable and reproducible.
 
 ---
 
 ## 📈 Why This Project Matters
 
-This project demonstrates a complete data lifecycle:
-- **Reliable data ingestion**
-- **Structured analytical models**
-- **Robust data validation**
-- **Insightful business analytics**
+This repository demonstrates:
+- End-to-end data platform design
+- Strong SQL and modeling discipline
+- Data quality–first mindset
+- Decision-oriented analytics
 
-It is suitable for:
-- **Portfolio presentations**
-- **Data engineering/analytics interviews**
-- **NIW/academic evidence of technical capability**
-
----
-
-## 🧩 Dependencies
-
-This repository depends on:
-- PostgreSQL (or compatible SQL engine)
-- Standard SQL execution environment
-- Source data (e.g., retail dataset)
-
-Scripts assume proper database credentials and access.
-
----
-
-## 🚀 Next Steps
-
-To extend this project:
-- Add automated orchestration (Airflow, dbt)
-- Expand analytics with predictive models
-- Add BI dashboards (Tableau, Superset, Looker)
-- Connect to reporting interfaces or API endpoints
-
----
-
-## 💬 Feedback & Contributions
-
-Contributions are welcome! Please open an issue
-or pull request if you have suggestions or improvements.
+Suitable for:
+- Data Engineering portfolios
+- Analytics interviews
+- Academic or NIW evidence
 
 ---
 
