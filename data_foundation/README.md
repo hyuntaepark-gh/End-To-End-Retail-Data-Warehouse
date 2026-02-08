@@ -1,6 +1,9 @@
 # Data Foundation
 
+**A documented implementation of the raw ingestion and staging layers of the retail data warehouse, including execution evidence and data quality validation.**
+
 ## Overview
+
 The Data Foundation layer is responsible for ingesting, standardizing,
 and validating source data before any analytical modeling occurs.
 
@@ -11,8 +14,10 @@ forming a trusted base for downstream data modeling and analytics.
 
 ## Architecture Scope
 
-10_raw     → Source-aligned raw ingestion  
-20_staging → Standardization and data quality enforcement
+This layer consists of two core sublayers:
+
+- **Raw Layer (`10_raw`)** — Ingest source data as-is with no transformation  
+- **Staging Layer (`20_staging`)** — Standardize, clean, and validate data
 
 ---
 
@@ -30,17 +35,26 @@ forming a trusted base for downstream data modeling and analytics.
 
 ### Evidence – Raw Execution Results
 
+The following outputs confirm that the source data
+was ingested into the raw layer without transformation or data loss.
+
 **Raw table creation**
 
 ![Raw Table Creation](./result/10_create_raw_tables.png)
+
+> Raw table created successfully with source-aligned schema.
 
 **CSV load instruction and result**
 
 ![Load Raw from CSV](./result/11_load_raw_from_csv.png)
 
+> CSV ingestion executed using COPY command.
+
 **Raw row count verification**
 
 ![Raw Row Count Check](./result/12_raw_rowcount_checks.png)
+
+> Row count: **541,909** — no rows lost during ingestion.
 
 ---
 
@@ -53,23 +67,29 @@ forming a trusted base for downstream data modeling and analytics.
 
 ### Key Transformations
 - Trim and normalize string fields
-- Convert numeric fields using regex-based validation
+- Convert numeric columns using regex-based validation
 - Parse `invoice_date` into timestamp
-- Handle invalid or missing values
+- Handle invalid or missing values explicitly
 - Flag return transactions (`quantity < 0`)
 
 ### Evidence – Staging Execution Result
+
+After standardization, core data quality checks were performed
+to validate critical fields, data types, and date ranges.
 
 **Staging clean table creation and sanity checks**
 
 ![Staging Clean Table](./result/20_create_staging_clean.png)
 
+> Clean rows: **541,909**  
+> Invoice date range validated with no NULL timestamps.
+
 ---
 
 ## Why Data Foundation Matters
 
-This layer intentionally separates data correctness from
-business logic and analytics, ensuring that:
+This layer intentionally separates **data correctness** from
+**business logic and analytics**, ensuring that:
 
 - Errors are caught early
 - Downstream models remain simple and trustworthy
@@ -83,12 +103,20 @@ business logic and analytics, ensuring that:
 
 All tables in the following layers depend exclusively on this foundation:
 
-- `30_dw` (Data Warehouse)
-- `40_marts` (Analytics & KPI layer)
+- `30_dw` — Data Warehouse (facts and dimensions)
+- `40_marts` — Analytics and KPI marts
 
 ---
 
 ## Related Documentation
 
-- `10_raw/`  
-- `20_staging/`
+- [10_raw layer documentation](10_raw/)
+- [20_staging layer documentation](20_staging/)
+
+---
+
+## Next Steps
+
+- Document the `30_dw` core warehouse layer
+- Define fact and dimension models
+- Build analytics marts (`40_marts`) for business KPIs
