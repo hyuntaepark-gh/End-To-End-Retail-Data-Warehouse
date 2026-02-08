@@ -1,15 +1,18 @@
 # Data Modeling
 
-**A documented implementation of the dimensional data model and analytics marts,
-transforming clean retail data into structured, analytics-ready datasets.**
+**A documented implementation of dimensional data models and analytics marts,
+transforming standardized retail data into analytics-ready datasets with execution evidence.**
 
 ## Overview
 
-The Data Modeling layer transforms validated data from the Data Foundation
-into structured fact and dimension tables, followed by analytics-ready KPI marts.
+The Data Modeling layer transforms validated outputs from the Data Foundation
+into structured fact and dimension tables, followed by KPI-focused analytics marts.
 
 This layer focuses on **business logic, dimensional modeling, and analytical usability**,
-bridging clean data and business insights.
+bridging clean data preparation and business-facing insights.
+
+This layer builds directly on the validated outputs of the Data Foundation,
+ensuring that all models are derived from standardized and quality-checked data.
 
 ---
 
@@ -18,7 +21,7 @@ bridging clean data and business insights.
 This layer consists of two core sublayers:
 
 - **Core Warehouse (`30_dw`)** — Fact and dimension tables with defined grain and relationships  
-- **Analytics Marts (`40_marts`)** — KPI-focused tables for reporting and analysis
+- **Analytics Marts (`40_marts`)** — KPI-focused tables optimized for reporting and analysis  
 
 20_staging
 ↓
@@ -37,7 +40,7 @@ This layer consists of two core sublayers:
 
 ### Dimension Tables
 - **dim_date** — Calendar and time attributes
-- **dim_customer** — Customer identity and location
+- **dim_customer** — Customer identity and geographic attributes
 - **dim_product** — Product catalog and descriptions
 
 ### Fact Table
@@ -90,6 +93,9 @@ of dimension and fact tables, along with enforced relationships.
 - Return rate
 - Repeat purchase behavior
 
+These KPIs represent common executive-level and operational metrics
+used to evaluate revenue performance, customer behavior, and product efficiency.
+
 ---
 
 ### Evidence – Analytics Marts Results
@@ -126,8 +132,8 @@ The following outputs show KPI queries built on top of the dimensional model.
 
 - **Dimensional modeling (star schema)** for analytical efficiency
 - **Single source of truth** in the core warehouse
-- **Clear separation of concerns** between modeling and data preparation
-- **Reusability** of dimensions across multiple KPIs
+- **Clear separation of concerns** between data preparation and modeling
+- **Reusability** of dimensions across multiple analytics marts
 
 ---
 
@@ -158,5 +164,5 @@ Only validated and standardized data is used for modeling.
 ## Next Steps
 
 - Add ERD visualization for fact–dimension relationships
-- Expand KPI coverage with additional marts
-- Validate metric consistency across analytics marts
+- Introduce additional analytics marts for advanced KPIs
+- Perform reconciliation checks between facts and marts
