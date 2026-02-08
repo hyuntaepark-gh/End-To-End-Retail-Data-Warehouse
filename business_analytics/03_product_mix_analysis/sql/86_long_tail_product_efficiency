@@ -1,0 +1,72 @@
+WITH product_rev AS (
+  SELECT
+    fs.stock_code,
+    COALESCE(dp.description, '(unknown)') AS description,
+    SUM(CASE WHEN fs.is_return = FALSE THEN fs.revenue ELSE 0 END) AS revenue
+  FROM dw.fact_sales fs
+  LEFT JOIN dw.dim_product dp
+    ON dp.stock_code = fs.stock_code
+  GROUP BY fs.stock_code, COALESCE(dp.description, '(unknown)')
+),
+ranked AS (
+  SELECT
+    *,
+    ROW_NUMBER() OVER (ORDER BY revenue DESC) AS rn,
+    COUNT(*) OVER () AS total_products
+  FROM product_rev
+),
+bucketed AS (
+  SELECT
+    stock_code,
+    description,
+    revenue,
+    CASE
+      WHEN rn <= CEIL(total_products * 0.20) THEN 'Top 20%'
+      WHEN rn <= CEIL(total_products * 0.50) THEN 'Middle 30%'
+      ELSE 'Bottom 50%'
+    END AS product_bucket
+  FROM ranked
+),
+bucket_metrics AS (
+  SELECT
+    b.product_bucket,
+    COUNT(*) AS products,
+    SUM(b.revenue) AS revenue
+  FROM bucketed b
+  GROUP BY b.product_bucket
+),
+bucket_orders_returns AS (
+  SELECT
+    b.product_bucket,
+    COUNT(DISTINCT CASE WHEN fs.is_return THEN fs.invoice_no END) AS return_orders,
+    COUNT(DISTINCT fs.invoice_no) AS total_orders,
+    (COUNT(DISTINCT CASE WHEN fs.is_return THEN fs.invoice_no END))::numeric
+      / NULLIF(COUNT(DISTINCT fs.invoice_no), 0) AS return_rate
+  FROM dw.fact_sales fs
+  JOIN bucketed b
+    ON b.stock_code = fs.stock_code
+  GROUP BY b.product_bucket
+),
+totals AS (
+  SELECT SUM(revenue) AS total_revenue
+  FROM bucket_metrics
+)
+SELECT
+  m.product_bucket,
+  m.products,
+  m.revenue,
+  m.revenue / NULLIF(t.total_revenue, 0) AS revenue_share,
+  o.total_orders,
+  o.return_orders,
+  o.return_rate
+FROM bucket_metrics m
+JOIN bucket_orders_returns o
+  ON o.product_bucket = m.product_bucket
+CROSS JOIN totals t
+ORDER BY
+  CASE m.product_bucket
+    WHEN 'Top 20%' THEN 1
+    WHEN 'Middle 30%' THEN 2
+    WHEN 'Bottom 50%' THEN 3
+    ELSE 9
+  END;
