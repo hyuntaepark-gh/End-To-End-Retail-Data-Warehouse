@@ -24,6 +24,7 @@ Revenue
 = Orders × Average Order Value (AOV)
 = Orders × (Basket Size × Unit Price)
 
+
 The analysis proceeds step by step, isolating the impact of:
 - Time-based changes
 - Volume vs. price effects
@@ -44,9 +45,11 @@ Establish baseline KPIs to provide context for all downstream analysis.
 - Average order value (AOV)
 - Average unit price
 
-### Artifacts
+### Evidence
+![Baseline Metrics](./result/10_base_metrics.png)
+
+**Artifacts**
 - `10_base_metrics.sql`
-- `10_base_metrics.png`
 
 ---
 
@@ -55,13 +58,11 @@ Establish baseline KPIs to provide context for all downstream analysis.
 ### Purpose
 Measure how revenue changes month-over-month to identify growth or decline trends.
 
-### Key Metrics
-- Monthly revenue
-- Month-over-month (MoM) revenue change
+### Evidence
+![Revenue MoM Change](./result/20_revenue_mom_change.png)
 
-### Artifacts
+**Artifacts**
 - `20_revenue_mom_change.sql`
-- `20_revenue_mom_change.png`
 
 ---
 
@@ -72,30 +73,24 @@ Decompose revenue changes into:
 - Changes driven by order volume
 - Changes driven by average order value
 
-### Key Metrics
-- Orders effect
-- AOV effect
+### Evidence
+![Orders vs AOV Decomposition](./result/30_decomposition_orders_aov.png)
 
-### Artifacts
+**Artifacts**
 - `30_decomposition_orders_aov.sql`
-- `30_decomposition_orders_aov.png`
 
 ---
 
 ## 31. AOV Decomposition: Basket Size vs. Price
 
 ### Purpose
-Further decompose AOV to distinguish between:
-- Basket size (quantity per order)
-- Unit price effects
+Further decompose AOV to distinguish between basket size and unit price effects.
 
-### Key Metrics
-- Basket size effect
-- Unit price effect
+### Evidence
+![Basket Size vs Price](./result/31_decomposition_basket_price.png)
 
-### Artifacts
+**Artifacts**
 - `31_decomposition_basket_price.sql`
-- `31_decomposition_basket_price.png`
 
 ---
 
@@ -105,13 +100,11 @@ Further decompose AOV to distinguish between:
 Quantify the relative contribution of sales volume versus pricing
 to overall revenue changes.
 
-### Key Metrics
-- Volume-driven revenue change
-- Price-driven revenue change
+### Evidence
+![Volume vs Price Effect](./result/32_volume_vs_price_effect.png)
 
-### Artifacts
+**Artifacts**
 - `32_volume_vs_price_effect.sql`
-- `32_volume_vs_price_effect.png`
 
 ---
 
@@ -121,13 +114,11 @@ to overall revenue changes.
 Identify which countries contribute most to revenue
 and how geographic mix influences growth.
 
-### Key Metrics
-- Revenue by country
-- Country contribution to total revenue change
+### Evidence
+![Country Revenue Driver](./result/40_country_revenue_driver.png)
 
-### Artifacts
+**Artifacts**
 - `40_country_revenue_driver.sql`
-- `40_country_revenue_driver.png`
 
 ---
 
@@ -137,13 +128,11 @@ and how geographic mix influences growth.
 Determine whether country-level revenue differences
 are driven by order volume or order value.
 
-### Key Metrics
-- Orders effect by country
-- AOV effect by country
+### Evidence
+![Country Orders vs AOV](./result/41_country_orders_aov_driver.png)
 
-### Artifacts
+**Artifacts**
 - `41_country_orders_aov_driver.sql`
-- `41_country_orders_aov_driver.png`
 
 ---
 
@@ -153,30 +142,24 @@ are driven by order volume or order value.
 Assess how changes in customer composition
 impact overall revenue performance.
 
-### Key Metrics
-- Revenue contribution by customer segment
-- Customer mix effect on revenue
+### Evidence
+![Customer Mix Effect](./result/50_customer_mix_effect.png)
 
-### Artifacts
+**Artifacts**
 - `50_customer_mix_effect.sql`
-- `50_customer_mix_effect.png`
 
 ---
 
 ## 51. Growth Attribution: New vs. Existing Customers
 
 ### Purpose
-Attribute revenue growth to:
-- New customers
-- Existing customers
+Attribute revenue growth to new versus existing customers.
 
-### Key Metrics
-- Revenue from new customers
-- Revenue from existing customers
+### Evidence
+![Growth Attribution New vs Existing](./result/51_growth_attribution_new_vs_existing.png)
 
-### Artifacts
+**Artifacts**
 - `51_growth_attribution_new_vs_existing.sql`
-- `51_growth_attribution_new_vs_existing.png`
 
 ---
 
@@ -186,9 +169,11 @@ Attribute revenue growth to:
 Provide a direct comparison of revenue levels
 between new and existing customers.
 
-### Artifacts
+### Evidence
+![New vs Existing Revenue](./result/52_new_vs_existing_revenue.png)
+
+**Artifacts**
 - `52_new_vs_existing_revenue.sql`
-- `52_new_vs_existing_revenue.png`
 
 ---
 
@@ -198,13 +183,11 @@ between new and existing customers.
 Evaluate how product returns affect net revenue
 and distort gross sales trends.
 
-### Key Metrics
-- Revenue lost due to returns
-- Return rate impact
+### Evidence
+![Returns Impact](./result/60_returns_impact.png)
 
-### Artifacts
+**Artifacts**
 - `60_returns_impact.sql`
-- `60_returns_impact.png`
 
 ---
 
@@ -214,14 +197,11 @@ and distort gross sales trends.
 Ensure analytical correctness and consistency
 before interpreting business results.
 
-### Validation Areas
-- Negative or zero revenue checks
-- Quantity and price validity
-- Reconciliation with warehouse facts
+### Evidence
+![Sanity Checks](./result/90_sanity_checks.png)
 
-### Artifacts
+**Artifacts**
 - `90_sanity_checks.sql`
-- `90_sanity_checks.png`
 
 ---
 
