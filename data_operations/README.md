@@ -43,17 +43,20 @@ data operations
 
 ### Evidence – Environment Setup Execution
 
+The following outputs illustrate environment setup steps
+that prepare the warehouse for downstream processing.
+
 **Schema creation**
 
 ![Create Schemas](./result/00_create_schema.png)
 
-> All required schemas created or verified as existing.
+> All required schemas were created or already existed.
 
 **Optional extensions**
 
 ![Create Extensions](./result/01_extensions.png)
 
-> Extensions created safely using `IF NOT EXISTS`.
+> Optional PostgreSQL extensions applied safely using `IF NOT EXISTS`.
 
 ---
 
@@ -74,7 +77,8 @@ This validation layer is designed to be **lightweight, repeatable, and explainab
 
 ![Orphan Key Checks](./result/90_orphan_key_checks.png)
 
-> Verified that all foreign keys in `fact_sales` reference valid dimension records.
+> Verified that all foreign keys in `fact_sales`
+> reference valid dimension records.
 
 ---
 
@@ -91,11 +95,12 @@ This validation layer is designed to be **lightweight, repeatable, and explainab
 
 ### Reconciliation Checks
 
-**Staging vs Fact revenue reconciliation**
+**Staging vs. fact revenue reconciliation**
 
 ![Revenue Reconciliation](./result/92_reconciliation_checks.png)
 
-> Total revenue in `staging` matches `fact_sales` exactly (diff = 0).
+> Total revenue in `staging` matches `fact_sales` exactly  
+> (difference = **0**).
 
 ---
 
@@ -134,4 +139,5 @@ Operational validation ensures that:
 
 - Automate validation checks as scheduled jobs
 - Expand reconciliation coverage to additional marts
-- Add alerting for failed data quality checks
+- Add alerting or dashboards for failed data quality checks
+- Log validation results for audit and monitoring purposes
