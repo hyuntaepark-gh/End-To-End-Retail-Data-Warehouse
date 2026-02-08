@@ -83,9 +83,30 @@ All tables in the following layers depend exclusively on this Data Foundation:
 
 ---
 
-## Related Documentation
-- 10_raw/README.md
-- 20_staging/README.md
+### Raw Layer Validation
+
+The following results confirm that the source data
+was ingested into the raw layer without transformation or data loss.
+
+**Raw table creation**
+![Create Raw Tables](result/10_create_raw_tables.png)
+
+**CSV load execution**
+![Load Raw from CSV](result/11_load_raw_from_csv.png)
+
+**Row count verification**
+![Raw Row Count Check](result/12_raw_rowcount_checks.png)
+
+---
+
+### Staging Layer – Data Quality Checks
+
+After standardization, core data quality checks were performed
+to validate critical fields, data types, and date ranges.
+
+**Staging clean table creation and sanity checks**
+![Staging Clean Table](result/20_create_staging_clean.png)
+
 
 ---
 
