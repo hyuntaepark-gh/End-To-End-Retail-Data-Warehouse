@@ -20,8 +20,8 @@ Each layer has a clear responsibility and separation of concerns.
 | data_modeling | Dimensional modeling (facts & dimensions, marts) |
 | data_operations | Operational validation and reconciliation |
 | business_analytics | Decision-oriented analytics and KPI decomposition |
-| forecasting *(planned)* | Predictive modeling |
-| insights *(planned)* | Executive-ready insights |
+| forecasting | Predictive modeling |
+| insights | Executive-ready insights |
 
 ---
 
@@ -93,7 +93,7 @@ Docs: `business_analytics/README.md`
 
 ---
 
-### 5. Forecasting (Planned)
+### 5. Forecasting
 
 Extends historical analytics into **forward-looking predictions**.
 
@@ -104,7 +104,7 @@ Planned focus:
 
 ---
 
-### 6. Insights (Planned)
+### 6. Insights
 
 Converts analytics and forecasts into **actionable decisions**.
 
