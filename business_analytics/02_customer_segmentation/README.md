@@ -219,6 +219,28 @@ to identify bundling and upsell opportunities.
 
 ---
 
+## 80. Segment Performance Over Time
+
+### Purpose
+Analyze how revenue, order volume, and active customers
+evolve over time for each customer segment.
+
+This analysis treats customer segments as **behavioral cohorts**
+and examines whether their contribution is stable or changing.
+
+### Metrics
+- Monthly revenue
+- Monthly order count
+- Active customers per segment
+
+### Evidence
+![Segment Performance Over Time](./result/80_segment_trend_over_time.png)
+
+**Artifacts**
+- `80_segment_trend_over_time.sql`
+
+---
+
 ## 90. Sanity & Validation Checks
 
 ### Purpose
