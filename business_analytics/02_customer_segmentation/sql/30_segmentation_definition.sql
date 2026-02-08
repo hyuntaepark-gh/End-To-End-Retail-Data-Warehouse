@@ -4,3 +4,4 @@ SELECT
 FROM marts.customer_segments
 GROUP BY customer_segment
 ORDER BY customers DESC;
+
