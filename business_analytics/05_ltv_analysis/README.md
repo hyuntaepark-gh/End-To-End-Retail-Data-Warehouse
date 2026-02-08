@@ -1,152 +1,136 @@
-# Business Analytics
+# Customer Lifetime Value (LTV) Analysis
 
-**Decision-oriented analytical modules built on top of a validated
-enterprise data warehouse to explain business performance and support action.**
+**A customer lifetime value (LTV) analysis explaining long-term revenue behavior,
+customer loyalty, and value retention using historical transactional data.**
 
 ---
 
 ## Overview
 
-The Business Analytics layer translates curated warehouse data
-into **explainable business insights**.
+This analysis focuses on understanding **which customers create long-term value**
+and how revenue accumulates over time based on behavioral patterns.
 
-Unlike upstream layers that focus on data correctness and structure,
-this layer focuses on:
-
-- *Why* metrics change
-- *Which* drivers matter most
-- *How* insights can inform decisions
-
-All analyses are built on top of validated models in the `dw` and `marts`
-schemas and assume that data quality has already been enforced.
-
----
-
-## Architecture Scope
-
-This layer sits at the top of the analytics stack:
-
-raw / staging → dw → marts
-↑
-business analytics
-
-Each sub-module represents a **self-contained analytical question**
-with its own SQL logic, outputs, and validation steps.
-
----
-
-## Analysis Modules
-
-### 01. Revenue Driver Analysis
-
-**Question:**  
-What drives revenue growth and decline?
-
-**Focus:**
-- Revenue decomposition (Orders × AOV)
-- Volume vs. price effects
-- Country-level revenue drivers
-- Customer mix and growth attribution
-- Returns impact and sanity checks
-
-📂 `01_revenue_driver_analysis/`
-
----
-
-### 02. Customer Segmentation
-
-**Question:**  
-How can customers be grouped based on behavior and value?
-
-**Focus:**
-- Purchase frequency and recency
-- Revenue contribution by segment
-- Behavioral patterns across customer cohorts
-
-📂 `02_customer_segmentation/`
-
----
-
-### 03. Product Mix Analysis
-
-**Question:**  
-Which products drive performance and how does the mix change over time?
-
-**Focus:**
-- Revenue concentration
-- Top-product dependency
-- Product contribution trends
-
-📂 `03_product_mix_analysis/`
-
----
-
-### 04. Returns Analysis
-
-**Question:**  
-How do returns affect revenue, KPIs, and operational performance?
-
-**Focus:**
-- Return rates
-- Revenue loss due to returns
-- Product and customer-level return behavior
-
-📂 `04_returns_analysis/`
-
----
-
-### 05. Customer Lifetime Value (LTV) Analysis
-
-**Question:**  
-Which customers create long-term value?
-
-**Focus:**
-- Revenue longevity
+Rather than treating all revenue equally, LTV analysis highlights:
 - Repeat purchase behavior
-- Early-stage value indicators
+- Revenue sustainability
+- Customer retention dynamics
 
-📂 `05_ltv_analysis/`
-
----
-
-## Design Principles
-
-All analytics in this layer follow these principles:
-
-- **Decision-first**: Every analysis answers a concrete business question
-- **Explainability**: Metrics are decomposed into understandable drivers
-- **Reproducibility**: All logic is implemented in SQL with deterministic outputs
-- **Validation-aware**: Sanity checks are included before interpretation
+All analyses are built on top of validated dimensional models (`dw`, `marts`)
+and assume that data quality and integrity have already been enforced
+by upstream layers.
 
 ---
 
-## Dependencies
+## Analysis Framework
 
-This layer depends on the following upstream components:
+Customer Lifetime Value is evaluated by analyzing customers across
+multiple behavioral dimensions:
 
-- [Data Foundation](../data_foundation/README.md)  
-- [Data Modeling](../data_modeling/README.md)  
-- [Data Operations](../data_operations/README.md)
+- **Recency** — How recently a customer made a purchase
+- **Frequency** — How often a customer purchases
+- **Monetary Value** — How much revenue a customer generates
+- **Cohort Behavior** — How revenue accumulates over a customer’s lifecycle
+- **Retention Effects** — How repeat behavior sustains long-term revenue
 
-All inputs are assumed to be standardized, validated, and reconciled.
-
----
-
-## Why Business Analytics Matters
-
-Well-modeled data alone does not create value.
-
-This layer bridges the gap between:
-- **Correct data** and **correct decisions**
-- **Metrics** and **meaning**
-- **Reporting** and **strategy**
-
-> Analytics is not about numbers — it is about understanding drivers.
+Together, these dimensions help explain **why some customers
+contribute disproportionate long-term value**.
 
 ---
 
-## Next Steps
+## 10. Base LTV Metrics
 
-- Extend analyses with margin and profitability views
-- Integrate results into BI dashboards
-- Apply the same framework to forecasting and scenario modeling
+### Purpose
+Establish baseline measures to understand the distribution
+of customer value.
+
+### Key Metrics
+- Total revenue per customer
+- Average revenue per customer
+- Repeat purchase rate
+
+### Artifacts
+- `10_base_ltv_metrics.sql`
+- `10_base_ltv_metrics.png`
+
+---
+
+## 20. Customer Cohort Revenue Analysis
+
+### Purpose
+Analyze how revenue accumulates over time across customer cohorts
+based on first purchase period.
+
+### Key Metrics
+- Revenue by cohort
+- Revenue accumulation over customer lifespan
+
+### Artifacts
+- `20_cohort_revenue_analysis.sql`
+- `20_cohort_revenue_analysis.png`
+
+---
+
+## 30. Repeat Purchase Behavior
+
+### Purpose
+Understand how frequently customers return
+and how repeat behavior influences long-term value.
+
+### Key Metrics
+- Purchase frequency distribution
+- Revenue contribution by repeat customers
+
+### Artifacts
+- `30_repeat_purchase_behavior.sql`
+- `30_repeat_purchase_behavior.png`
+
+---
+
+## 40. High-Value Customer Identification
+
+### Purpose
+Identify customer segments that generate
+a disproportionate share of lifetime revenue.
+
+### Key Metrics
+- Revenue concentration by customer segment
+- Top percentile contribution (e.g., top 20%)
+
+### Artifacts
+- `40_high_value_customer_analysis.sql`
+- `40_high_value_customer_analysis.png`
+
+---
+
+## 90. Sanity & Validation Checks
+
+### Purpose
+Ensure analytical correctness before interpreting results.
+
+### Validation Areas
+- Revenue consistency across cohorts
+- No negative or zero-value anomalies
+- Alignment with warehouse fact totals
+
+### Artifacts
+- `90_ltv_sanity_checks.sql`
+- `90_ltv_sanity_checks.png`
+
+---
+
+## Key Insights (Example)
+
+- A small subset of customers contributes a majority of lifetime revenue.
+- Customers with higher repeat frequency exhibit significantly higher LTV.
+- Revenue accumulation slows sharply after early lifecycle stages.
+- Retention-focused strategies outperform acquisition-only approaches
+  in long-term value creation.
+
+---
+
+## Why This Analysis Matters
+
+Customer Lifetime Value analysis shifts focus from
+short-term transactions to **long-term revenue sustainability**.
+
+By
