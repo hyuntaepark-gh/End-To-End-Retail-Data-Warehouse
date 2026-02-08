@@ -29,8 +29,10 @@ Customers are segmented using the RFM framework:
 - **Frequency**: Number of distinct orders
 - **Monetary**: Total revenue contribution
 
-Each metric is scored using **quintile ranking (NTILE(5))**, and customers are assigned  
-to business-interpretable customer segments.
+Each metric is scored using **quintile ranking (NTILE(5))** to normalize customer behavior  
+and ensure comparability across segments without manual threshold tuning.
+
+Customers are then assigned to **business-interpretable segments** using fixed RFM rules.
 
 ---
 
@@ -46,7 +48,7 @@ Establish customer-level baseline metrics used for all downstream segmentation l
 - First and last purchase dates  
 
 ### Evidence
-![Customer Base Metrics](./result/10_customer_base_metrics.png)
+![Customer Base Metrics – orders, revenue, AOV, lifecycle dates](./result/10_customer_base_metrics.png)
 
 **Artifacts**
 - `10_customer_base_metrics.sql`
@@ -57,10 +59,13 @@ Establish customer-level baseline metrics used for all downstream segmentation l
 
 ### Purpose
 Calculate Recency, Frequency, and Monetary values and convert them  
-into standardized RFM scores using quintile ranking.
+into standardized RFM scores using quintile-based ranking.
+
+Quintile scoring ensures robustness against outliers  
+and avoids reliance on arbitrary thresholds.
 
 ### Evidence
-![RFM Scoring](./result/20_rfm_scoring.png)
+![RFM Scoring – recency, frequency, monetary quintiles](./result/20_rfm_scoring.png)
 
 **Artifacts**
 - `20_rfm_scoring.sql`
@@ -70,17 +75,19 @@ into standardized RFM scores using quintile ranking.
 ## 30. Segmentation Definition
 
 ### Purpose
-Define customer segments using clear and explainable RFM rules  
-instead of black-box clustering methods.
+Define customer segments using **clear and explainable RFM rules**  
+instead of black-box clustering techniques.
 
-### Segment Logic (Example)
+### Segment Logic
+Customers are assigned to segments using the following rules:
+
 - **VIP**: High recency, high frequency, high monetary  
 - **Loyal**: High recency and frequency  
 - **Regular**: Moderate engagement  
 - **Low Value**: Low frequency and low monetary  
 
 ### Evidence
-![Segmentation Definition](./result/30_segmentation_definition.png)
+![Segmentation Definition – RFM-based segment rules](./result/30_segmentation_definition.png)
 
 **Artifacts**
 - `30_segmentation_definition.sql`
@@ -93,7 +100,7 @@ instead of black-box clustering methods.
 Understand the size and composition of each customer segment.
 
 ### Evidence
-![Segment Distribution](./result/31_segment_size_distribution.png)
+![Segment Distribution – customer count by segment](./result/31_segment_size_distribution.png)
 
 **Artifacts**
 - `31_segment_size_distribution.sql`
@@ -113,7 +120,7 @@ Compare core performance metrics across customer segments.
 - Total segment revenue  
 
 ### Evidence
-![Segment KPI Summary](./result/40_segment_kpi_summary.png)
+![Segment KPI Summary – revenue, orders, AOV by segment](./result/40_segment_kpi_summary.png)
 
 **Artifacts**
 - `40_segment_kpi_summary.sql`
@@ -126,7 +133,7 @@ Compare core performance metrics across customer segments.
 Identify which customer segments contribute most to total revenue.
 
 ### Evidence
-![Segment Revenue Contribution](./result/41_segment_revenue_contribution.png)
+![Segment Revenue Contribution – share of total revenue](./result/41_segment_revenue_contribution.png)
 
 **Artifacts**
 - `41_segment_revenue_contribution.sql`
@@ -139,8 +146,12 @@ Identify which customer segments contribute most to total revenue.
 Evaluate how return behavior differs across customer segments  
 and how it impacts revenue quality.
 
+High-value segments generate more revenue  
+but also exhibit higher return rates, highlighting a trade-off  
+between revenue contribution and operational cost.
+
 ### Evidence
-![Segment Return Rate](./result/42_segment_return_impact.png)
+![Segment Return Impact – return rate by segment](./result/42_segment_return_impact.png)
 
 **Artifacts**
 - `42_segment_return_impact.sql`
@@ -153,8 +164,11 @@ and how it impacts revenue quality.
 Validate recency behavior using the dataset end date  
 to avoid distortion from current-date calculations.
 
+This ensures that recency scores reflect **relative customer freshness**  
+within the observed business period.
+
 ### Evidence
-![Segment Recency Validation](./result/43_segment_recency_validation.png)
+![Segment Recency Validation – average and P75 recency](./result/43_segment_recency_validation.png)
 
 **Artifacts**
 - `43_segment_recency_validation.sql`
@@ -165,10 +179,10 @@ to avoid distortion from current-date calculations.
 
 ### Purpose
 Identify top-performing products within each customer segment  
-to support merchandising and cross-sell strategies.
+to support targeted merchandising and cross-sell strategies.
 
 ### Evidence
-![Top Products by Segment](./result/50_segment_top_products.png)
+![Top Products by Segment – revenue-driving products](./result/50_segment_top_products.png)
 
 **Artifacts**
 - `50_segment_top_products.sql`
@@ -180,8 +194,11 @@ to support merchandising and cross-sell strategies.
 ### Purpose
 Measure customer retention strength using repeat purchase rates.
 
+Repeat customers are defined as customers  
+with **two or more distinct orders**.
+
 ### Evidence
-![Repeat Purchase Rate](./result/60_segment_repeat_rate.png)
+![Repeat Purchase Rate – retention strength by segment](./result/60_segment_repeat_rate.png)
 
 **Artifacts**
 - `60_segment_repeat_rate.sql`
@@ -195,7 +212,7 @@ Analyze product affinity patterns within customer segments
 to identify bundling and upsell opportunities.
 
 ### Evidence
-![Product Affinity](./result/70_segment_product_affinity.png)
+![Product Affinity – co-purchase patterns by segment](./result/70_segment_product_affinity.png)
 
 **Artifacts**
 - `70_segment_product_affinity.sql`
@@ -213,7 +230,7 @@ before interpreting business results.
 - Revenue reconciliation across segments  
 
 ### Evidence
-![Sanity Checks](./result/90_sanity_checks.png)
+![Sanity Checks – coverage and revenue reconciliation](./result/90_sanity_checks.png)
 
 **Artifacts**
 - `90_sanity_checks.sql`
@@ -222,9 +239,9 @@ before interpreting business results.
 
 ## Key Insights
 
-- **VIP and Loyal customers** represent a smaller portion of the customer base but contribute a disproportionate share of revenue.
-- High-value segments exhibit **higher return rates**, highlighting operational cost considerations.
-- **Low Value customers** show low repeat purchase rates, indicating churn risk.
+- **VIP and Loyal customers** represent a smaller portion of the customer base but contribute a disproportionate share of revenue → prioritize retention and loyalty programs.
+- High-value segments exhibit **higher return rates**, highlighting operational cost considerations → optimize return policies and post-purchase communication.
+- **Low Value customers** show low repeat purchase rates → targeted reactivation or churn-prevention strategies are recommended.
 - Recency validation confirms clear behavioral separation across segments.
 
 ---
@@ -259,3 +276,15 @@ All inputs are validated and reconciled before analysis.
 - Track segment migration over time  
 - Integrate segments into campaign analysis  
 - Extend segmentation to margin and profitability analysis  
+
+---
+
+## SQL Artifacts Overview
+
+This analysis includes SQL scripts covering:
+
+- Customer base metrics & RFM feature engineering  
+- Segmentation rule definition  
+- Segment-level KPI aggregation  
+- Revenue, return, recency, and retention analysis  
+- Sanity and reconciliation checks  
