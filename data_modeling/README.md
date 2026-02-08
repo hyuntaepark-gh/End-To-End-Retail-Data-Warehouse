@@ -52,27 +52,27 @@ of dimension and fact tables, along with enforced relationships.
 
 **Date dimension creation**
 
-![Create dim_date](./30_create_dim_date.png)
+![Create dim_date](./result/30_create_dim_date.png)
 
 
 **Customer dimension creation**
 
-![Create dim_customer](./31_create_dim_customer.png)
+![Create dim_customer](./result/31_create_dim_customer.png)
 
 
 **Product dimension creation**
 
-![Create dim_product](./32_create_dim_product.png)
+![Create dim_product](./result/32_create_dim_product.png)
 
 
 **Fact table creation**
 
-![Create fact_sales](./33_create_fact_sales.png)
+![Create fact_sales](./result/33_create_fact_sales.png)
 
 
 **Foreign key constraints applied**
 
-![Add FK Constraints](./34_add_fk_constraints.png)
+![Add FK Constraints](./result/34_add_fk_constraints.png)
 
 ---
 
@@ -98,27 +98,27 @@ The following outputs show KPI queries built on top of the dimensional model.
 
 **Monthly revenue KPI**
 
-![Monthly Revenue KPI](./40_kpi_monthly_revenue.png)
+![Monthly Revenue KPI](./result/40_kpi_monthly_revenue.png)
 
 
 **Top products KPI**
 
-![Top Products KPI](./41_kpi_top_products.png)
+![Top Products KPI](./result/41_kpi_top_products.png)
 
 
 **Revenue by country KPI**
 
-![Country Revenue KPI](./42_kpi_country_revenue.png)
+![Country Revenue KPI](./result/42_kpi_country_revenue.png)
 
 
 **Return rate KPI**
 
-![Return Rate KPI](./43_kpi_return_rate.png)
+![Return Rate KPI](./result/43_kpi_return_rate.png)
 
 
 **Repeat purchase KPI**
 
-![Repeat Purchase KPI](./44_kpi_repeat_purchase.png)
+![Repeat Purchase KPI](./result/44_kpi_repeat_purchase.png)
 
 ---
 
