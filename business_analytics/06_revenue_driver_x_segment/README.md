@@ -1,21 +1,21 @@
-# Revenue Driver × Segment Analysis
+# Revenue Driver x Segment Analysis
 
-**Decomposing monthly revenue changes by customer segment to uncover
-the true drivers behind growth, decline, and volatility.**
+Decomposing monthly revenue changes by customer segment to uncover
+the true drivers behind growth, decline, and volatility.
 
-**Category:** Revenue Analytics · Segmentation Strategy · Growth Diagnostics
+Category: Revenue Analytics · Segmentation Strategy · Growth Diagnostics
 
 ---
 
 ## Overview
 
-This module analyzes **why revenue changes over time**
+This module analyzes why revenue changes over time
 by decomposing month-over-month (MoM) revenue movements
-into **price, volume, and mix effects**, segmented by customer group.
+into price, volume, and mix effects at the customer segment level.
 
-Rather than simply observing revenue trends, this analysis
-identifies **which segments drive growth**, **which introduce volatility**,
-and **where strategic interventions are most effective**.
+Rather than simply observing revenue trends, this analysis identifies
+which segments drive growth, which introduce volatility,
+and where strategic interventions are most effective.
 
 Understanding revenue drivers by segment enables more precise decisions
 around pricing, promotions, product assortment, and customer investment.
@@ -28,82 +28,88 @@ Revenue is analyzed through the following lenses:
 
 - Segment-level revenue baselines
 - Month-over-month revenue decomposition
-- Price vs. volume contribution analysis
+- Price versus volume contribution analysis
 - Product mix shifts by segment
 - Revenue volatility assessment
 - Contribution to total revenue change
 - Sanity checks and mathematical validation
 
 This framework answers questions such as:
+
 - Which customer segments drive revenue growth or decline?
 - Are changes driven by customer activity (volume) or pricing?
 - Which segments introduce the most revenue volatility?
 - Where should pricing, promotion, or retention efforts focus?
 
-Each step progresses from **measurement → decomposition → interpretation → validation**.
+Each step progresses from measurement to decomposition
+to interpretation to validation.
 
 ---
 
 ## 10. Segment Monthly Revenue Base
 
 ### Purpose
+
 Establish baseline revenue trends by customer segment
 to provide context for all downstream driver analyses.
 
 ### Key Metrics
+
 - Total monthly revenue by segment
 - Segment-level revenue trend patterns
 
-### Artifacts
-- `10_segment_monthly_revenue_driver_base.sql`
-
 ### Evidence
-![Segment Monthly Revenue Base](./result/10_segment_monthly_revenue_driver_base.png)  
-*Baseline monthly revenue trends for each customer segment*
+
+![Segment Monthly Revenue Base](./result/10_segment_monthly_revenue_driver_base.png)
+
+Artifacts:
+- 10_segment_monthly_revenue_driver_base.sql
 
 ---
 
 ## 20. MoM Revenue Driver Decomposition
 
 ### Purpose
+
 Decompose month-over-month revenue changes
-to understand **what caused the change**, not just how large it was.
+to understand what caused the change, not just how large it was.
 
 ### Key Metrics
-- Absolute and relative MoM revenue change
+
+- Absolute MoM revenue change
+- Relative MoM revenue change
 - Contribution of price, volume, and mix effects
 
-### Artifacts
-- `20_segment_mom_driver_decomposition.sql`
-
 ### Evidence
-![MoM Driver Decomposition](./result/20_segment_mom_driver_decomposition.png)  
-*Revenue change decomposition by segment*
 
-This view highlights whether revenue fluctuations stem from
-changes in customer activity, pricing behavior, or product mix.
+![MoM Driver Decomposition](./result/20_segment_mom_driver_decomposition.png)
+
+Artifacts:
+- 20_segment_mom_driver_decomposition.sql
 
 ---
 
-## 30. Price × Volume Mix Analysis
+## 30. Price and Volume Mix Analysis
 
 ### Purpose
+
 Identify whether revenue changes are primarily driven by
 price effects or volume effects within each segment.
 
 ### Key Metrics
+
 - Price effect contribution
 - Volume effect contribution
-- Relative dominance of each driver
-
-### Artifacts
-- `30_segment_mom_price_volume_mix.sql`
+- Dominant revenue driver by segment
 
 ### Evidence
-![Price Volume Mix](./result/30_segment_mom_price_volume_mix.png)  
-*Relative price vs. volume impact on revenue changes*
 
-Across most segments, **volume effects dominate price effects**,
+![Price Volume Mix](./result/30_segment_mom_price_volume_mix.png)
+
+Artifacts:
+- 30_segment_mom_price_volume_mix.sql
+
+Across most segments, volume effects dominate price effects,
 indicating that shifts in customer engagement levels
 matter more than pricing adjustments.
 
@@ -112,136 +118,142 @@ matter more than pricing adjustments.
 ## 40. Segment Product Mix Shift
 
 ### Purpose
+
 Analyze how changes in product composition within segments
 affect revenue performance over time.
 
 ### Key Metrics
+
 - Revenue impact of product mix shifts
 - Segment-level assortment stability
 
-### Artifacts
-- `40_segment_product_mix_shift.sql`
-
 ### Evidence
-![Product Mix Shift](./result/40_segment_product_mix_shift.png)  
-*Product mix impact by segment*
 
-Product mix deterioration or improvement explains
-why some segments underperform despite stable volume.
+![Product Mix Shift](./result/40_segment_product_mix_shift.png)
+
+Artifacts:
+- 40_segment_product_mix_shift.sql
 
 ---
 
 ## 50. Revenue Volatility by Segment
 
 ### Purpose
+
 Quantify revenue stability across segments
 to identify sources of operational and forecasting risk.
 
 ### Key Metrics
+
 - Revenue volatility index
 - Variance of MoM revenue change
 
-### Artifacts
-- `50_segment_revenue_volatility.sql`
-
 ### Evidence
-![Revenue Volatility](./result/50_segment_revenue_volatility.png)  
-*Revenue volatility distribution by segment*
+
+![Revenue Volatility](./result/50_segment_revenue_volatility.png)
+
+Artifacts:
+- 50_segment_revenue_volatility.sql
 
 A small subset of segments accounts for
-a disproportionate share of revenue volatility.
+a disproportionate share of total revenue volatility.
 
 ---
 
 ## 60. Segment Contribution to Total MoM Revenue
 
 ### Purpose
+
 Assess how much each segment contributes
 to overall revenue change in each period.
 
 ### Key Metrics
-- Segment share of total MoM change
-- Positive vs. negative contribution balance
 
-### Artifacts
-- `60_segment_contribution_to_total_mom.sql`
+- Segment share of total MoM revenue change
+- Positive versus negative contribution balance
 
 ### Evidence
-![Segment Contribution](./result/60_segment_contribution_to_total_mom.png)  
-*Segment-level contribution to overall revenue change*
 
-This view highlights which segments deserve
-priority attention in growth or mitigation strategies.
+![Segment Contribution](./result/60_segment_contribution_to_total_mom.png)
+
+Artifacts:
+- 60_segment_contribution_to_total_mom.sql
 
 ---
 
 ## 70. Top Change Months per Segment
 
 ### Purpose
+
 Identify months with extreme revenue movements
 to support root-cause investigation.
 
 ### Key Metrics
-- Largest positive and negative MoM changes
+
+- Largest positive MoM changes
+- Largest negative MoM changes
 - Segment-specific shock periods
 
-### Artifacts
-- `70_top_change_months_per_segment.sql`
-
 ### Evidence
-![Top Change Months](./result/70_top_change_months_per_segment.png)  
-*Largest revenue swings by segment*
+
+![Top Change Months](./result/70_top_change_months_per_segment.png)
+
+Artifacts:
+- 70_top_change_months_per_segment.sql
 
 ---
 
 ## 80. Segment Revenue Driver Summary
 
 ### Purpose
+
 Summarize revenue driver patterns by segment
 to enable strategic interpretation.
 
 ### Key Metrics
-- Dominant revenue drivers per segment
-- Stability vs. growth orientation
 
-### Artifacts
-- `80_segment_driver_summary.sql`
+- Dominant revenue drivers per segment
+- Growth-oriented versus volatile segments
 
 ### Evidence
+
 ![Driver Summary](./result/80_segment_driver_summary.png)
+
+Artifacts:
+- 80_segment_driver_summary.sql
 
 ---
 
-## 90. Sanity & Validation Checks
+## 90. Sanity and Validation Checks
 
 ### Purpose
+
 Ensure mathematical correctness and analytical consistency
 across all revenue decomposition outputs.
 
 ### Validation Areas
-- MoM change reconciliation
-- Price + volume + mix = total revenue change
+
+- MoM revenue change reconciliation
+- Price plus volume plus mix equals total revenue change
 - Segment aggregation consistency
 
-### Artifacts
-- `90_sanity_check_driver_math.sql`
-
 ### Evidence
+
 ![Sanity Check](./result/90_sanity_check_driver_math.png)
+
+Artifacts:
+- 90_sanity_check_driver_math.sql
 
 ---
 
 ## Key Insights
 
 - Revenue dynamics vary substantially by customer segment,
-  indicating that **uniform pricing or promotion strategies are ineffective**.
-
-- Growth-oriented segments are primarily driven by **volume expansion**,
+  indicating that uniform pricing or promotion strategies are ineffective.
+- Growth-oriented segments are primarily driven by volume expansion,
   suggesting targeted acquisition and upsell initiatives.
-
-- Declining segments often exhibit **mix deterioration or price sensitivity**,
+- Declining segments often exhibit mix deterioration or price sensitivity,
   highlighting the need for assortment and pricing review.
-
 - A small number of segments contribute most of the revenue volatility,
   representing key focus areas for risk mitigation.
 
@@ -256,8 +268,16 @@ This analysis enables:
 - Targeted investment in high-impact customer segments
 - Early detection of revenue instability risks
 
-> Revenue trends show *what happened* —  
-> **revenue drivers explain why it happened**.
+Revenue trends show what happened,
+but revenue drivers explain why it happened.
+
+---
+
+## Derived Recommendation
+
+Revenue drivers vary meaningfully across customer segments,
+indicating that growth strategies should be tailored by segment
+rather than applied uniformly across the customer base.
 
 ---
 
@@ -265,7 +285,7 @@ This analysis enables:
 
 This module depends on:
 
-- Dimensional warehouse models (`fact_sales`, `dim_date`, `dim_customer`)
+- Dimensional warehouse models (fact_sales, dim_date, dim_customer)
 - Customer segmentation outputs from LTV analysis
 - Validated revenue aggregation logic
 
