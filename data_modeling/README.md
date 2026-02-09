@@ -29,6 +29,7 @@ This layer consists of two core sublayers:
 ↓
 40_marts (analytics marts)
 
+
 ---
 
 ## 1. Core Warehouse Layer (30_dw)
@@ -48,34 +49,44 @@ This layer consists of two core sublayers:
 
 ---
 
+### Core Warehouse Data Model (ER Diagram)
+
+The core warehouse follows a **star schema design**,
+with a central sales fact table and conformed dimensions.
+
+This ER diagram illustrates the logical relationships
+between fact and dimension tables that form the analytical backbone
+for all downstream KPI marts and dashboards.
+
+Foreign key relationships are defined **logically at the model level**
+and enforced through transformation logic rather than physical constraints,
+which is a common practice in analytical data warehouses.
+
+📌 **ER Diagram (DW Core)**  
+![DW Core ER Diagram](./erd/dw_core_erd.png)
+
+---
+
 ### Evidence – Core Warehouse Execution Results
 
 The following outputs demonstrate the successful creation
-of dimension and fact tables, along with enforced relationships.
+of dimension and fact tables derived from validated upstream data.
 
 **Date dimension creation**
 
 ![Create dim_date](./result/30_create_dim_date.png)
 
-
 **Customer dimension creation**
 
 ![Create dim_customer](./result/31_create_dim_customer.png)
-
 
 **Product dimension creation**
 
 ![Create dim_product](./result/32_create_dim_product.png)
 
-
 **Fact table creation**
 
 ![Create fact_sales](./result/33_create_fact_sales.png)
-
-
-**Foreign key constraints applied**
-
-![Add FK Constraints](./result/34_add_fk_constraints.png)
 
 ---
 
@@ -106,21 +117,17 @@ The following outputs show KPI queries built on top of the dimensional model.
 
 ![Monthly Revenue KPI](./result/40_kpi_monthly_revenue.png)
 
-
 **Top products KPI**
 
 ![Top Products KPI](./result/41_kpi_top_products.png)
-
 
 **Revenue by country KPI**
 
 ![Country Revenue KPI](./result/42_kpi_country_revenue.png)
 
-
 **Return rate KPI**
 
 ![Return Rate KPI](./result/43_kpi_return_rate.png)
-
 
 **Repeat purchase KPI**
 
@@ -163,6 +170,6 @@ Only validated and standardized data is used for modeling.
 
 ## Next Steps
 
-- Add ERD visualization for fact–dimension relationships
-- Introduce additional analytics marts for advanced KPIs
-- Perform reconciliation checks between facts and marts
+- Extend the warehouse with additional conformed dimensions
+- Introduce advanced analytics marts for deeper segmentation
+- Perform reconciliation checks between fact tables and downstream marts
