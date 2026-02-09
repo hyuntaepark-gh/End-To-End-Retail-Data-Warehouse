@@ -14,7 +14,8 @@ Beyond building a warehouse, the project emphasizes explainable analytics —
 revealing what drives revenue performance, customer value,
 product concentration, and returns impact.
 
-Insights are translated into executive-ready recommendations,
+Insights are translated into executive-ready recommendations
+through traceable analytical reasoning,
 bridging the gap between correct data and actionable decisions,
 and naturally extending into forecasting and scenario-based thinking.
 
@@ -88,7 +89,8 @@ Docs: `data_operations/README.md`
 
 ### 4. Business Analytics
 
-Transforms validated data into **explainable business insights**.
+This layer bridges analytical findings with executive-level
+business recommendations through traceable, decision-oriented analysis.
 
 Current modules:
 - Revenue Driver Analysis
