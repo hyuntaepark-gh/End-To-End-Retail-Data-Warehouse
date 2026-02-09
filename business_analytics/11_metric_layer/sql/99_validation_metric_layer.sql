@@ -57,3 +57,9 @@ FROM dw.mart_customer_new_vs_returning_monthly
 ORDER BY year DESC, month DESC
 LIMIT 6;
 
+-- 9) top product return risk
+SELECT *
+FROM dw.mart_product_return_risk
+WHERE return_orders > 0
+ORDER BY return_revenue ASC
+LIMIT 10;
