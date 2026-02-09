@@ -8,17 +8,18 @@ enterprise data warehouse to explain business performance and support action.**
 ## Overview
 
 The Business Analytics layer translates curated warehouse data
-into **explainable business insights**.
+into **explainable, decision-ready business insights**.
 
 Unlike upstream layers that focus on data correctness and structure,
-this layer focuses on:
+this layer is explicitly designed to answer:
 
-- *Why* metrics change
+- *Why* key metrics change
 - *Which* drivers matter most
-- *How* insights can inform decisions
+- *How* insights should inform business decisions
 
-All analyses are built on top of validated models in the `dw` and `marts`
-schemas and assume that data quality has already been enforced.
+All analyses are built on validated models in the `dw` and `marts`
+schemas and assume that data quality, reconciliation, and consistency
+have already been enforced upstream.
 
 ---
 
@@ -30,8 +31,10 @@ raw / staging → dw → marts
 ↑
 business analytics
 
+
 Each sub-module represents a **self-contained analytical question**
-with its own SQL logic, outputs, and validation steps.
+implemented with deterministic SQL logic, documented outputs,
+and validation checks prior to interpretation.
 
 ---
 
@@ -39,15 +42,15 @@ with its own SQL logic, outputs, and validation steps.
 
 ### 01. Revenue Driver Analysis
 
-**Question:**  
+**Business Question:**  
 What drives revenue growth and decline?
 
-**Focus:**
+**Analytical Focus:**
 - Revenue decomposition (Orders × AOV)
 - Volume vs. price effects
 - Country-level revenue drivers
 - Customer mix and growth attribution
-- Returns impact and sanity checks
+- Returns impact and sanity validation
 
 📂 `01_revenue_driver_analysis/`
 
@@ -55,13 +58,13 @@ What drives revenue growth and decline?
 
 ### 02. Customer Segmentation
 
-**Question:**  
+**Business Question:**  
 How can customers be grouped based on behavior and value?
 
-**Focus:**
+**Analytical Focus:**
 - Purchase frequency and recency
 - Revenue contribution by segment
-- Behavioral patterns across customer cohorts
+- Behavioral differences across customer cohorts
 
 📂 `02_customer_segmentation/`
 
@@ -69,12 +72,12 @@ How can customers be grouped based on behavior and value?
 
 ### 03. Product Mix Analysis
 
-**Question:**  
-Which products drive performance and how does the mix change over time?
+**Business Question:**  
+Which products drive performance, and how does the mix evolve over time?
 
-**Focus:**
+**Analytical Focus:**
 - Revenue concentration
-- Top-product dependency
+- Dependency on top products
 - Product contribution trends
 
 📂 `03_product_mix_analysis/`
@@ -83,13 +86,13 @@ Which products drive performance and how does the mix change over time?
 
 ### 04. Returns Analysis
 
-**Question:**  
+**Business Question:**  
 How do returns affect revenue, KPIs, and operational performance?
 
-**Focus:**
-- Return rates
+**Analytical Focus:**
+- Return rates and patterns
 - Revenue loss due to returns
-- Product and customer-level return behavior
+- Product- and customer-level return behavior
 
 📂 `04_returns_analysis/`
 
@@ -97,13 +100,13 @@ How do returns affect revenue, KPIs, and operational performance?
 
 ### 05. Customer Lifetime Value (LTV) Analysis
 
-**Question:**  
+**Business Question:**  
 Which customers create long-term value?
 
-**Focus:**
+**Analytical Focus:**
 - Revenue longevity
 - Repeat purchase behavior
-- Early-stage value indicators
+- Early-stage indicators of lifetime value
 
 📂 `05_ltv_analysis/`
 
@@ -111,12 +114,19 @@ Which customers create long-term value?
 
 ## Design Principles
 
-All analytics in this layer follow these principles:
+All analytics in this layer adhere to the following principles:
 
-- **Decision-first**: Every analysis answers a concrete business question
-- **Explainability**: Metrics are decomposed into understandable drivers
-- **Reproducibility**: All logic is implemented in SQL with deterministic outputs
-- **Validation-aware**: Sanity checks are included before interpretation
+- **Decision-first**  
+  Every analysis is framed around a concrete business question.
+
+- **Explainability**  
+  Metrics are decomposed into interpretable drivers rather than reported in isolation.
+
+- **Reproducibility**  
+  All logic is implemented in SQL with deterministic, auditable outputs.
+
+- **Validation-aware**  
+  Sanity checks and reconciliation are performed before interpretation.
 
 ---
 
@@ -147,18 +157,15 @@ This layer bridges the gap between:
 
 ## Business Recommendation Layer
 
-This layer consolidates decision-oriented conclusions derived from
-the analytical modules above.
+This section represents the **final decision layer** of the analytics stack.
 
-While each module focuses on explaining *why* performance changes,
-this section explicitly addresses *what actions should be taken next*.
-
-This section represents the final decision layer of the analytics stack,
-bridging validated analysis with concrete business actions.
+While the analytical modules above focus on explaining *why* performance changes,
+this layer explicitly addresses *what actions should be taken next*.
 
 Recommendations are intentionally free of SQL,
-intermediate metrics, or implementation details,
-and are written to be executive-readable and action-oriented.
+intermediate metrics, and implementation detail.
+They are written to be **executive-readable, action-oriented,
+and directly traceable to validated analytical findings**.
 
 ---
 
@@ -181,5 +188,5 @@ and are written to be executive-readable and action-oriented.
 ## Next Steps
 
 - Extend analyses with margin and profitability views
-- Integrate results into BI dashboards
+- Integrate analytical outputs into BI dashboards
 - Apply the same framework to forecasting and scenario modeling
