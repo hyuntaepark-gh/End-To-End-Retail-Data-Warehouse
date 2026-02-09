@@ -1,8 +1,5 @@
-# Cohort Retention Analysis
-
-**A structured cohort retention analysis designed to quantify early customer churn,
-longitudinal retention behavior, and segment-level retention asymmetry
-using warehouse-level transaction data.**
+# Customer Cohort Retention Analysis
+**Quantifying early churn and long-term engagement patterns across cohorts and segments**
 
 **Category:** Customer Analytics · Retention Strategy · Lifecycle Analysis
 
@@ -11,12 +8,14 @@ using warehouse-level transaction data.**
 ## Overview
 
 This module analyzes **how long customers remain active after their first purchase**
-by tracking retention behavior across cohorts and customer segments.
+by tracking retention behavior across time-based cohorts and customer value segments.
 
-The analysis focuses on **early lifecycle churn**, which is the dominant driver
-of long-term customer value and revenue sustainability.
+The analysis places special emphasis on **early lifecycle churn**, which is the
+dominant driver of long-term customer value and revenue sustainability.
+Retention patterns directly determine lifetime value, making
+**first-month engagement a critical lever for sustainable growth**.
 
-All metrics are derived from validated dimensional models
+All metrics are derived from validated dimensional warehouse models
 and are intended to support **retention prioritization,
 onboarding strategy design, and customer portfolio optimization**.
 
@@ -28,7 +27,7 @@ Cohort retention is analyzed through the following lenses:
 
 - Cohort definition based on first purchase month
 - Retention curves across monthly lifecycle stages
-- Early churn (M0 → M1) concentration analysis
+- Early churn concentration (M0 → M1)
 - Segment-level retention asymmetry
 - Sanity checks on customer base consistency
 
@@ -49,10 +48,11 @@ Define customer cohorts based on first purchase timing
 to enable consistent longitudinal retention analysis.
 
 ### Artifacts
-- `10_cohort_first_purchase.sql`
+- SQL: `10_cohort_first_purchase.sql`
 
 ### Evidence
-![Cohort First Purchase Month](./result/10_cohort_first_purchase_month.png)
+![Cohort First Purchase Month](./result/10_cohort_first_purchase_month.png)  
+*Count of new customers by their first purchase month*
 
 ---
 
@@ -64,13 +64,18 @@ and identify structural drop-off patterns.
 
 ### Key Metrics
 - Active customers by cohort and lifecycle month
-- Retention rate by cohort index (M0, M1, M2, ...)
+- Retention rate by cohort index (M0, M1, M2, …)
 
 ### Artifacts
-- `20_cohort_retention_matrix.sql`
+- SQL: `20_cohort_retention_matrix.sql`
 
 ### Evidence
-![Cohort Retention Matrix](./result/20_cohort_retention_matrix.png)
+![Cohort Retention Matrix](./result/20_cohort_retention_matrix.png)  
+*Monthly retention rates by cohort since first purchase*
+
+> In the retention matrix, rows represent cohort month and columns represent
+> months since first purchase. Values indicate the proportion of customers
+> still active in each lifecycle stage.
 
 ---
 
@@ -85,10 +90,11 @@ to quantify early lifecycle engagement quality.
 - One-month post-acquisition survival rate
 
 ### Artifacts
-- `25_cohort_m1_retention.sql`
+- SQL: `25_cohort_m1_retention.sql`
 
 ### Evidence
-![Cohort M1 Retention](./result/25_cohort_m1_retention_churn.png)
+![Cohort M1 Retention](./result/25_cohort_m1_retention_churn.png)  
+*First-month retention and churn concentration by cohort*
 
 ---
 
@@ -104,10 +110,11 @@ after their first purchase.
 - Early churn rate (1 − M1 retention)
 
 ### Artifacts
-- `30_cohort_early_churn_summary.sql`
+- SQL: `30_cohort_early_churn_summary.sql`
 
 ### Evidence
-![Early Churn Summary](./result/30_cohort_early_churn_summary.png)
+![Early Churn Summary](./result/30_cohort_early_churn_summary.png)  
+*Share of customers churning within one month of acquisition*
 
 ---
 
@@ -115,17 +122,18 @@ after their first purchase.
 
 ### Purpose
 Understand the composition of each cohort
-by customer segment at acquisition.
+by customer value segment at acquisition.
 
 ### Key Metrics
 - Cohort size by segment
 - Segment distribution across cohorts
 
 ### Artifacts
-- `40_segment_cohort_customer_base.sql`
+- SQL: `40_segment_cohort_customer_base.sql`
 
 ### Evidence
-![Segment Cohort Customer Base](./result/40_segment_cohort_customer_base.png)
+![Segment Cohort Customer Base](./result/40_segment_cohort_customer_base.png)  
+*Customer segment distribution within each cohort*
 
 ---
 
@@ -140,10 +148,11 @@ to identify asymmetric lifecycle value patterns.
 - Retention gap between high- and low-value segments
 
 ### Artifacts
-- `50_segment_cohort_retention_matrix.sql`
+- SQL: `50_segment_cohort_retention_matrix.sql`
 
 ### Evidence
-![Segment Cohort Retention Matrix](./result/50_segment_cohort_retention_matrix.png)
+![Segment Cohort Retention Matrix](./result/50_segment_cohort_retention_matrix.png)  
+*Retention performance by cohort and customer segment*
 
 ---
 
@@ -158,16 +167,17 @@ to inform retention investment prioritization.
 - Early churn severity across segments
 
 ### Artifacts
-- `60_segment_cohort_early_retention_summary.sql`
+- SQL: `60_segment_cohort_early_retention_summary.sql`
 
 ### Evidence
-![Segment Early Retention Summary](./result/60_segment_cohort_early_retention_summary.png)
+![Segment Early Retention Summary](./result/60_segment_cohort_early_retention_summary.png)  
+*First-month retention gaps across customer segments*
 
 ---
 
 ## Key Insights
 
-- Customer churn is highly concentrated in the first month after acquisition.
+- Customer churn is heavily concentrated in the first month after acquisition.
 - Only **15–36% of new customers** return within one month across cohorts.
 - Retention curves remain structurally low after early drop-off,
   indicating limited natural recovery.
@@ -212,8 +222,18 @@ All inputs are validated prior to analysis.
 
 ---
 
+## Summary
+
+Early churn dominates customer lifecycle outcomes,
+and retention performance differs dramatically by segment.
+Focusing retention efforts on early engagement and
+high-value cohorts yields disproportionate long-term
+revenue benefits.
+
+---
+
 ## Next Steps
 
-- Link early retention to cohort-level LTV outcomes
-- Integrate acquisition cost for full unit economics
+- Link early retention patterns to cohort-level LTV outcomes
+- Integrate acquisition cost (CAC) for full unit economics
 - Feed retention metrics into BI dashboards and forecasting models
