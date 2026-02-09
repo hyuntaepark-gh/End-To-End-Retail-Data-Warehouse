@@ -13,9 +13,9 @@ into **explainable, decision-ready business insights**.
 Unlike upstream layers that focus on data correctness and structure,
 this layer is explicitly designed to answer:
 
-- *Why* key metrics change
-- *Which* drivers matter most
-- *How* insights should inform business decisions
+- *Why* key metrics change  
+- *Which* drivers matter most  
+- *How* insights should inform business decisions  
 
 All analyses are built on validated models in the `dw` and `marts`
 schemas and assume that data quality, reconciliation, and consistency
@@ -25,13 +25,13 @@ have already been enforced upstream.
 
 ## Architecture Scope
 
-This layer sits at the top of the analytics stack:
+This layer operates at the top of the analytics stack,
+assuming all ingestion, modeling, and validation steps
+have already been completed upstream.
 
 raw / staging → dw → marts
 ↑
 business analytics
-
-
 
 Each sub-module represents a **self-contained analytical question**
 implemented with deterministic SQL logic, documented outputs,
@@ -40,6 +40,12 @@ and validation checks prior to interpretation.
 ---
 
 ## Analysis Modules
+
+The modules below progress from descriptive performance analysis
+to diagnostic driver analysis, risk identification,
+and decision-enabling metric abstraction.
+
+---
 
 ### 01. Revenue Driver Analysis
 **Business Question:**  
@@ -246,21 +252,25 @@ and directly traceable to validated analytical findings**.
 ### Key Business Recommendations
 
 1. **Prioritize demand stimulation over pricing changes.**  
+   *(Derived from Revenue Driver Analysis)*  
    Revenue volatility is primarily driven by order volume fluctuations rather than AOV, suggesting that acquisition and activation initiatives should be prioritized over price optimization efforts.
 
 2. **Invest in retention for high-value customer segments.**  
+   *(Derived from Customer Segmentation & LTV Analysis)*  
    A small number of customer segments contribute disproportionately to total revenue, indicating that targeted retention strategies are likely to generate higher ROI than broad acquisition campaigns.
 
 3. **Address returns through targeted operational reviews.**  
+   *(Derived from Returns & Operational Risk Analysis)*  
    Returns are concentrated among a limited set of products, pointing to potential quality, fulfillment, or expectation-setting issues that should be addressed selectively rather than through system-wide changes.
 
 4. **Re-evaluate recent acquisition quality.**  
+   *(Derived from Cohort Retention Analysis)*  
    Newer customer cohorts exhibit faster churn, suggesting that recent acquisition sources may be attracting lower-intent customers and should be re-assessed with a focus on long-term value rather than short-term volume.
 
 ---
 
 ## Next Steps
 
-- Extend analyses with margin and profitability views
-- Integrate analytical outputs into BI dashboards
-- Apply the same framework to forecasting and scenario modeling
+- Extend analyses with margin and profitability views  
+- Integrate analytical outputs into BI dashboards  
+- Apply the same framework to forecasting and scenario modeling  
