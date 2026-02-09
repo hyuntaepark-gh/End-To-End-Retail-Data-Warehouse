@@ -4,6 +4,20 @@
 This repository demonstrates the complete lifecycle of data engineering and analytics —  
 from raw ingestion to forecasting and business insights built on validated data models.
 
+## Executive Summary
+
+This repository demonstrates an end-to-end retail data platform
+that connects validated data engineering foundations
+to decision-oriented analytics and business recommendations.
+
+Beyond building a warehouse, the project emphasizes explainable analytics —
+revealing what drives revenue performance, customer value,
+product concentration, and returns impact.
+
+Insights are translated into executive-ready recommendations,
+bridging the gap between correct data and actionable decisions,
+and naturally extending into forecasting and scenario-based thinking.
+
 ---
 
 ## 🧱 Architecture Overview
