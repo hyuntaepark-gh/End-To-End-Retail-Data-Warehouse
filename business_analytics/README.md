@@ -249,23 +249,72 @@ and directly traceable to validated analytical findings**.
 
 ---
 
+## Recommendation Traceability Map
+
+The map below illustrates how individual analytical modules
+contribute to the final business recommendations.
+
+Each **Derived Recommendation** represents a localized, analysis-level decision insight,
+which collectively supports the executive-level conclusions
+presented in the Business Recommendation Layer.
+
+```
+
+[01. Revenue Driver Analysis]
+        └─ Derived Recommendation
+              ↓
+[BR-1] Prioritize demand stimulation over pricing changes
+              ↓
+--------------------------------------------------
+
+[02. Customer Segmentation]        [05. LTV Analysis]
+        └─ Derived Recommendation          └─ Derived Recommendation
+                     ↓                     ↓
+              [BR-2] Invest in retention for high-value customer segments
+                     ↓
+--------------------------------------------------
+
+[04. Returns Analysis]             [09. Operational Risk Analysis]
+        └─ Derived Recommendation          └─ Derived Recommendation
+                     ↓                     ↓
+              [BR-3] Address returns through targeted operational reviews
+                     ↓
+--------------------------------------------------
+
+[08. Cohort Retention Analysis]
+        └─ Derived Recommendation
+                     ↓
+              [BR-4] Re-evaluate recent acquisition quality
+
+```
+
+---
+
 ### Key Business Recommendations
 
 1. **Prioritize demand stimulation over pricing changes.**  
    *(Derived from Revenue Driver Analysis)*  
-   Revenue volatility is primarily driven by order volume fluctuations rather than AOV, suggesting that acquisition and activation initiatives should be prioritized over price optimization efforts.
+   Revenue volatility is primarily driven by order volume fluctuations rather than AOV,
+   suggesting that acquisition and activation initiatives should be prioritized
+   over price optimization efforts.
 
 2. **Invest in retention for high-value customer segments.**  
    *(Derived from Customer Segmentation & LTV Analysis)*  
-   A small number of customer segments contribute disproportionately to total revenue, indicating that targeted retention strategies are likely to generate higher ROI than broad acquisition campaigns.
+   A small number of customer segments contribute disproportionately to total revenue,
+   indicating that targeted retention strategies are likely to generate higher ROI
+   than broad acquisition campaigns.
 
 3. **Address returns through targeted operational reviews.**  
    *(Derived from Returns & Operational Risk Analysis)*  
-   Returns are concentrated among a limited set of products, pointing to potential quality, fulfillment, or expectation-setting issues that should be addressed selectively rather than through system-wide changes.
+   Returns are concentrated among a limited set of products,
+   pointing to potential quality, fulfillment, or expectation-setting issues
+   that should be addressed selectively rather than through system-wide changes.
 
 4. **Re-evaluate recent acquisition quality.**  
    *(Derived from Cohort Retention Analysis)*  
-   Newer customer cohorts exhibit faster churn, suggesting that recent acquisition sources may be attracting lower-intent customers and should be re-assessed with a focus on long-term value rather than short-term volume.
+   Newer customer cohorts exhibit faster churn,
+   suggesting that recent acquisition sources may be attracting lower-intent customers
+   and should be re-assessed with a focus on long-term value rather than short-term volume.
 
 ---
 
