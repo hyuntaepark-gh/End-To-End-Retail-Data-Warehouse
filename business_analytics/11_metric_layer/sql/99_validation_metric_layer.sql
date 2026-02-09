@@ -21,6 +21,7 @@ SELECT *
 FROM dw.mart_kpi_monthly
 ORDER BY year DESC, month DESC
 LIMIT 12;
+
 -- 5) date_key format check (YYYYMMDD length)
 SELECT
   COUNT(*) FILTER (WHERE date_key < 19000101 OR date_key > 21000101) AS bad_date_keys
@@ -30,4 +31,17 @@ FROM dw.fact_sales;
 SELECT
   COUNT(*) FILTER (WHERE revenue < 0) AS negative_revenue_rows,
   PERCENTILE_CONT(0.99) WITHIN GROUP (ORDER BY revenue) AS p99_revenue
+
 FROM dw.fact_sales;
+
+-- 7) Spot check: MoM / QoQ KPI sanity
+SELECT
+  year,
+  month,
+  orders,
+  orders_mom_pct,
+  revenue_mom_pct,
+  revenue_qoq_pct
+FROM dw.mart_kpi_monthly_mom_qoq
+ORDER BY year DESC, month DESC
+LIMIT 6;
