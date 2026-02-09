@@ -153,6 +153,9 @@ the analytical modules above.
 While each module focuses on explaining *why* performance changes,
 this section explicitly addresses *what actions should be taken next*.
 
+This section represents the final decision layer of the analytics stack,
+bridging validated analysis with concrete business actions.
+
 Recommendations are intentionally free of SQL,
 intermediate metrics, or implementation details,
 and are written to be executive-readable and action-oriented.
@@ -162,10 +165,10 @@ and are written to be executive-readable and action-oriented.
 ### Key Business Recommendations
 
 1. **Prioritize demand stimulation over pricing changes.**  
-   Revenue volatility is primarily driven by order volume fluctuations rather than AOV, suggesting acquisition and activation initiatives should be prioritized over price optimization efforts.
+   Revenue volatility is primarily driven by order volume fluctuations rather than AOV, suggesting that acquisition and activation initiatives should be prioritized over price optimization efforts.
 
 2. **Invest in retention for high-value customer segments.**  
-   A small number of customer segments contribute disproportionately to total revenue, indicating targeted retention strategies are likely to generate higher ROI than broad acquisition campaigns.
+   A small number of customer segments contribute disproportionately to total revenue, indicating that targeted retention strategies are likely to generate higher ROI than broad acquisition campaigns.
 
 3. **Address returns through targeted operational reviews.**  
    Returns are concentrated among a limited set of products, pointing to potential quality, fulfillment, or expectation-setting issues that should be addressed selectively rather than through system-wide changes.
