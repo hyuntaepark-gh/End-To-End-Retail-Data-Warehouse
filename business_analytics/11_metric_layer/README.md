@@ -6,6 +6,9 @@ using SQL-based marts and semantic definitions.**
 
 **Category:** BI Analytics · Metric Engineering · Revenue & Operations
 
+> This metric layer acts as the **single source of truth (SSOT)**
+> for executive dashboards, operational reporting, and downstream analytics.
+
 ---
 
 ## Overview
@@ -38,13 +41,34 @@ clean, consumption-ready marts.
 
 ## Metric Layer Architecture
 
-- Base fact view → canonical sales representation
-- KPI marts → executive and operational metrics
-- Derived marts → trends, customer, and product risk
-- Validation queries → explicit data quality checks
+- **Base Fact View**  
+  Canonical sales representation with standardized revenue, return flags,
+  and date attributes
 
-BI tools consume finalized marts directly without
-additional calculations.
+- **Core KPI Marts**  
+  Monthly revenue, order, and customer metrics used by executives
+
+- **Derived Trend Marts**  
+  Precomputed MoM and QoQ deltas to ensure consistent trend interpretation
+
+- **Segment & Operational Marts**  
+  Customer segmentation and product-level return risk metrics
+
+- **Validation Queries**  
+  Explicit sanity checks to ensure data quality and metric correctness
+
+This layer sits **between the data warehouse fact tables
+and all BI or analytical consumption layers**, ensuring
+consistent KPI semantics across the organization.
+
+---
+
+## Who Uses This Metric Layer
+
+- **Executives**: KPI cards, revenue trends, MoM/QoQ performance tracking  
+- **BI Analysts**: Dashboard development without redefining metrics  
+- **Operations Teams**: Return risk and product-level monitoring  
+- **Data Scientists**: Reliable feature inputs for forecasting and modeling  
 
 ---
 
@@ -106,7 +130,7 @@ by extending core KPIs with country-level segmentation.
 ## 22. Monthly KPI MoM Trends
 
 ### Purpose
-Precompute month-over-month changes
+Precompute month-over-month KPI changes
 to support executive trend analysis without BI-side calculations.
 
 ### Artifacts
@@ -115,6 +139,21 @@ to support executive trend analysis without BI-side calculations.
 ### Evidence
 ![KPI MoM](./result/22_mart_kpi_monthly_mom.png)  
 *Month-over-month KPI deltas used in executive dashboards.*
+
+---
+
+## 30. Returns & Revenue Impact Mart
+
+### Purpose
+Quantify the operational and financial impact of returns
+at the monthly level.
+
+### Artifacts
+- `30_mart_return_risk_monthly.sql`
+
+### Evidence
+![Monthly Returns Risk](./result/30_mart_return_risk_monthly.png)  
+*Shows return volume, revenue impact, and return rate over time.*
 
 ---
 
@@ -148,21 +187,6 @@ by classifying customers based on their first purchase month.
 
 ---
 
-## 30. Returns & Revenue Impact Mart
-
-### Purpose
-Quantify the operational and financial impact of returns
-at the monthly level.
-
-### Artifacts
-- `30_mart_return_risk_monthly.sql`
-
-### Evidence
-![Monthly Returns Risk](./result/30_mart_return_risk_monthly.png)  
-*Shows return volume, revenue impact, and return rate over time.*
-
----
-
 ## 60. Product Return Risk Mart
 
 ### Purpose
@@ -180,21 +204,46 @@ financial risk due to return behavior.
 
 ## Metric Dictionary
 
-### Global Conventions
-- Returns identified by `is_return = true`
-- Net metrics exclude returns unless stated otherwise
-- Monthly grain derived from `date_key (YYYYMMDD)`
+### 1) Global Conventions
 
-### Core Metric Definitions
+- **Returns**: Transactions flagged with `is_return = true`
+- **Net Metrics**: Exclude returns unless explicitly stated
+- **Date Grain**: Monthly, derived from `date_key (YYYYMMDD)` → `year`, `month`
+
+---
+
+### 2) Core KPI Mart — `dw.mart_kpi_monthly`
+
 | Metric | Definition |
 |---|---|
 | Orders | Distinct invoices excluding returns |
+| Customers | Distinct customers excluding returns |
 | Revenue | Sum of revenue (returns recorded as negative) |
 | AOV | Revenue / Orders |
+
+---
+
+### 3) Returns Mart — `dw.mart_returns_monthly`
+
+| Metric | Definition |
+|---|---|
+| Return Orders | Distinct return invoices |
+| Return Revenue | Sum of return revenue (negative) |
 | Return Rate | Return Orders / Total Orders |
 
-All metric logic is enforced at the SQL layer
-and is not recalculated in BI tools.
+---
+
+### 4) Product Return Risk Mart — `dw.mart_product_return_risk`
+
+| Metric | Definition |
+|---|---|
+| Net Orders | Orders excluding returns |
+| Return Orders | Orders with returns |
+| Return Rate | Return Orders / Total Orders |
+| Return Loss | `ABS(return_revenue)` |
+
+Metric definitions are enforced at the SQL layer
+and are not recalculated in BI tools.
 
 ---
 
@@ -218,18 +267,17 @@ before BI consumption.
 ![Validation Check 8](./result/99_validation_metric_layer8.png)  
 ![Validation Check 9](./result/99_validation_metric_layer9.png)
 
-*Validates date ranges, return behavior, KPI row counts,
-and revenue sanity prior to BI usage.*
+All validation checks passed, confirming that
+the metric marts are internally consistent and
+ready for BI and analytical consumption.
 
 ---
 
-## Execution Order
+## Design Decisions
 
-1. Create base sales view  
-2. Build core KPI marts  
-3. Derive trend, customer, and product marts  
-4. Run validation queries  
-5. Connect BI tools to finalized marts  
+- KPIs are precomputed in SQL to avoid metric drift in BI tools
+- Views are recreated (DROP + CREATE) when definitions change
+- Validation queries are intentionally separated from metric definitions
 
 ---
 
@@ -241,9 +289,10 @@ and revenue sanity prior to BI usage.*
 
 ---
 
-## Design Principles
+## Execution Order
 
-- Metrics defined once, reused everywhere
-- Clear separation between definition and validation
-- SQL as the single source of metric logic
-- BI tools used strictly for visualization
+1. Create base sales view  
+2. Build core KPI marts  
+3. Derive trend, customer, and product marts  
+4. Run validation queries  
+5. Connect BI tools to finalized marts  
