@@ -1,233 +1,239 @@
 # Price Sensitivity & Discount Proxy Analysis
 
-**Analyzing customer price sensitivity and discount responsiveness
-using behavioral proxies and segment-level elasticity patterns.**
+**A structured price sensitivity analysis designed to understand
+how different customer segments respond to price changes and discount-like signals
+using observational proxies when controlled experiments are unavailable.**
 
-**Category:** Pricing Analytics · Customer Behavior · Revenue Optimization
+**Category:** Pricing Analytics · Revenue Optimization · Customer Segmentation
 
 ---
 
 ## Overview
 
-This module analyzes **how sensitive different customer segments are to price changes**
-by examining purchasing behavior, quantity response, and discount-related proxies.
+This module analyzes **segment-level price sensitivity**
+by decomposing the relationship between price movements, quantity response,
+and revenue volatility.
 
-Because true experimental price tests are often unavailable,
-this analysis relies on **observed behavioral signals**
-to approximate price sensitivity and elasticity.
+Rather than relying on controlled A/B pricing experiments,
+this analysis uses **behavioral and statistical proxies**
+to infer how different customer segments react to price changes and discounts.
 
-The goal is not perfect elasticity estimation,
-but **actionable differentiation across segments**
-to support pricing, discounting, and promotion strategy.
+Understanding these dynamics enables **smarter pricing and promotion decisions**
+that balance revenue growth with margin preservation.
+
+---
+
+## Why This Analysis Matters
+
+- Prevent margin erosion from undifferentiated discounting
+- Identify segments that respond strongly to price or discount signals
+- Design segment-specific pricing and promotion strategies
+- Improve revenue forecasting with behavior-driven price elasticity insights
+
+> Pricing power is not uniform —  
+> **segment-level sensitivity determines whether price changes drive growth or risk.**
 
 ---
 
 ## Analysis Framework
 
-Price sensitivity is analyzed through multiple complementary lenses:
+Price sensitivity is analyzed through the following lenses:
 
-- Average price trends by segment
-- Price vs. quantity response
-- Price sensitivity index construction
-- Discount proxy behavior
-- Regression-based elasticity approximation
-- Product-controlled elasticity checks
-- Extreme price-move period analysis
+- Baseline price and quantity trends by segment
+- Price vs. quantity change relationships
+- Discount proxy indicators derived from price volatility
+- Regression-based elasticity estimation
+- Product-level control checks
+- Sanity and mathematical validation
 
-This framework answers questions such as:
-- Which segments are most price sensitive?
-- Who responds strongly to discounts?
-- Are revenue changes driven by price or volume reaction?
-- Which segments tolerate price increases best?
-
-Each step moves from **descriptive → proxy-based → model-based validation**.
+Each step progresses from **observation → proxy → inference → validation**.
 
 ---
 
 ## 10. Segment Monthly Average Price
 
 ### Purpose
-Establish baseline price levels and trends by customer segment.
+Establish baseline pricing behavior by segment
+to understand structural differences in price levels and trends.
 
 ### Key Metrics
-- Average unit price by segment and month
-- Price trend stability
+- Average unit price by segment
+- Price trend consistency over time
 
 ### Artifacts
-- `10_segment_monthly_avg_price.png`
+- `10_segment_monthly_avg_price.sql`
 
 ### Evidence
-![Segment Monthly Avg Price](./result/10_segment_monthly_avg_price.png)
+![Segment Monthly Average Price](./result/10_segment_monthly_avg_price.png)  
+*Shows that average selling price trends differ across segments, indicating distinct baseline pricing behavior.*
 
 ---
 
-## 20. Segment Price × Quantity Change
+## 20. Price vs Quantity Change Analysis
 
 ### Purpose
-Observe how quantity purchased responds to price changes
-at the segment level.
+Evaluate whether price changes are associated
+with observable quantity response at the segment level.
 
 ### Key Metrics
 - Month-over-month price change
-- Corresponding quantity change
+- Month-over-month quantity change
+- Directional response patterns
 
 ### Artifacts
-- `20_segment_price_quantity_change.png`
+- `20_segment_price_quantity_change.sql`
 
 ### Evidence
-![Price Quantity Change](./result/20_segment_price_quantity_change.png)
-
-Segments showing strong inverse price–quantity movement
-are likely more price sensitive.
+![Price Quantity Change](./result/20_segment_price_quantity_change.png)  
+*Illustrates how quantity responds to price movements differently across segments.*
 
 ---
 
 ## 30. Price Sensitivity Index
 
 ### Purpose
-Construct a normalized index to compare relative
-price sensitivity across segments.
+Construct a comparative price sensitivity index
+using normalized price and quantity change behavior.
 
 ### Key Metrics
-- Price sensitivity score (relative scale)
-- Direction and magnitude of response
+- Price sensitivity index (relative)
+- Segment ranking by sensitivity
 
 ### Artifacts
-- `30_segment_price_sensitivity_index.png`
+- `30_segment_price_sensitivity_index.sql`
 
 ### Evidence
-![Price Sensitivity Index](./result/30_segment_price_sensitivity_index.png)
+![Price Sensitivity Index](./result/30_segment_price_sensitivity_index.png)  
+*Higher index values indicate stronger quantity response to price changes.*
 
-This index allows ranking segments from
-price-inelastic to highly price-sensitive.
+> **Interpretation Note:**  
+> This index is a relative comparison metric and should not be interpreted as absolute elasticity.
 
 ---
 
 ## 40. Discount Proxy Score
 
 ### Purpose
-Approximate discount responsiveness using behavioral signals
-such as lower realized prices and volume spikes.
+Approximate discount-driven behavior
+by identifying price volatility patterns commonly associated with promotions.
 
 ### Key Metrics
-- Discount proxy score
-- Relative discount responsiveness
+- Price volatility score
+- Frequency of large price drops
+- Segment-level discount proxy ranking
 
 ### Artifacts
-- `40_segment_discount_proxy_score.png`
+- `40_segment_discount_proxy_score.sql`
 
 ### Evidence
-![Discount Proxy](./result/40_segment_discount_proxy_score.png)
-
-Segments with high proxy scores are more promotion-driven
-and discount-dependent.
+![Discount Proxy Score](./result/40_segment_discount_proxy_score.png)  
+*Segments with higher scores exhibit behavior consistent with discount-driven purchasing.*
 
 ---
 
-## 50. Price Elasticity Regression (Approximation)
+## 50. Price Elasticity Regression
 
 ### Purpose
-Estimate price elasticity using regression-based approximation
-at the segment level.
+Estimate statistical price elasticity
+to validate proxy-based sensitivity signals.
 
 ### Key Metrics
 - Elasticity coefficient
-- Direction and strength of price response
+- Direction and magnitude of response
+- Model fit indicators
 
 ### Artifacts
-- `50_segment_price_elasticity_regression.png`
+- `50_segment_price_elasticity_regression.sql`
 
 ### Evidence
-![Elasticity Regression](./result/50_segment_price_elasticity_regression.png)
-
-Results are interpreted comparatively rather than absolutely,
-due to observational data limitations.
+![Price Elasticity Regression](./result/50_segment_price_elasticity_regression.png)  
+*Confirms that segments differ significantly in elasticity magnitude.*
 
 ---
 
-## 60. Top Price Move Months
+## 60. Top Price Movement Months
 
 ### Purpose
-Identify extreme price movement periods
-to support root-cause and event-based analysis.
+Identify months with extreme price movements
+to contextualize elasticity and discount behavior.
 
 ### Key Metrics
-- Largest positive and negative price changes
-- Associated volume reactions
+- Largest price increase/decrease months
+- Segment exposure to price shocks
 
 ### Artifacts
-- `60_segment_top_price_move_months.png`
+- `60_segment_top_price_move_months.sql`
 
 ### Evidence
-![Top Price Move Months](./result/60_segment_top_price_move_months.png)
+![Top Price Move Months](./result/60_segment_top_price_move_months.png)  
+*Extreme price movements help explain volatility-driven sensitivity.*
 
 ---
 
-## 70. Same-Product Price Elasticity Check
+## 70. Same-Product Price Elasticity Control
 
 ### Purpose
-Control for product mix by analyzing
-price sensitivity within the same product set.
+Control for product-mix effects
+by analyzing elasticity within identical products.
 
 ### Key Metrics
-- Product-level price response
-- Segment consistency under control conditions
+- Same-product price elasticity
+- Cross-segment comparison
 
 ### Artifacts
-- `70_segment_price_elasticity_same_product.png`
+- `70_segment_price_elasticity_same_product.sql`
 
 ### Evidence
-![Same Product Elasticity](./result/70_segment_price_elasticity_same_product.png)
-
-This step improves robustness by reducing mix bias.
+![Same Product Elasticity](./result/70_segment_price_elasticity_same_product.png)  
+*Ensures observed sensitivity is not driven solely by product substitution.*
 
 ---
 
 ## 80. Log-Log Elasticity Validation
 
 ### Purpose
-Validate price sensitivity patterns
-using a log–log functional form.
+Validate elasticity estimates
+using log-log regression for robustness.
 
 ### Key Metrics
-- Log-log elasticity slope
-- Stability across segments
+- Log-log elasticity coefficient
+- Consistency with linear model results
 
 ### Artifacts
-- `80_segment_price_elasticity_loglog.png`
+- `80_segment_price_elasticity_loglog.sql`
 
 ### Evidence
-![Log Log Elasticity](./result/80_segment_price_elasticity_loglog.png)
+![Log Log Elasticity](./result/80_segment_price_elasticity_loglog.png)  
+*Confirms elasticity direction and relative magnitude stability.*
 
 ---
 
-## Key Insights
+## 90. Sanity & Validation Checks
 
-- Price sensitivity varies significantly across segments,
-  making uniform pricing strategies suboptimal.
+### Purpose
+Ensure mathematical correctness
+and analytical consistency across all derived metrics.
 
-- Discount-driven segments show strong volume response
-  but introduce revenue volatility.
+### Validation Areas
+- Price decomposition accuracy
+- Aggregation consistency
+- Elasticity sign validation
 
-- Premium segments exhibit lower elasticity,
-  indicating higher tolerance for price increases.
+### Artifacts
+- `90_sanity_check_driver_math.sql`
 
-- Behavioral proxy methods provide actionable insight
-  even without controlled price experiments.
+### Evidence
+![Sanity Check](./result/90_sanity_check_driver_math.png)
 
 ---
 
-## Why This Analysis Matters
+## Key Insights (Example)
 
-This analysis enables:
-
-- Segment-specific pricing and discount strategies
-- Smarter promotion targeting
-- Reduced margin erosion from blanket discounts
-- Improved revenue predictability
-
-> Price changes affect revenue —  
-> **but customer response determines the outcome**.
+- Price sensitivity varies significantly by customer segment
+- High-sensitivity segments respond better to targeted promotions than permanent price cuts
+- Low-sensitivity segments tolerate price increases with limited volume loss
+- Discount-driven segments exhibit higher revenue volatility
+- Elasticity estimates are directionally consistent across proxy and regression methods
 
 ---
 
@@ -235,9 +241,10 @@ This analysis enables:
 
 This module depends on:
 
-- Sales fact and product pricing data
-- Customer segmentation outputs
-- Validated revenue and quantity aggregation logic
+- `dw.fact_sales` (transaction-level pricing and quantity)
+- `dw.dim_date` (calendar reference)
+- `dw.dim_customer` (segment attribution)
+- Upstream revenue and pricing aggregation logic
 
 All inputs are validated prior to analysis.
 
@@ -245,18 +252,19 @@ All inputs are validated prior to analysis.
 
 ## Execution Order
 
-1. Establish segment price baselines
-2. Analyze price–quantity relationships
-3. Build price sensitivity and discount proxies
-4. Validate with regression-based elasticity
-5. Control for product mix effects
-6. Confirm robustness via log-log checks
+1. Validate pricing and quantity aggregates
+2. Establish baseline price behavior
+3. Measure price-quantity response
+4. Construct sensitivity and discount proxies
+5. Estimate regression-based elasticity
+6. Perform product-level controls
+7. Run sanity and validation checks
 
 ---
 
 ## Next Steps
 
 - Integrate promotion and campaign metadata
-- Combine elasticity with revenue driver analysis
-- Feed sensitivity scores into pricing optimization
-- Extend into scenario-based price simulations
+- Combine price sensitivity with margin analysis
+- Feed elasticity outputs into pricing simulations
+- Apply findings to dynamic pricing or offer optimization
