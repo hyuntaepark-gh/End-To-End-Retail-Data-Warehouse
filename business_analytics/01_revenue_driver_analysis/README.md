@@ -228,6 +228,7 @@ This revenue driver analysis enables:
 ---
 
 ## Derived Recommendation
+**Decision directly supported by this analysis:**
 
 Revenue variability is driven primarily by changes in order volume rather than pricing,
 suggesting demand stimulation initiatives should be prioritized over price adjustments.
