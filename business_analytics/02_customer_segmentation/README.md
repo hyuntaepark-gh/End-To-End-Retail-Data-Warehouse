@@ -281,6 +281,14 @@ This customer segmentation enables:
 
 ---
 
+## Derived Recommendation
+
+A small number of customer segments contribute disproportionately to total revenue,
+indicating that targeted retention strategies are likely to deliver higher ROI
+than broad-based acquisition efforts.
+
+---
+
 ## Dependencies
 
 This analysis depends on:
