@@ -32,6 +32,7 @@ raw / staging → dw → marts
 business analytics
 
 
+
 Each sub-module represents a **self-contained analytical question**
 implemented with deterministic SQL logic, documented outputs,
 and validation checks prior to interpretation.
@@ -41,11 +42,10 @@ and validation checks prior to interpretation.
 ## Analysis Modules
 
 ### 01. Revenue Driver Analysis
-
 **Business Question:**  
 What drives revenue growth and decline?
 
-**Analytical Focus:**
+**Focus:**
 - Revenue decomposition (Orders × AOV)
 - Volume vs. price effects
 - Country-level revenue drivers
@@ -57,11 +57,10 @@ What drives revenue growth and decline?
 ---
 
 ### 02. Customer Segmentation
-
 **Business Question:**  
 How can customers be grouped based on behavior and value?
 
-**Analytical Focus:**
+**Focus:**
 - Purchase frequency and recency
 - Revenue contribution by segment
 - Behavioral differences across customer cohorts
@@ -71,11 +70,10 @@ How can customers be grouped based on behavior and value?
 ---
 
 ### 03. Product Mix Analysis
-
 **Business Question:**  
 Which products drive performance, and how does the mix evolve over time?
 
-**Analytical Focus:**
+**Focus:**
 - Revenue concentration
 - Dependency on top products
 - Product contribution trends
@@ -85,11 +83,10 @@ Which products drive performance, and how does the mix evolve over time?
 ---
 
 ### 04. Returns Analysis
-
 **Business Question:**  
 How do returns affect revenue, KPIs, and operational performance?
 
-**Analytical Focus:**
+**Focus:**
 - Return rates and patterns
 - Revenue loss due to returns
 - Product- and customer-level return behavior
@@ -99,16 +96,93 @@ How do returns affect revenue, KPIs, and operational performance?
 ---
 
 ### 05. Customer Lifetime Value (LTV) Analysis
-
 **Business Question:**  
 Which customers create long-term value?
 
-**Analytical Focus:**
+**Focus:**
 - Revenue longevity
 - Repeat purchase behavior
 - Early-stage indicators of lifetime value
 
 📂 `05_ltv_analysis/`
+
+---
+
+### 06. Revenue Driver × Segment Analysis
+**Business Question:**  
+Do revenue drivers differ across customer segments?
+
+**Focus:**
+- Orders vs. AOV contribution by segment
+- Segment-level revenue sensitivity
+- Structural differences in growth drivers
+
+📂 `06_revenue_driver_x_segment/`
+
+---
+
+### 07. Price Sensitivity (Discount Proxy) Analysis
+**Business Question:**  
+How sensitive is demand to price-related signals?
+
+**Focus:**
+- Discount proxy identification
+- Order response to effective price changes
+- Revenue trade-offs from price sensitivity
+
+📂 `07_price_sensitivity_discount_proxy_analysis/`
+
+---
+
+### 08. Cohort Retention Analysis
+**Business Question:**  
+How does customer retention evolve across acquisition cohorts?
+
+**Focus:**
+- Cohort-based retention curves
+- Early churn vs. long-term retention
+- Behavioral differences across cohorts
+
+📂 `08_cohort_retention/`
+
+---
+
+### 09. Operational Risk Analysis
+**Business Question:**  
+Which products pose the highest operational and revenue risk?
+
+**Focus:**
+- Returns × revenue impact
+- High-volume, high-return risk identification
+- Operational prioritization signals
+
+📂 `09_operational_risk_analysis/`
+
+---
+
+### 10. Data Quality & Assumption Disclosure
+**Business Question:**  
+What data limitations affect interpretation and decision-making?
+
+**Focus:**
+- Missing customer identifiers
+- Revenue impact of returns
+- Extreme value detection (AOV outliers)
+
+📂 `10_data_quality_assumptions/`
+
+---
+
+### 11. Metric Layer (KPI Mart)
+**Business Question:**  
+How can core business metrics be standardized and reused?
+
+**Focus:**
+- Monthly KPI definitions (Revenue, Orders, Customers, AOV)
+- Metric consistency across analyses
+- BI-ready metric abstraction layer
+
+📂 `11_metric_layer/`
 
 ---
 
