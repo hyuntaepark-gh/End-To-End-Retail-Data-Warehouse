@@ -45,3 +45,15 @@ SELECT
 FROM dw.mart_kpi_monthly_mom_qoq
 ORDER BY year DESC, month DESC
 LIMIT 6;
+
+-- 8) new vs returning customer counts
+SELECT
+  year,
+  month,
+  new_customers,
+  returning_customers,
+  total_customers
+FROM dw.mart_customer_new_vs_returning_monthly
+ORDER BY year DESC, month DESC
+LIMIT 6;
+
