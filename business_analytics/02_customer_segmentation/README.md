@@ -308,12 +308,18 @@ Artifacts:
 
 ---
 
-## Actionable Recommendation
+## Derived Recommendation
 
-Prioritize retention programs for VIP and Loyal segments
-where revenue concentration is highest.
-Apply low-cost, targeted reactivation strategies
-for Low Value customers.
+Decision directly supported by this analysis:
+
+A small number of customer segments (VIP and Loyal) contribute disproportionately
+to total revenue, indicating that targeted retention strategies are likely to
+deliver higher ROI than broad-based acquisition efforts.
+
+Note (Cross-analysis context):
+The broader revenue driver analysis found that revenue variability is driven primarily
+by changes in order volume rather than pricing, suggesting demand stimulation initiatives
+should be prioritized over price adjustments.
 
 ---
 
