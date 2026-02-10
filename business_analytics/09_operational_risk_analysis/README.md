@@ -3,7 +3,7 @@
 Reframing return behavior into an operational risk perspective  
 by combining return frequency and revenue impact.
 
-Category: Operations Analytics · Risk Assessment · Product Quality Analysis
+Category: Operations Analytics · Risk Assessment · Revenue Protection · Product Quality Analysis
 
 ---
 
@@ -93,6 +93,13 @@ Artifacts:
 
 Classify products into operational risk categories  
 by jointly evaluating return frequency and revenue impact.
+
+### Risk Buckets
+
+- **High Risk**: High return frequency × High revenue impact  
+- **Return-Heavy**: High frequency × Low impact  
+- **Impact-Heavy**: Low frequency × High impact  
+- **Low Risk**: Low frequency × Low impact  
 
 ### Evidence
 
@@ -222,7 +229,8 @@ Artifacts:
 Identify products where return frequency and revenue impact  
 are misaligned (high frequency but low impact, or vice versa).
 
-This helps separate operational noise from financially critical risk.
+This helps separate operational noise  
+from financially critical risk.
 
 ### Evidence
 
@@ -238,7 +246,8 @@ Artifacts:
 ### Purpose
 
 Track return-loss concentration over time  
-to distinguish persistent risk from period-driven spikes.
+to distinguish persistent risk  
+from period-driven spikes.
 
 ### Evidence
 
@@ -256,6 +265,7 @@ Artifacts:
 - High sales amplify operational risk when return frequency is elevated.
 - Volume-adjusted filtering improves risk prioritization clarity.
 - Temporal patterns suggest some risk spikes are event-driven rather than persistent.
+- A Pareto-style distribution explains a disproportionate share of return-related losses.
 
 ---
 
@@ -270,7 +280,7 @@ This analysis enables:
 - Improved forecasting and planning accuracy
 
 Returns are not just a customer issue —  
-they are an operational and financial risk signal.
+they are an operational and **revenue protection** signal.
 
 ---
 
@@ -285,7 +295,7 @@ Operational resources should focus on:
 
 Addressing a small number of high-risk products  
 can yield disproportionate improvements  
-in revenue protection and operational stability.
+in operational stability and revenue protection outcomes.
 
 ---
 
@@ -302,15 +312,15 @@ All inputs are validated prior to analysis.
 
 ## Execution Order
 
-1. Quantify return-related revenue loss
-2. Measure return frequency and impact
-3. Construct operational risk matrix
-4. Identify high-risk product concentration
-5. Apply volume-adjusted filtering
-6. Validate temporal risk patterns
-7. Assess Pareto concentration
-8. Evaluate frequency vs value mismatch
-9. Monitor monthly risk concentration
+1. Quantify return-related revenue loss  
+2. Measure return frequency and impact  
+3. Construct operational risk matrix  
+4. Identify high-risk product concentration  
+5. Apply volume-adjusted filtering  
+6. Validate temporal risk patterns  
+7. Assess Pareto concentration  
+8. Evaluate frequency vs value mismatch  
+9. Monitor monthly risk concentration  
 
 ---
 
@@ -322,7 +332,7 @@ reveals that revenue exposure is driven by a small number of products.
 By prioritizing intervention on high-risk SKUs  
 rather than broad return reduction efforts,  
 organizations can achieve materially better  
-operational and financial outcomes.
+operational stability and revenue protection outcomes.
 
 ---
 
