@@ -1,61 +1,67 @@
 # Business Analytics
 
-**Decision-oriented analytical modules built on top of a validated
-enterprise data warehouse to explain business performance and support action.**
+Decision-oriented analytical modules built on top of a validated
+enterprise data warehouse to explain business performance
+and support actionable decision-making.
 
 ---
 
 ## Overview
 
 The Business Analytics layer translates curated warehouse data
-into **explainable, decision-ready business insights**.
+into explainable, decision-ready business insights.
 
-Unlike upstream layers that focus on data correctness and structure,
+Unlike upstream layers that focus on data correctness,
+modeling, and metric standardization,
 this layer is explicitly designed to answer:
 
-- *Why* key metrics change  
-- *Which* drivers matter most  
-- *How* insights should inform business decisions  
+- Why key metrics change
+- Which drivers matter most
+- How insights should inform business decisions
 
-All analyses are built on validated models in the `dw` and `marts`
-schemas and assume that data quality, reconciliation, and consistency
-have already been enforced upstream.
+All analyses are built on validated models
+in the dw and marts schemas
+and assume that data quality, reconciliation,
+and consistency have already been enforced upstream.
 
 ---
 
 ## Architecture Scope
 
 This layer operates at the top of the analytics stack,
-assuming all ingestion, modeling, and validation steps
-have already been completed upstream.
+assuming all ingestion, modeling,
+and validation steps have already been completed.
 
-raw / staging → dw → marts
-↑
+raw / staging → dw → marts  
+↑  
 business analytics
 
-Each sub-module represents a **self-contained analytical question**
-implemented with deterministic SQL logic, documented outputs,
-and validation checks prior to interpretation.
+Each sub-module represents a self-contained analytical question,
+implemented with deterministic SQL logic,
+documented outputs, and validation checks
+prior to interpretation.
 
 ---
 
 ## Analysis Modules
 
 The modules below progress from descriptive performance analysis
-to diagnostic driver analysis, risk identification,
+to diagnostic driver analysis,
+risk identification,
 and decision-enabling metric abstraction.
 
 ---
 
 ### 01. Revenue Driver Analysis
+
 **Business Question:**  
 What drives revenue growth and decline?
 
 **Focus:**
 - Revenue decomposition (Orders × AOV)
-- Volume vs. price effects
-- Country-level revenue drivers
-- Customer mix and growth attribution
+- Volume versus price effects
+- Geographic revenue drivers
+- Customer mix attribution
 - Returns impact and sanity validation
 
 📂 `01_revenue_driver_analysis/`
@@ -63,34 +69,39 @@ What drives revenue growth and decline?
 ---
 
 ### 02. Customer Segmentation
+
 **Business Question:**  
 How can customers be grouped based on behavior and value?
 
 **Focus:**
-- Purchase frequency and recency
+- Recency, frequency, and monetary behavior
 - Revenue contribution by segment
-- Behavioral differences across customer cohorts
+- Behavioral separation across customer groups
 
 📂 `02_customer_segmentation/`
 
 ---
 
 ### 03. Product Mix Analysis
+
 **Business Question:**  
-Which products drive performance, and how does the mix evolve over time?
+Which products drive performance,
+and how does the portfolio evolve over time?
 
 **Focus:**
 - Revenue concentration
 - Dependency on top products
-- Product contribution trends
+- Product contribution and stability
 
 📂 `03_product_mix_analysis/`
 
 ---
 
 ### 04. Returns Analysis
+
 **Business Question:**  
-How do returns affect revenue, KPIs, and operational performance?
+How do returns affect revenue,
+KPIs, and operational performance?
 
 **Focus:**
 - Return rates and patterns
@@ -102,24 +113,26 @@ How do returns affect revenue, KPIs, and operational performance?
 ---
 
 ### 05. Customer Lifetime Value (LTV) Analysis
+
 **Business Question:**  
 Which customers create long-term value?
 
 **Focus:**
-- Revenue longevity
+- Revenue longevity by cohort
 - Repeat purchase behavior
-- Early-stage indicators of lifetime value
+- Early indicators of lifetime value
 
 📂 `05_ltv_analysis/`
 
 ---
 
 ### 06. Revenue Driver × Segment Analysis
+
 **Business Question:**  
 Do revenue drivers differ across customer segments?
 
 **Focus:**
-- Orders vs. AOV contribution by segment
+- Orders versus AOV contribution by segment
 - Segment-level revenue sensitivity
 - Structural differences in growth drivers
 
@@ -127,26 +140,29 @@ Do revenue drivers differ across customer segments?
 
 ---
 
-### 07. Price Sensitivity (Discount Proxy) Analysis
+### 07. Price Sensitivity and Discount Proxy Analysis
+
 **Business Question:**  
 How sensitive is demand to price-related signals?
 
 **Focus:**
 - Discount proxy identification
 - Order response to effective price changes
-- Revenue trade-offs from price sensitivity
+- Revenue and volatility trade-offs
 
 📂 `07_price_sensitivity_discount_proxy_analysis/`
 
 ---
 
 ### 08. Cohort Retention Analysis
+
 **Business Question:**  
-How does customer retention evolve across acquisition cohorts?
+How does customer retention evolve
+across acquisition cohorts?
 
 **Focus:**
 - Cohort-based retention curves
-- Early churn vs. long-term retention
+- Early churn versus long-term retention
 - Behavioral differences across cohorts
 
 📂 `08_cohort_retention/`
@@ -154,11 +170,13 @@ How does customer retention evolve across acquisition cohorts?
 ---
 
 ### 09. Operational Risk Analysis
+
 **Business Question:**  
-Which products pose the highest operational and revenue risk?
+Which products pose the highest operational
+and revenue risk?
 
 **Focus:**
-- Returns × revenue impact
+- Returns multiplied by revenue impact
 - High-volume, high-return risk identification
 - Operational prioritization signals
 
@@ -166,25 +184,29 @@ Which products pose the highest operational and revenue risk?
 
 ---
 
-### 10. Data Quality & Assumption Disclosure
+### 10. Data Quality and Assumption Disclosure
+
 **Business Question:**  
-What data limitations affect interpretation and decision-making?
+What data limitations affect interpretation
+and decision reliability?
 
 **Focus:**
-- Missing customer identifiers
-- Revenue impact of returns
-- Extreme value detection (AOV outliers)
+- Identifier completeness
+- Revenue distortion from returns
+- Extreme value sensitivity and KPI interpretation
 
 📂 `10_data_quality_assumptions/`
 
 ---
 
 ### 11. Metric Layer (KPI Mart)
+
 **Business Question:**  
-How can core business metrics be standardized and reused?
+How can core business metrics
+be standardized and reused?
 
 **Focus:**
-- Monthly KPI definitions (Revenue, Orders, Customers, AOV)
+- Monthly KPI definitions
 - Metric consistency across analyses
 - BI-ready metric abstraction layer
 
@@ -196,17 +218,20 @@ How can core business metrics be standardized and reused?
 
 All analytics in this layer adhere to the following principles:
 
-- **Decision-first**  
-  Every analysis is framed around a concrete business question.
+- Decision-first  
+  Each module is framed around a concrete business question.
 
-- **Explainability**  
-  Metrics are decomposed into interpretable drivers rather than reported in isolation.
+- Explainability  
+  Metrics are decomposed into interpretable drivers,
+  not reported in isolation.
 
-- **Reproducibility**  
-  All logic is implemented in SQL with deterministic, auditable outputs.
+- Reproducibility  
+  All logic is implemented in deterministic SQL
+  with auditable outputs.
 
-- **Validation-aware**  
-  Sanity checks and reconciliation are performed before interpretation.
+- Validation-aware  
+  Sanity checks and reconciliation are performed
+  before interpretation.
 
 ---
 
@@ -214,11 +239,12 @@ All analytics in this layer adhere to the following principles:
 
 This layer depends on the following upstream components:
 
-- [Data Foundation](../data_foundation/README.md)  
-- [Data Modeling](../data_modeling/README.md)  
-- [Data Operations](../data_operations/README.md)
+- ../data_foundation/README.md
+- ../data_modeling/README.md
+- ../data_operations/README.md
 
-All inputs are assumed to be standardized, validated, and reconciled.
+All inputs are assumed to be standardized,
+validated, and reconciled.
 
 ---
 
@@ -227,36 +253,40 @@ All inputs are assumed to be standardized, validated, and reconciled.
 Well-modeled data alone does not create value.
 
 This layer bridges the gap between:
-- **Correct data** and **correct decisions**
-- **Metrics** and **meaning**
-- **Reporting** and **strategy**
 
-> Analytics is not about numbers — it is about understanding drivers.
+- Correct data and correct decisions
+- Metrics and meaning
+- Reporting and strategy
+
+Analytics is not about numbers.
+It is about understanding drivers.
 
 ---
 
 ## Business Recommendation Layer
 
-This section represents the **final decision layer** of the analytics stack.
+This section represents the final decision layer
+of the analytics stack.
 
-While the analytical modules above focus on explaining *why* performance changes,
-this layer explicitly addresses *what actions should be taken next*.
+While individual analytical modules
+focus on explaining why performance changes,
+this layer explicitly addresses
+what actions should be taken next.
 
 Recommendations are intentionally free of SQL,
-intermediate metrics, and implementation detail.
-They are written to be **executive-readable, action-oriented,
-and directly traceable to validated analytical findings**.
+intermediate metrics,
+and implementation detail.
+They are written to be executive-readable,
+action-oriented,
+and directly traceable to validated analytical findings.
 
 ---
 
 ## Recommendation Traceability Map
 
-The map below illustrates how individual analytical modules
-contribute to the final business recommendations.
-
-Each **Derived Recommendation** represents a localized, analysis-level decision insight,
-which collectively supports the executive-level conclusions
-presented in the Business Recommendation Layer.
+Each derived recommendation originates
+from a specific analytical module
+and rolls up into executive-level guidance.
 
 ```
 
@@ -290,36 +320,37 @@ presented in the Business Recommendation Layer.
 
 ---
 
-### Key Business Recommendations
+## Key Business Recommendations
 
-1. **Prioritize demand stimulation over pricing changes.**  
-   *(Derived from Revenue Driver Analysis)*  
-   Revenue volatility is primarily driven by order volume fluctuations rather than AOV,
-   suggesting that acquisition and activation initiatives should be prioritized
-   over price optimization efforts.
+1. Prioritize demand stimulation over pricing changes.  
+   Revenue volatility is primarily driven by order volume
+   rather than average order value,
+   suggesting acquisition and activation initiatives
+   should be prioritized over pricing adjustments.
 
-2. **Invest in retention for high-value customer segments.**  
-   *(Derived from Customer Segmentation & LTV Analysis)*  
-   A small number of customer segments contribute disproportionately to total revenue,
-   indicating that targeted retention strategies are likely to generate higher ROI
-   than broad acquisition campaigns.
+2. Invest in retention for high-value customer segments.  
+   A small number of customer segments
+   contribute disproportionately to total revenue,
+   indicating higher ROI from targeted retention
+   than from broad acquisition efforts.
 
-3. **Address returns through targeted operational reviews.**  
-   *(Derived from Returns & Operational Risk Analysis)*  
+3. Address returns through targeted operational reviews.  
    Returns are concentrated among a limited set of products,
-   pointing to potential quality, fulfillment, or expectation-setting issues
-   that should be addressed selectively rather than through system-wide changes.
+   pointing to quality, fulfillment,
+   or expectation-setting issues
+   that should be addressed selectively.
 
-4. **Re-evaluate recent acquisition quality.**  
-   *(Derived from Cohort Retention Analysis)*  
+4. Re-evaluate recent acquisition quality.  
    Newer customer cohorts exhibit faster churn,
-   suggesting that recent acquisition sources may be attracting lower-intent customers
-   and should be re-assessed with a focus on long-term value rather than short-term volume.
+   suggesting recent acquisition sources
+   may be attracting lower-intent customers
+   and should be assessed on long-term value.
 
 ---
 
 ## Next Steps
 
-- Extend analyses with margin and profitability views  
-- Integrate analytical outputs into BI dashboards  
-- Apply the same framework to forecasting and scenario modeling  
+- Extend analyses with margin and profitability views
+- Integrate analytical outputs into BI dashboards
+- Apply the same framework to forecasting
+  and scenario-based modeling
