@@ -1,4 +1,4 @@
-## Architecture & Data Lineage
+# Architecture & Data Lineage
 
 The following diagram illustrates the end-to-end data pipeline,
 from raw data ingestion through staging, dimensional modeling,
