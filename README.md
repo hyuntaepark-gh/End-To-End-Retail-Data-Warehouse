@@ -25,7 +25,7 @@ and naturally extending into forecasting and scenario-based thinking.
 
 This project follows a layered data platform architecture:
 
-**Raw Data → ETL → Data Warehouse → SQL Analytics → Forecasting → Insights**
+**Raw Data → Data Foundation → Data Warehouse → Analytics → Forecasting → Insights**
 
 Each layer has a clear responsibility and separation of concerns.
 
@@ -37,6 +37,20 @@ Each layer has a clear responsibility and separation of concerns.
 | business_analytics | Decision-oriented analytics and KPI decomposition |
 | forecasting | Predictive modeling |
 | insights | Executive-ready insights |
+
+### Architecture & Data Lineage
+
+See the end-to-end data pipeline and lineage diagram:
+
+- [View Architecture & Data Lineage Diagram](./architecture)
+
+This diagram illustrates how validated data flows across layers —  
+from raw ingestion through staging, dimensional modeling, analytics marts,  
+and finally BI consumption — with clear separation of concerns
+and traceable analytical lineage.
+
+This architecture serves as the **authoritative reference**
+for how data is validated, modeled, and consumed across the platform.
 
 ---
 
@@ -109,7 +123,7 @@ Docs: `business_analytics/README.md`
 
 ---
 
-### 5. Forecasting
+### 5. Forecasting (Planned)
 
 Extends historical analytics into **forward-looking predictions**.
 
@@ -120,7 +134,7 @@ Planned focus:
 
 ---
 
-### 6. Insights
+### 6. Insights (Planned)
 
 Converts analytics and forecasts into **actionable decisions**.
 
@@ -194,26 +208,36 @@ Suitable for:
 
 End-To-End-Retail-Data-Warehouse/
 │
+├── architecture/
+│ ├── lineage_pipeline_diagram.png
+│ └── README.md
+│
 ├── data_foundation/
-│   ├── Raw data validation and cleaning
-│   ├── Staging and foundational transformations
-│   └── Early data quality checks
+│ ├── 10_raw/
+│ ├── 20_staging/
+│ └── README.md
 │
 ├── data_modeling/
-│   ├── Dimensional modeling (Star Schema)
-│   ├── Fact and dimension table creation
-│   └── Warehouse-ready analytical structures
+│ ├── erd/
+│ │ └── dw_core_erd.png
+│ ├── result/
+│ ├── sql/
+│ └── README.md
 │
 ├── data_operations/
-│   ├── Schema and environment setup
-│   ├── Data integrity and sanity validations
-│   └── Reconciliation checks across layers
+│ ├── 00_admin/
+│ ├── 90_tests/
+│ └── README.md
 │
 ├── business_analytics/
-│   ├── Revenue driver analysis
-│   ├── Customer segmentation and LTV
-│   ├── Product mix and returns analysis
-│   └── Decision-oriented SQL analytics
+│ ├── revenue_driver_analysis/
+│ ├── customer_segmentation/
+│ ├── product_mix_analysis/
+│ ├── returns_analysis/
+│ └── README.md
+│
+├── forecasting/ # planned
+├── insights/ # planned
 │
 └── README.md
 
