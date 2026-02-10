@@ -122,15 +122,23 @@ Docs: `data_operations/README.md`
 
 ### 4. Business Analytics
 
-Bridges analytical findings with executive-level
-business recommendations through **decision-oriented analysis**.
+This layer contains fully implemented, decision-oriented analytical modules,
+progressing from performance explanation
+to risk identification
+and executive-level recommendations.
 
-Current modules include:
+Implemented modules include:
 - Revenue Driver Analysis
 - Customer Segmentation
 - Product Mix Analysis
 - Returns Analysis
 - Customer Lifetime Value (LTV)
+- Revenue Driver × Segment Analysis
+- Price Sensitivity (Discount Proxy) Analysis
+- Cohort Retention Analysis
+- Operational Risk Analysis
+- Data Quality & Assumption Disclosure
+- Metric Layer (KPI Mart)
 
 Each module contains:
 - SQL logic
@@ -142,25 +150,34 @@ Docs: `business_analytics/README.md`
 
 ---
 
-### 5. Forecasting (Planned)
+### 5. Forecasting (Design Completed)
 
-Extends historical analytics into **forward-looking predictions**.
+This layer is designed to extend validated historical analytics
+into forward-looking predictions.
 
 Planned focus areas:
-- Revenue forecasting
-- Trend and seasonality modeling
-- Scenario analysis
+- Revenue and order volume forecasting
+- Seasonality and trend modeling
+- Scenario-based projections using KPI marts
+
+Architecture and feature definitions
+are aligned with existing metric and analytics layers.
 
 ---
 
-### 6. Insights (Planned)
+### 6. Insights (Design Completed)
 
-Transforms analytics and forecasts into **actionable decisions**.
+This layer represents the executive-facing decision output
+of the analytics stack.
 
 Planned outputs:
 - Executive summaries
 - KPI narratives
-- Strategic recommendations
+- Strategy-oriented recommendations
+
+All insights are designed to be directly traceable
+to validated analytical modules and metric definitions.
+
 
 ---
 
@@ -214,6 +231,8 @@ This repository demonstrates:
 - Strong SQL and dimensional modeling discipline
 - Data quality–first engineering mindset
 - Decision-oriented analytics aligned with business impact
+- A reproducible, enterprise-style analytics framework
+  designed to support long-term decision-making at scale
 
 Suitable for:
 - Data Engineering and Analytics portfolios
@@ -233,8 +252,8 @@ End-To-End-Retail-Data-Warehouse/
 │ └── README.md
 │
 ├── data_foundation/
-│ ├── 10_raw/
-│ ├── 20_staging/
+│ ├── result/
+│ ├── sql/
 │ └── README.md
 │
 ├── data_modeling/
@@ -245,19 +264,26 @@ End-To-End-Retail-Data-Warehouse/
 │ └── README.md
 │
 ├── data_operations/
-│ ├── 00_admin/
-│ ├── 90_tests/
+│ ├── result/
+│ ├── sql/
 │ └── README.md
 │
 ├── business_analytics/
-│ ├── revenue_driver_analysis/
-│ ├── customer_segmentation/
-│ ├── product_mix_analysis/
-│ ├── returns_analysis/
+│ ├── 01_revenue_driver_analysis/
+│ ├── 02_customer_segmentation/
+│ ├── 03_product_mix_analysis/
+│ ├── 04_returns_analysis/
+│ ├── 05_ltv_analysis/
+│ ├── 06_revenue_driver_x_segment/
+│ ├── 07_price_sensitivity_discount_proxy_analysis/
+│ ├── 08_cohort_retention/
+│ ├── 09_operational_risk_analysis/
+│ ├── 10_data_quality_assumptions/
+│ ├── 11_metric_layer/
 │ └── README.md
 │
-├── forecasting/ # planned
-├── insights/ # planned
+├── forecasting/
+├── insights/
 │
 └── README.md
 
