@@ -1,6 +1,6 @@
-# Operational Risk Analysis (Returns × Revenue Impact)
+# Operational Risk Analysis (Returns x Revenue Impact)
 
-Reframing return behavior into an operational risk perspective  
+Reframing return behavior into an operational risk perspective
 by combining return frequency and revenue impact.
 
 Category: Operations Analytics · Risk Assessment · Revenue Protection · Product Quality Analysis
@@ -9,21 +9,22 @@ Category: Operations Analytics · Risk Assessment · Revenue Protection · Produ
 
 ## Overview
 
-This module reframes return analysis from descriptive metrics  
-into an **operational risk framework** by quantifying  
-how returns impact revenue sustainability at the product level.
+This module reframes return analysis from descriptive metrics
+into an operational risk framework by quantifying
+how return behavior impacts revenue sustainability
+at the product level.
 
-Rather than treating returns as isolated events,  
-this analysis evaluates **both how often returns occur**  
-and **how costly they are when they occur**.
+Rather than treating returns as isolated events,
+this analysis evaluates both how frequently returns occur
+and how costly they are when they occur.
 
-The objective is to identify products that pose  
-disproportionate operational and revenue risk,  
-enabling prioritization of quality improvement,  
-process intervention, or active monitoring.
+The objective is to identify products that pose
+disproportionate operational and revenue risk,
+enabling prioritization of quality improvement,
+process intervention, and active monitoring.
 
-All metrics are derived from validated warehouse views  
-and are designed to support operational decision-making  
+All metrics are derived from validated warehouse views
+and are designed to support operational decision-making
 rather than purely analytical reporting.
 
 ---
@@ -45,12 +46,11 @@ This framework answers questions such as:
 - Which products are both popular and operationally risky?
 - How concentrated is operational risk across SKUs?
 - Does risk originate from a few products or broad quality issues?
-- Are return-related risks stable or time-dependent?
+- Are return-related risks persistent or time-dependent?
 
-Each step progresses from  
-loss identification  
-to risk interaction  
-to prioritization  
+Each step progresses from loss identification
+to risk interaction
+to prioritization
 to validation.
 
 ---
@@ -59,7 +59,7 @@ to validation.
 
 ### Purpose
 
-Identify products that cause the largest absolute revenue loss  
+Identify products that cause the largest absolute revenue loss
 due to returns.
 
 ### Evidence
@@ -71,11 +71,11 @@ Artifacts:
 
 ---
 
-## 20. High Sales × High Returns
+## 20. High Sales and High Returns
 
 ### Purpose
 
-Detect products that sell well  
+Detect products that generate strong sales volume
 but also experience frequent returns.
 
 ### Evidence
@@ -91,15 +91,15 @@ Artifacts:
 
 ### Purpose
 
-Classify products into operational risk categories  
+Classify products into operational risk categories
 by jointly evaluating return frequency and revenue impact.
 
 ### Risk Buckets
 
-- **High Risk**: High return frequency × High revenue impact  
-- **Return-Heavy**: High frequency × Low impact  
-- **Impact-Heavy**: Low frequency × High impact  
-- **Low Risk**: Low frequency × Low impact  
+- High Risk: High return frequency and high revenue impact
+- Return Heavy: High frequency and low impact
+- Impact Heavy: Low frequency and high impact
+- Low Risk: Low frequency and low impact
 
 ### Evidence
 
@@ -114,7 +114,7 @@ Artifacts:
 
 ### Purpose
 
-Quantify how concentrated operational risk is  
+Quantify how concentrated operational risk is
 across the product portfolio.
 
 ### Evidence
@@ -130,7 +130,7 @@ Artifacts:
 
 ### Purpose
 
-Measure how much total revenue  
+Measure how much total revenue
 is exposed to operationally risky products.
 
 ### Evidence
@@ -146,7 +146,7 @@ Artifacts:
 
 ### Purpose
 
-Assess whether return-related revenue loss  
+Assess whether return-related revenue loss
 is driven by a small subset of high-risk products.
 
 ### Evidence
@@ -162,7 +162,7 @@ Artifacts:
 
 ### Purpose
 
-Identify the most operationally damaging products  
+Identify the most operationally damaging products
 for targeted intervention.
 
 ### Evidence
@@ -178,7 +178,7 @@ Artifacts:
 
 ### Purpose
 
-Reduce noise caused by low-volume products  
+Reduce noise caused by low-volume products
 that can artificially inflate return rates.
 
 ### Evidence
@@ -194,8 +194,8 @@ Artifacts:
 
 ### Purpose
 
-Evaluate whether operational risk  
-is persistent or concentrated in specific periods.
+Evaluate whether operational risk is persistent
+or concentrated in specific time periods.
 
 ### Evidence
 
@@ -210,7 +210,7 @@ Artifacts:
 
 ### Purpose
 
-Quantify how concentrated return-related losses are  
+Quantify how concentrated return-related losses are
 across the product portfolio.
 
 ### Evidence
@@ -226,10 +226,10 @@ Artifacts:
 
 ### Purpose
 
-Identify products where return frequency and revenue impact  
-are misaligned (high frequency but low impact, or vice versa).
+Identify products where return frequency
+and revenue impact are misaligned.
 
-This helps separate operational noise  
+This distinction separates operational noise
 from financially critical risk.
 
 ### Evidence
@@ -245,8 +245,8 @@ Artifacts:
 
 ### Purpose
 
-Track return-loss concentration over time  
-to distinguish persistent risk  
+Track return-loss concentration over time
+to distinguish persistent risk
 from period-driven spikes.
 
 ### Evidence
@@ -260,12 +260,18 @@ Artifacts:
 
 ## Key Insights
 
-- Operational risk is highly concentrated in a small subset of products.
-- A limited number of SKUs account for the majority of return-related revenue loss.
-- High sales amplify operational risk when return frequency is elevated.
-- Volume-adjusted filtering improves risk prioritization clarity.
-- Temporal patterns suggest some risk spikes are event-driven rather than persistent.
-- A Pareto-style distribution explains a disproportionate share of return-related losses.
+- Operational risk is highly concentrated
+  in a small subset of products.
+- A limited number of SKUs account
+  for the majority of return-related revenue loss.
+- High sales amplify operational risk
+  when return frequency is elevated.
+- Volume-adjusted filtering improves
+  prioritization clarity by reducing noise.
+- Temporal patterns suggest some risk spikes
+  are event-driven rather than persistent.
+- A Pareto-style distribution explains
+  a disproportionate share of return-related losses.
 
 ---
 
@@ -279,8 +285,8 @@ This analysis enables:
 - Revenue risk mitigation
 - Improved forecasting and planning accuracy
 
-Returns are not just a customer issue —  
-they are an operational and **revenue protection** signal.
+Returns are not just a customer issue.
+They are an operational and revenue protection signal.
 
 ---
 
@@ -291,11 +297,12 @@ Operational resources should focus on:
 - Immediate investigation of high-risk products
 - Quality or packaging improvements for high-impact SKUs
 - Active monitoring of volume-adjusted risk signals
-- Distinguishing persistent product issues from temporary anomalies
+- Distinguishing persistent product issues
+  from temporary, event-driven anomalies
 
-Addressing a small number of high-risk products  
-can yield disproportionate improvements  
-in operational stability and revenue protection outcomes.
+Addressing a small number of high-risk products
+can yield disproportionate improvements
+in operational stability and revenue protection.
 
 ---
 
@@ -312,26 +319,27 @@ All inputs are validated prior to analysis.
 
 ## Execution Order
 
-1. Quantify return-related revenue loss  
-2. Measure return frequency and impact  
-3. Construct operational risk matrix  
-4. Identify high-risk product concentration  
-5. Apply volume-adjusted filtering  
-6. Validate temporal risk patterns  
-7. Assess Pareto concentration  
-8. Evaluate frequency vs value mismatch  
-9. Monitor monthly risk concentration  
+1. Quantify return-related revenue loss
+2. Measure return frequency and impact
+3. Construct operational risk matrix
+4. Identify high-risk product concentration
+5. Apply volume-adjusted filtering
+6. Validate temporal risk patterns
+7. Assess Pareto concentration
+8. Evaluate frequency versus value mismatch
+9. Monitor monthly risk concentration
 
 ---
 
 ## Summary
 
-Return behavior, when viewed through an operational risk lens,  
-reveals that revenue exposure is driven by a small number of products.
+When return behavior is viewed through
+an operational risk lens,
+revenue exposure is driven by a small number of products.
 
-By prioritizing intervention on high-risk SKUs  
-rather than broad return reduction efforts,  
-organizations can achieve materially better  
+By prioritizing intervention on high-risk SKUs
+rather than broad return reduction efforts,
+organizations can achieve materially better
 operational stability and revenue protection outcomes.
 
 ---
