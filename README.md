@@ -1,5 +1,16 @@
 # 📊 End-To-End Retail Data Warehouse
 
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791?logo=postgresql&logoColor=white)
+![SQL](https://img.shields.io/badge/SQL-Advanced-CC2927?logo=databricks&logoColor=white)
+![Data Warehouse](https://img.shields.io/badge/Data%20Warehouse-Star%20Schema-0A66C2)
+![Analytics](https://img.shields.io/badge/Business-Analytics-FF6F00)
+![Forecasting](https://img.shields.io/badge/Forecasting-Time%20Series-6A1B9A)
+![Tableau](https://img.shields.io/badge/Tableau-Visualization-E97627?logo=tableau&logoColor=white)
+![Power BI](https://img.shields.io/badge/Power%20BI-Metric%20Layer-F2C811?logo=powerbi&logoColor=black)
+![Data Engineering](https://img.shields.io/badge/Data-Engineering-1E88E5)
+![Architecture](https://img.shields.io/badge/Layered-Architecture-2E7D32)
+![Decision Intelligence](https://img.shields.io/badge/Decision-Intelligence-FF7043)
+
 **A full implementation of an end-to-end retail data warehouse and analytical framework.**  
 This repository demonstrates the complete lifecycle of data engineering and analytics —  
 from raw data ingestion to forecasting and executive-ready business insights,
