@@ -1,191 +1,153 @@
-# 📊 Monthly Orders Time Series Preparation
+# 📈 Orders Forecasting (Time Series Analysis)
 
 ## Overview
 
-This module prepares a clean and structured **monthly orders time series dataset**
-from the retail data warehouse, designed for forecasting and business analysis.
+This module builds a forecasting pipeline to predict **monthly order volume**
+using time series models.
 
-The objective is to transform raw transactional data into a **model-ready time series**,
-enabling trend analysis, seasonality detection, and demand forecasting.
+The goal is to extend descriptive analytics into **forward-looking insights**,
+enabling better planning and decision-making.
 
 ---
 
 ## Executive Summary
 
-This project demonstrates how raw transactional data can be transformed into
-a structured time series dataset that supports **forecasting, KPI tracking, and business decision-making**.
+This project demonstrates how historical order data can be transformed into
+actionable forecasts using baseline and statistical time series models.
+
+Two approaches are compared:
+
+* Moving Average (baseline)
+* SARIMA (time series model)
+
+The focus is not only on prediction accuracy, but on **business applicability**.
 
 ---
 
 ## Business Context
 
-Understanding order volume over time is critical for:
+Forecasting order volume is critical for:
 
-* 📈 Revenue forecasting
-* 📦 Inventory and supply planning
-* 📊 Identifying growth trends and seasonal patterns
+* 📈 Revenue planning
+* 📦 Inventory and supply chain optimization
+* 📊 Identifying future demand trends
 
-This dataset serves as the **foundation for forecasting models and executive decision-making**.
-
----
-
-## Why This Matters
-
-Transforming raw transactional data into a structured time series enables:
-
-* Reliable forecasting inputs
-* Consistent KPI tracking over time
-* Alignment between data engineering and business analytics
-
-This step bridges the gap between raw data and predictive modeling.
+This model supports **data-driven operational and financial decisions**.
 
 ---
 
-## Data Source
+## Dataset
 
-* Source table: `dw.v_sales_enriched`
-* Filter:
+* Source: `data/orders_monthly.csv`
+* Granularity: Monthly
+* Target variable: `orders`
 
-  * Excludes returned transactions (`is_return = false`)
-* Time granularity:
-
-  * Monthly aggregation
-
----
-
-## Step 1: Monthly Orders Aggregation
-
-```sql
-SELECT
-  date_trunc('month', to_date(date_key::text, 'YYYYMMDD'))::date AS month,
-  COUNT(DISTINCT invoice_no) AS orders
-FROM dw.v_sales_enriched
-WHERE is_return = false
-GROUP BY 1
-ORDER BY 1;
-```
-
-📌 Example Output:
-
-| month      | orders |
-| ---------- | ------ |
-| 2010-12-01 | 1400   |
-| 2011-01-01 | 987    |
-| ...        | ...    |
+| Column | Description        |
+| ------ | ------------------ |
+| month  | Month (time index) |
+| orders | Number of orders   |
 
 ---
 
-## Step 2: Complete Time Series Construction
+## Methodology
 
-```sql
-WITH bounds AS (
-    SELECT
-        MIN(make_date(year, month, 1)) AS min_month,
-        MAX(make_date(year, month, 1)) AS max_month
-    FROM dw.v_sales_enriched
-    WHERE is_return = false
-),
-months AS (
-    SELECT generate_series(min_month, max_month, interval '1 month')::date AS month
-    FROM bounds
-),
-orders AS (
-    SELECT
-        make_date(year, month, 1) AS month,
-        COUNT(DISTINCT invoice_no) AS orders
-    FROM dw.v_sales_enriched
-    WHERE is_return = false
-    GROUP BY 1
-)
-SELECT
-    m.month,
-    COALESCE(o.orders, 0) AS orders
-FROM months m
-LEFT JOIN orders o USING (month)
-ORDER BY 1;
-```
+### 1. Data Preparation
 
-📌 Key Features:
-
-* Ensures **continuous monthly time series**
-* Handles missing months with `0` orders
-* Produces a **model-ready dataset**
+* Converted `month` to datetime format
+* Sorted data chronologically
+* Split into training and test sets (last 6 months as test)
 
 ---
 
-## Output Dataset
+### 2. Baseline Model: Moving Average
 
-Saved as:
+A simple model using recent historical averages.
 
-```
-data/orders_monthly.csv
-```
+📌 Purpose:
 
-| Column | Description             |
-| ------ | ----------------------- |
-| month  | First day of each month |
-| orders | Number of unique orders |
+* Establish a benchmark
+* Provide stable and interpretable forecasts
 
 ---
 
-## Data Quality & Assumptions
+### 3. SARIMA Model
 
-* Returned transactions are excluded to reflect actual demand
-* Orders are aggregated using unique invoice numbers
-* Missing months are filled with `0` to maintain continuity
-* Assumes consistent data capture across all periods
+A statistical time series model designed to capture:
 
----
+* Trend
+* Seasonality
+* Temporal dependencies
 
-## Data Lineage
+📌 Configuration:
 
-```
-dw.v_sales_enriched
-        ↓
-Monthly Aggregation
-        ↓
-Continuous Time Series Construction
-        ↓
-data/orders_monthly.csv
-        ↓
-Forecasting Models / BI / Analytics
-```
+* order = (1,1,1)
+* seasonal_order = (1,1,1,12)
 
 ---
 
-## Downstream Usage
+## Model Evaluation
 
-This dataset is used in:
+Evaluation metric:
 
-* 📈 Orders forecasting (Moving Average, SARIMA)
-* 💰 Revenue forecasting (Orders × AOV)
-* 📊 Executive KPI dashboards
-* 🤖 AI-driven analytics applications
+* **MAPE (Mean Absolute Percentage Error)**
 
-It serves as the primary input for time-series modeling pipelines.
+| Model          | MAPE |
+| -------------- | ---- |
+| Moving Average | XX%  |
+| SARIMA         | XX%  |
 
 ---
 
-## Example Use Case
+## Results & Insights
 
-This dataset enables forecasting future order volumes,
-which can be translated into revenue projections and used for:
+* Moving Average provides a stable baseline under limited data conditions
+* SARIMA attempts to capture temporal patterns but is constrained by short time series
+* Model performance is influenced heavily by data availability
 
-* Inventory planning
-* Marketing strategy optimization
-* Financial forecasting
+---
+
+## Forecast Visualization
+
+The model outputs are visualized to compare:
+
+* Actual values
+* Moving Average predictions
+* SARIMA predictions
+
+This allows clear evaluation of model behavior.
+
+---
+
+## Business Interpretation
+
+Forecasted orders can be used to:
+
+* Estimate future revenue (Orders × AOV)
+* Plan inventory levels
+* Optimize marketing and promotions
+
+This bridges the gap between analytics and business strategy.
 
 ---
 
 ## Limitations
 
-* Limited historical data may reduce forecasting accuracy
-* Monthly aggregation hides intra-month variability
+* Limited historical data reduces model reliability
+* SARIMA requires longer time series to capture seasonality effectively
 * External factors (promotions, holidays) are not included
+
+---
+
+## Future Improvements
+
+* Extend dataset to 24–36 months
+* Incorporate external variables
+* Implement advanced models (Prophet, ML-based models)
+* Build revenue forecasting layer
 
 ---
 
 ## 🚀 Summary
 
-> Built a production-ready time series dataset from raw transactional data,
-> enabling forecasting and data-driven decision-making.
+> Built a time series forecasting pipeline using baseline and SARIMA models
+> to transform historical order data into actionable business insights.
