@@ -39,16 +39,17 @@ The forecasting outputs are further extended into revenue scenario modeling usin
 
 ## Module Structure
 
-This folder includes both predictive modeling and downstream business scenario analysis.
+This forecasting module consists of two connected components:
 
 ### 1. Order Forecasting
-Builds monthly order forecasts using baseline and statistical time series models.
+- Predicts monthly order volume using time series models
+- Compares Moving Average and SARIMA
+- Produces forecast outputs for planning
 
 ### 2. Revenue Scenario Analysis
-Transforms forecasted orders into revenue projections using AOV-based scenario logic.
-
-Related notebook:
-* `03_revenue_scenario.ipynb`
+- Converts forecasted orders into revenue estimates
+- Uses AOV-based assumptions
+- Implemented in `03_revenue_scenario.ipynb`
 
 ---
 
