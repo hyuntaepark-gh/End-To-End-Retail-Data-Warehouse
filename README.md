@@ -333,8 +333,11 @@ End-To-End-Retail-Data-Warehouse/
 │ └── README.md
 │
 ├── forecasting/
-├── insights/
-│
+│ ├── data/
+│ ├── notebooks/
+│ ├── sql/
+│ ├── result/
+│ └── README.md
 └── README.md
 
 ```
