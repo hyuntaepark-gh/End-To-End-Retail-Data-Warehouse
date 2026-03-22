@@ -1,6 +1,8 @@
-# 🧱 SQL Data Preparation
+# 📂 SQL Files
 
-This folder contains SQL scripts used to generate forecasting datasets.
+This folder contains SQL scripts used to generate forecasting and revenue scenario input datasets from the data warehouse.
+
+All SQL files are based on `dw.v_sales_enriched` and are designed to create clean, exportable monthly datasets for Python analysis.
 
 ---
 
@@ -8,31 +10,69 @@ This folder contains SQL scripts used to generate forecasting datasets.
 
 ### 1. 01_monthly_orders.sql
 
-- Aggregates transactional data into monthly order counts
-- Source: dw.v_sales_enriched
-- Excludes returned transactions
+Generates a monthly order-level aggregation dataset.
+
+**Purpose**
+- Create monthly order counts
+- Build the base input for forecasting models
+- Export result to `orders_monthly.csv`
+
+**Output columns**
+- `month`
+- `orders`
 
 ---
 
 ### 2. 02_monthly_orders_timeseries.sql
 
-- Creates continuous monthly time series
-- Handles missing months using generate_series
-- Ensures model-ready dataset
+Generates a time-series-ready version of monthly orders.
+
+**Purpose**
+- Prepare a clean monthly time series
+- Ensure chronological ordering for forecasting notebooks
+- Support baseline and SARIMA modeling
+
+**Output columns**
+- `month`
+- `orders`
 
 ---
 
-## Data Pipeline
+### 3. 03_monthly_kpi.sql
 
-dw.v_sales_enriched  
-→ Monthly Aggregation  
-→ Time Series Construction  
-→ orders_monthly.csv  
+Generates a monthly KPI dataset for revenue scenario analysis.
+
+**Purpose**
+- Create monthly revenue and order metrics
+- Calculate average order value (AOV)
+- Build the input dataset for scenario-based revenue forecasting
+- Export result to `monthly_kpi.csv`
+
+**Output columns**
+- `month`
+- `revenue`
+- `orders`
+- `aov`
 
 ---
 
-## Purpose
+## Data Flow
 
-- Provide clean, structured input data for forecasting models  
-- Ensure data consistency and reproducibility  
-- Bridge raw data and analytical modeling  
+`dw.v_sales_enriched`
+→ `01_monthly_orders.sql`
+→ `orders_monthly.csv`
+→ forecasting models
+
+`dw.v_sales_enriched`
+→ `03_monthly_kpi.sql`
+→ `monthly_kpi.csv`
+→ revenue scenario analysis
+
+---
+
+## Notes
+
+- Returned or canceled invoices are excluded using:
+  `WHERE invoice_no NOT LIKE 'C%'`
+- These SQL scripts are intended for dataset generation, not final dashboard reporting
+- Exported CSV files are stored in the `data/` folder
