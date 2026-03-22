@@ -2,25 +2,22 @@
 
 ## Overview
 
-This module builds a forecasting pipeline to predict **monthly order volume**
-using time series models.
+This module builds a forecasting pipeline to predict monthly order volume using time series models.
 
-The goal is to extend descriptive analytics into **forward-looking insights**,
-enabling better planning and decision-making.
+The goal is to extend descriptive analytics into forward-looking insights, enabling better planning and decision-making.
 
 ---
 
 ## Executive Summary
 
-This project demonstrates how historical order data can be transformed into
-actionable forecasts using baseline and statistical time series models.
+This project demonstrates how historical order data can be transformed into actionable forecasts using baseline and statistical time series models.
 
 Two approaches are compared:
 
 * Moving Average (baseline)
 * SARIMA (time series model)
 
-The focus is not only on prediction accuracy, but on **business applicability**.
+The focus is not only on prediction accuracy, but on business applicability.
 
 ---
 
@@ -28,19 +25,19 @@ The focus is not only on prediction accuracy, but on **business applicability**.
 
 Forecasting order volume is critical for:
 
-* 📈 Revenue planning
-* 📦 Inventory and supply chain optimization
-* 📊 Identifying future demand trends
+* Revenue planning
+* Inventory and supply chain optimization
+* Identifying future demand trends
 
-This model supports **data-driven operational and financial decisions**.
+This model supports data-driven operational and financial decisions.
 
 ---
 
 ## Dataset
 
-* Source: `data/orders_monthly.csv`
+* Source: data/orders_monthly.csv
 * Granularity: Monthly
-* Target variable: `orders`
+* Target variable: orders
 
 | Column | Description        |
 | ------ | ------------------ |
@@ -53,7 +50,7 @@ This model supports **data-driven operational and financial decisions**.
 
 ### 1. Data Preparation
 
-* Converted `month` to datetime format
+* Converted month to datetime format
 * Sorted data chronologically
 * Split into training and test sets (last 6 months as test)
 
@@ -63,7 +60,7 @@ This model supports **data-driven operational and financial decisions**.
 
 A simple model using recent historical averages.
 
-📌 Purpose:
+Purpose:
 
 * Establish a benchmark
 * Provide stable and interpretable forecasts
@@ -78,7 +75,7 @@ A statistical time series model designed to capture:
 * Seasonality
 * Temporal dependencies
 
-📌 Configuration:
+Configuration:
 
 * order = (1,1,1)
 * seasonal_order = (1,1,1,12)
@@ -89,12 +86,12 @@ A statistical time series model designed to capture:
 
 Evaluation metric:
 
-* **MAPE (Mean Absolute Percentage Error)**
+* Mean Absolute Percentage Error (MAPE)
 
 | Model          | MAPE |
 | -------------- | ---- |
-| Moving Average | XX%  |
-| SARIMA         | XX%  |
+| Moving Average | ~30% |
+| SARIMA         | ~51% |
 
 ---
 
@@ -103,6 +100,45 @@ Evaluation metric:
 * Moving Average provides a stable baseline under limited data conditions
 * SARIMA attempts to capture temporal patterns but is constrained by short time series
 * Model performance is influenced heavily by data availability
+
+Moving Average was selected as the primary model due to better performance and stability.
+
+---
+
+## SQL-Based Baseline (Additional Validation)
+
+A SQL-based Moving Average forecast was also implemented to create a transparent baseline.
+
+Approach:
+
+* Aggregate monthly orders
+* Compute average of last 3 months
+* Use as baseline estimate
+
+SQL Example:
+
+```
+WITH monthly_orders AS (
+    SELECT
+        date_trunc('month', to_date(date_key::text, 'YYYYMMDD'))::date AS month,
+        COUNT(DISTINCT invoice_no) AS orders
+    FROM dw.v_sales_enriched
+    WHERE is_return = false
+    GROUP BY 1
+),
+last_3_avg AS (
+    SELECT AVG(orders) AS avg_orders
+    FROM (
+        SELECT orders
+        FROM monthly_orders
+        ORDER BY month DESC
+        LIMIT 3
+    ) t
+)
+SELECT avg_orders FROM last_3_avg;
+```
+
+This SQL baseline provides a simple and explainable benchmark for validating model-based forecasts.
 
 ---
 
@@ -126,7 +162,7 @@ Forecasted orders can be used to:
 * Plan inventory levels
 * Optimize marketing and promotions
 
-This bridges the gap between analytics and business strategy.
+This forecasting output is extended into revenue scenario analysis in a downstream module.
 
 ---
 
@@ -143,11 +179,10 @@ This bridges the gap between analytics and business strategy.
 * Extend dataset to 24–36 months
 * Incorporate external variables
 * Implement advanced models (Prophet, ML-based models)
-* Build revenue forecasting layer
+* Improve AOV modeling and revenue forecasting
 
 ---
 
-## 🚀 Summary
+## Summary
 
-> Built a time series forecasting pipeline using baseline and SARIMA models
-> to transform historical order data into actionable business insights.
+Built a time series forecasting pipeline using baseline and SARIMA models to transform historical order data into actionable business insights.
