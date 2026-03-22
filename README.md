@@ -190,18 +190,24 @@ Docs: `business_analytics/README.md`
 
 ---
 
-### 5. Forecasting (Design Completed)
+### 5. Forecasting
 
-This layer is designed to extend validated historical analytics
-into forward-looking predictions.
+This layer extends validated historical analytics
+into forward-looking predictions using a hybrid SQL + Python approach.
 
-Planned focus areas:
-- Revenue and order volume forecasting
-- Seasonality and trend modeling
-- Scenario-based projections using KPI marts
+Key capabilities include:
 
-Architecture and feature definitions
-are aligned with existing metric and analytics layers.
+- Time-series forecasting of order volume
+- Revenue projection using Orders × AOV decomposition
+- Model evaluation (MAPE, error tracking)
+- Scenario analysis (baseline, upside, downside)
+
+The forecasting pipeline is built on top of
+validated KPI marts from the metric layer,
+ensuring consistency between historical analytics
+and predictive outputs.
+
+Path: `forecasting/`  
 
 ---
 
