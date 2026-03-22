@@ -64,3 +64,4 @@ SQL (dw.v_sales_enriched)
 * Dataset is limited to short time series (~13 months)
 * Used for demonstration of forecasting pipeline
 * Revenue scenario assumes relatively stable AOV
+* Revenue forecast is derived from forecasted orders combined with stable AOV assumption
