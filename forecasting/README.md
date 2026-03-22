@@ -212,15 +212,35 @@ This SQL baseline provides a simple and explainable benchmark for validating mod
 
 ---
 
-## Forecast Visualization
+## 📊 Forecast Visualization
 
-The model outputs are visualized to compare:
+### Monthly Orders Trend
 
-* Actual values
-* Moving Average predictions
-* SARIMA predictions
+![orders_trend](../screenshoot/orders_trend.jpg)
 
-This allows clear evaluation of model behavior.
+Orders show variability over time with a noticeable upward trend in later months,
+indicating potential seasonality and motivating the need for forecasting.
+
+---
+
+### Forecast vs Actual (SARIMA)
+
+![forecast](../screenshoot/orders_forecast_vs_actual.jpg)
+
+The SARIMA model struggled to capture recent spikes in order volume,
+highlighting the limitations of complex models under limited data conditions.
+
+---
+
+### Revenue Scenario Analysis
+
+![revenue](../screenshoot/revenue_scenario.jpg)
+
+Revenue projections indicate that maintaining order volume is critical,
+as AOV remains relatively stable and does not offset demand fluctuations.
+
+Scenario analysis suggests that stabilizing order volume could significantly reduce
+projected revenue decline.
 
 ---
 
