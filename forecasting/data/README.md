@@ -32,7 +32,7 @@ This folder contains datasets used for forecasting and revenue analysis.
 
 ---
 
-### 3. monthly_kpi.csv ⭐
+### 3. monthly_kpi.csv
 
 * Monthly KPI dataset for revenue scenario analysis
 * Generated from SQL (data warehouse)
