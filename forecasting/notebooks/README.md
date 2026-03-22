@@ -12,6 +12,18 @@ Revenue = Orders × Average Order Value (AOV)
 
 ---
 
+## Core Strategy
+
+Revenue is not forecasted directly.
+
+Instead, it is derived using a business-driven approach:
+
+Revenue ≈ Forecast Orders × Stable AOV
+
+This improves interpretability and aligns with real-world financial planning.
+
+---
+
 ## Objective
 
 The goal is to answer a key business question:
