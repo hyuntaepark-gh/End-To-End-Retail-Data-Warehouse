@@ -35,6 +35,20 @@ and naturally extending into forecasting and scenario-based thinking.
 
 ---
 
+## 🔮 Forecasting & Decision Layer
+
+This project extends beyond traditional data warehousing by incorporating a forecasting layer.
+
+Forecasting is used to transform historical metrics into forward-looking insights:
+
+- Predict future order volume using time-series models
+- Translate forecasts into revenue scenarios (Orders × AOV)
+- Support decision-making under uncertainty (downside / upside scenarios)
+
+This bridges the gap between data infrastructure and business strategy.
+
+---
+
 ## 🧱 Architecture Overview
 
 This project follows a **layered data platform architecture**,
@@ -53,6 +67,21 @@ Each layer has a clear responsibility and strict separation of concerns.
 | business_analytics | Decision-oriented analytics and KPI decomposition |
 | forecasting | Predictive modeling and forward-looking analysis |
 | insights | Executive-ready insights and strategic recommendations |
+
+---
+
+## ⚙️ SQL + Python Hybrid Approach
+
+This project combines SQL-based analytics with Python-based modeling:
+
+- SQL is used for data preparation, KPI design, and baseline analysis
+- Python is used for forecasting, evaluation, and scenario simulation
+
+This hybrid approach ensures:
+
+- Transparency (SQL baseline)
+- Flexibility (Python modeling)
+- Business alignment (decision-focused outputs)
 
 ---
 
