@@ -208,6 +208,7 @@ ensuring consistency between historical analytics
 and predictive outputs.
 
 Path: `forecasting/`  
+Docs: `forecasting/README.md`
 
 ---
 
