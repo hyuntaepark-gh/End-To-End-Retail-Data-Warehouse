@@ -193,7 +193,8 @@ Docs: [`business_analytics/README.md`](./business_analytics/README.md)
 ### 5. Forecasting
 
 This layer extends validated historical analytics
-into forward-looking predictions using a hybrid SQL + Python approach.
+into forward-looking predictions using a structured
+end-to-end SQL + Python pipeline.
 
 Key capabilities include:
 
@@ -202,10 +203,17 @@ Key capabilities include:
 - Model evaluation (MAPE, error tracking)
 - Scenario analysis (baseline, upside, downside)
 
-The forecasting pipeline is built on top of
-validated KPI marts from the metric layer,
-ensuring consistency between historical analytics
-and predictive outputs.
+The forecasting system is built on top of:
+
+- SQL-based feature engineering
+- ML-ready dataset preparation
+- Data validation and KPI consistency
+
+This ensures that predictions are:
+
+- Reproducible
+- Consistent with historical analytics
+- Directly applicable to business decision-making
 
 Path: [`forecasting/`](./forecasting/)  
 Docs: [`forecasting/README.md`](./forecasting/README.md)
