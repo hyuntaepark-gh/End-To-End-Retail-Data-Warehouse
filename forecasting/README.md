@@ -78,6 +78,8 @@ This model supports data-driven operational and financial decisions.
 | month  | Month (time index) |
 | orders | Number of orders   |
 
+---
+
 ### 2. Revenue Scenario Dataset
 
 * Source: `data/monthly_kpi.csv`
