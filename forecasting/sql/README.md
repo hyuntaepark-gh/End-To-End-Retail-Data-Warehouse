@@ -72,7 +72,7 @@ Generates a monthly KPI dataset for revenue scenario analysis.
 
 ## Notes
 
-- Returned or canceled invoices are excluded using:
-  `WHERE invoice_no NOT LIKE 'C%'`
-- These SQL scripts are intended for dataset generation, not final dashboard reporting
-- Exported CSV files are stored in the `data/` folder
+- Returned transactions are excluded using:
+  WHERE is_return = false
+
+- This ensures consistency with the data warehouse logic used across the project
