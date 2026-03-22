@@ -10,6 +10,18 @@ This forecasting module includes both order forecasting and downstream revenue s
 
 ---
 
+## Data Flow
+
+This module follows an end-to-end workflow from warehouse-level data to forward-looking business scenarios.
+
+`dw.v_sales_enriched`
+→ SQL (`01_monthly_orders.sql`, `02_monthly_orders_timeseries.sql`, `03_monthly_kpi.sql`)  
+→ CSV (`orders_monthly.csv`, `monthly_kpi.csv`)  
+→ Order Forecasting  
+→ Revenue Scenario Analysis
+
+---
+
 ## Executive Summary
 
 This project demonstrates how historical order data can be transformed into actionable forecasts using baseline and statistical time series models.
