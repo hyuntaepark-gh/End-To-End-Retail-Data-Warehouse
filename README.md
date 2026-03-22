@@ -212,19 +212,22 @@ Docs: `forecasting/README.md`
 
 ---
 
-### 6. Insights (Design Completed)
+### 6. Insights
 
 This layer represents the executive-facing decision output
 of the analytics stack.
 
-Planned outputs:
+Rather than existing as a separate module,
+insights are embedded within the Business Analytics layer
+through:
+
 - Executive summaries
-- KPI narratives
-- Strategy-oriented recommendations
+- Derived recommendations in each analytical module
+- A centralized Business Recommendation Layer
 
-All insights are designed to be directly traceable
-to validated analytical modules and metric definitions.
-
+All insights are directly traceable to validated analytical findings,
+ensuring transparency, explainability,
+and decision-level clarity.
 
 ---
 
