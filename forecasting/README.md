@@ -252,6 +252,15 @@ This bridges forecasting with financial planning and business decision-making.
 
 ---
 
+## Downstream Module
+
+The forecasting output is consumed by `03_revenue_scenario.ipynb`,
+which translates predicted orders into downside, base, and upside revenue scenarios.
+
+This extends the forecasting pipeline into business-oriented decision support.
+
+---
+
 ## Limitations
 
 * Limited historical data reduces model reliability
