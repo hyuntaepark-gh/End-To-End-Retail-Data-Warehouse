@@ -6,6 +6,8 @@ This module builds a forecasting pipeline to predict monthly order volume using 
 
 The goal is to extend descriptive analytics into forward-looking insights, enabling better planning and decision-making.
 
+This forecasting module includes both order forecasting and downstream revenue scenario analysis.
+
 ---
 
 ## Executive Summary
@@ -18,6 +20,8 @@ Two approaches are compared:
 * SARIMA (time series model)
 
 The focus is not only on prediction accuracy, but on business applicability.
+
+The forecasting outputs are further extended into revenue scenario modeling using a separate notebook (`03_revenue_scenario.ipynb`).
 
 ---
 
@@ -162,7 +166,23 @@ Forecasted orders can be used to:
 * Plan inventory levels
 * Optimize marketing and promotions
 
-This forecasting output is extended into revenue scenario analysis in a downstream module.
+This forecasting output is extended into revenue scenario analysis using:
+
+➡️ `03_revenue_scenario.ipynb`
+
+---
+
+## Revenue Scenario Extension
+
+In the downstream module, forecasted orders are combined with Average Order Value (AOV) to estimate future revenue.
+
+Approach:
+
+* Forecast Orders (from this module)
+* Multiply by recent or scenario-based AOV
+* Generate revenue projections under different assumptions
+
+This bridges forecasting with financial planning and business decision-making.
 
 ---
 
@@ -186,3 +206,5 @@ This forecasting output is extended into revenue scenario analysis in a downstre
 ## Summary
 
 Built a time series forecasting pipeline using baseline and SARIMA models to transform historical order data into actionable business insights.
+
+Extended the analysis into revenue scenario modeling to support planning and decision-making.
