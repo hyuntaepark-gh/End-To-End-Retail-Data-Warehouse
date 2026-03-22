@@ -232,6 +232,15 @@ highlighting the limitations of complex models under limited data conditions.
 
 ---
 
+### Forecast vs Actual (Moving Average)
+
+![ma_forecast](./screenshoot/orders_forecast_ma.jpg)
+
+The moving average model provides stable forecasts and better aligns with overall demand patterns,
+making it a more reliable baseline under limited data conditions.
+
+---
+
 ### Revenue Scenario Analysis
 
 ![revenue](./screenshoot/revenue_scenario.jpg)
