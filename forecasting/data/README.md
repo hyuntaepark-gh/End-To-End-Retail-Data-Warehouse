@@ -54,7 +54,6 @@ SQL (dw.v_sales_enriched)
 ├── orders_monthly.csv  
 │   → Forecast Model  
 │   → orders_forecast.csv  
-
 └── monthly_kpi.csv  
     → Revenue Scenario Analysis  
 
