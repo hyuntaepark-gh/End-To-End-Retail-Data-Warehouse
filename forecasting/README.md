@@ -51,7 +51,9 @@ This model supports data-driven operational and financial decisions.
 
 ## Dataset
 
-* Source: data/orders_monthly.csv
+### 1. Order Forecasting Dataset
+
+* Source: `data/orders_monthly.csv`
 * Granularity: Monthly
 * Target variable: orders
 
@@ -59,6 +61,19 @@ This model supports data-driven operational and financial decisions.
 | ------ | ------------------ |
 | month  | Month (time index) |
 | orders | Number of orders   |
+
+### 2. Revenue Scenario Dataset
+
+* Source: `data/monthly_kpi.csv`
+* Granularity: Monthly
+* Purpose: Revenue scenario analysis
+
+| Column  | Description |
+| ------- | ----------- |
+| month   | Month |
+| revenue | Total monthly revenue |
+| orders  | Number of orders |
+| aov     | Average order value |
 
 ---
 
