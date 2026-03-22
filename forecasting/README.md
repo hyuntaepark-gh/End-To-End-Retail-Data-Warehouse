@@ -154,14 +154,10 @@ Configuration:
 
 ## Model Evaluation
 
-Evaluation metric:
-
-* Mean Absolute Percentage Error (MAPE)
-
-| Model          | MAPE |
-| -------------- | ---- |
-| Moving Average | ~30% |
-| SARIMA         | ~51% |
+| Model | MAPE | Interpretation |
+|------|------|----------------|
+| Moving Average | ~30% | Stable and reliable baseline |
+| SARIMA | ~51% | Limited by short time series |
 
 ---
 
@@ -171,7 +167,8 @@ Evaluation metric:
 * SARIMA attempts to capture trend and seasonality, but performance is constrained by the short time series length
 * Model performance is influenced heavily by data availability and historical depth
 
-Moving Average was selected as the primary model due to better performance and stability.
+This highlights that more complex models do not necessarily perform better,
+especially when data is limited, reinforcing the importance of simple baselines.
 
 ---
 
@@ -213,6 +210,9 @@ This SQL baseline provides a simple and explainable benchmark for validating mod
 ---
 
 ## 📊 Forecast Visualization
+
+This visualization directly motivated the forecasting step,
+as order volume showed both variability and an upward trend over time.
 
 ### Monthly Orders Trend
 
@@ -303,3 +303,6 @@ This extends the forecasting pipeline into business-oriented decision support.
 Built a time series forecasting pipeline using baseline and SARIMA models to transform historical order data into actionable business insights.
 
 Extended the analysis into revenue scenario modeling to support planning and decision-making.
+
+Rather than focusing on prediction accuracy alone,
+this module emphasizes translating forecasts into actionable business insights.
