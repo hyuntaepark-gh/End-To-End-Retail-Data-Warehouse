@@ -112,8 +112,8 @@ serving as the authoritative reference for how data flows across layers.
 - Data pipeline & lineage diagram
 - Layer responsibilities and system flow documentation
 
-Path: `architecture/`  
-Docs: `architecture/README.md`
+Path: [architecture/](./architecture/)  
+Docs: [README](./architecture/README.md)
 
 ### 1. Data Foundation
 
@@ -123,8 +123,8 @@ Builds a **trusted base layer** for all downstream analytics.
 - Standardization and cleansing
 - Foundational data quality checks
 
-Path: `data_foundation/`  
-Docs: `data_foundation/README.md`
+Path: [data_foundation/](./data_foundation/)  
+Docs: [README](./data_foundation/README.md)
 
 ---
 
@@ -136,8 +136,8 @@ Creates **analytics-ready dimensional models** optimized for BI and analysis.
 - Fact and dimension table creation
 - KPI-oriented analytics marts
 
-Path: `data_modeling/`  
-Docs: `data_modeling/README.md`
+Path: [data_operations/](./data_operations/)  
+Docs: [README](./data_operations/README.md)
 
 ---
 
@@ -155,9 +155,8 @@ Ensures **platform reliability, correctness, and reproducibility**.
 - Fact-level sanity validation
 - Cross-layer reconciliation
 
-Path: `data_operations/`  
-Docs: `data_operations/README.md`
-
+Path: [`data_operations/`](./data_operations/)  
+Docs: [`data_operations/README.md`](./data_operations/README.md)
 ---
 
 ### 4. Business Analytics
@@ -185,8 +184,8 @@ Each module contains:
 - Execution result screenshots
 - Business interpretation and implications
 
-Path: `business_analytics/`  
-Docs: `business_analytics/README.md`
+Path: [`business_analytics/`](./business_analytics/)  
+Docs: [`business_analytics/README.md`](./business_analytics/README.md)
 
 ---
 
@@ -207,8 +206,8 @@ validated KPI marts from the metric layer,
 ensuring consistency between historical analytics
 and predictive outputs.
 
-Path: `forecasting/`  
-Docs: `forecasting/README.md`
+Path: [`forecasting/`](./forecasting/)  
+Docs: [`forecasting/README.md`](./forecasting/README.md)
 
 ---
 
