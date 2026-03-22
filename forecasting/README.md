@@ -1,16 +1,20 @@
 # 📈 Orders Forecasting (Time Series Analysis)
 
+> End-to-End SQL + Time Series Forecasting Pipeline for Business Decision Making
+
+---
+
 ## Overview
 
-This module builds a complete **end-to-end forecasting pipeline** to predict monthly order volume and support revenue scenario planning.
-
-The goal is to extend descriptive analytics into forward-looking insights, enabling better business planning and decision-making.
-
-This module integrates:
+This module builds a complete end-to-end forecasting pipeline combining:
 
 - SQL-based feature engineering
-- Time series forecasting (Moving Average, SARIMA)
+- ML-ready dataset preparation
+- Time series forecasting models
 - Business-oriented revenue scenario analysis
+
+The goal is to extend descriptive analytics into forward-looking insights,
+enabling better business planning and decision-making.
 
 ---
 
@@ -36,41 +40,23 @@ Python Forecasting Models
 Revenue Scenario Analysis
 ```
 
-
 ---
 
-## 🧱 SQL Pipeline
+## 🧱 SQL Pipeline (Updated)
 
-The pipeline is implemented using layered SQL design:
+The forecasting system is built on a structured SQL pipeline:
 
-### 1️⃣ Feature Engineering (01–06)
+- Feature Engineering (01–06)
+- Training Dataset (10–12)
+- Data Validation (20–23)
+- Analysis (30–34)
+- Prediction Output (40–42)
 
-- Build monthly aggregates (orders, revenue, AOV)
-- Create time-series features (lag, rolling average)
-- Generate churn and return risk features
+This ensures the pipeline is:
 
-### 2️⃣ Training Dataset (10–12)
-
-- Filter valid records
-- Ensure sufficient historical data
-- Prepare ML-ready datasets
-
-### 3️⃣ Data Validation (20–23)
-
-- Check time-series coverage
-- Validate lag features
-- Inspect distribution consistency
-
-### 4️⃣ Analysis (30–34)
-
-- Identify return risk drivers
-- Analyze churn patterns
-- Extract business insights
-
-### 5️⃣ Prediction (40–42)
-
-- Store model outputs
-- Compare actual vs predicted values
+- Reproducible
+- ML-ready
+- Fully traceable from raw data to prediction
 
 ---
 
@@ -130,7 +116,7 @@ The pipeline is implemented using layered SQL design:
 | Model | MAPE | Insight |
 |------|------|--------|
 | Moving Average | ~30% | Stable baseline |
-| SARIMA | ~51% | Overfitting risk with limited data |
+| SARIMA | ~51% | Limited by short time series |
 
 ---
 
@@ -210,7 +196,7 @@ Revenue projections highlight that **order volume is the primary driver**, while
 
 ## 💡 Key Insights
 
-- Simple models outperform complex models under limited data
+- Simple models outperform complex models under limited data conditions
 - Order volume is the primary revenue driver
 - Return behavior varies significantly by product segment
 - Customer recency strongly correlates with churn
@@ -219,12 +205,12 @@ Revenue projections highlight that **order volume is the primary driver**, while
 
 ## 💼 Business Impact
 
-This pipeline enables:
+This forecasting pipeline enables:
 
-- Demand forecasting for inventory planning
+- Accurate demand planning
 - Revenue projection using AOV assumptions
-- Identification of high-risk products and customers
-- Data-driven decision-making
+- Identification of high-risk products and churn-prone customers
+- Data-driven decision-making for operations and marketing
 
 ---
 
@@ -233,6 +219,8 @@ This pipeline enables:
 ```
 Warehouse → SQL → Features → ML → Forecast → Business Insights
 ```
+
+---
 
 
 ---
@@ -247,7 +235,7 @@ Warehouse → SQL → Features → ML → Forecast → Business Insights
 
 ## 🚀 Future Improvements
 
-- Extend data to 24–36 months
+- Extend dataset to 24–36 months
 - Add external features (holiday, promotions)
 - Apply ML models (XGBoost, Prophet)
 - Improve revenue modeling
@@ -256,7 +244,7 @@ Warehouse → SQL → Features → ML → Forecast → Business Insights
 
 ## 🧾 Summary
 
-Built a complete **end-to-end forecasting pipeline** combining SQL, time series modeling, and business scenario analysis.
+Built a complete end-to-end forecasting pipeline combining SQL, time series modeling, and business scenario analysis.
 
 The project focuses not only on prediction accuracy,
 but on transforming forecasts into actionable business insights.
