@@ -89,7 +89,7 @@ This hybrid approach ensures:
 
 See the end-to-end data pipeline and lineage diagram:
 
-- [View Architecture & Data Lineage Diagram](./architecture)
+![Architecture & Data Lineage](./architecture/lineage_pipeline_diagram.png)
 
 This diagram illustrates how **validated data flows across layers** —  
 from raw ingestion through staging, dimensional modeling, analytics marts,
