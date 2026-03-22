@@ -37,6 +37,21 @@ The forecasting outputs are further extended into revenue scenario modeling usin
 
 ---
 
+## Module Structure
+
+This folder includes both predictive modeling and downstream business scenario analysis.
+
+### 1. Order Forecasting
+Builds monthly order forecasts using baseline and statistical time series models.
+
+### 2. Revenue Scenario Analysis
+Transforms forecasted orders into revenue projections using AOV-based scenario logic.
+
+Related notebook:
+* `03_revenue_scenario.ipynb`
+
+---
+
 ## Business Context
 
 Forecasting order volume is critical for:
@@ -74,6 +89,27 @@ This model supports data-driven operational and financial decisions.
 | revenue | Total monthly revenue |
 | orders  | Number of orders |
 | aov     | Average order value |
+
+---
+
+## Outputs
+
+The forecasting workflow produces datasets that can be reused in downstream business analysis.
+
+| File | Description |
+| ---- | ----------- |
+| `orders_forecast.csv` | Forecasted monthly orders generated from the forecasting notebook |
+| `monthly_kpi.csv` | Monthly KPI input dataset used in revenue scenario analysis |
+
+---
+
+## Exploratory Analysis
+
+Initial inspection of the monthly order series suggested:
+
+* A visible change in order volume over time
+* Limited seasonal evidence due to short historical coverage
+* The need for a simple and interpretable baseline model
 
 ---
 
@@ -129,8 +165,8 @@ Evaluation metric:
 ## Results & Insights
 
 * Moving Average provides a stable baseline under limited data conditions
-* SARIMA attempts to capture temporal patterns but is constrained by short time series
-* Model performance is influenced heavily by data availability
+* SARIMA attempts to capture trend and seasonality, but performance is constrained by the short time series length
+* Model performance is influenced heavily by data availability and historical depth
 
 Moving Average was selected as the primary model due to better performance and stability.
 
