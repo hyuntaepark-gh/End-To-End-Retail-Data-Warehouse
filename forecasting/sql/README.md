@@ -1,78 +1,100 @@
-# 📂 SQL Files
+# SQL Layer for Forecasting & Machine Learning
 
-This folder contains SQL scripts used to generate forecasting and revenue scenario input datasets from the data warehouse.
+This folder contains all SQL scripts used to build the machine learning pipeline on top of the retail data warehouse.
 
-All SQL files are based on `dw.v_sales_enriched` and are designed to create clean, exportable monthly datasets for Python analysis.
-
----
-
-## Files
-
-### 1. 01_monthly_orders.sql
-
-Generates a monthly order-level aggregation dataset.
-
-**Purpose**
-- Create monthly order counts
-- Build the base input for forecasting models
-- Export result to `orders_monthly.csv`
-
-**Output columns**
-- `month`
-- `orders`
+The SQL layer is structured to clearly separate feature engineering, training datasets, validation, analysis, and prediction outputs.
 
 ---
 
-### 2. 02_monthly_orders_timeseries.sql
+## 📂 Structure Overview
 
-Generates a time-series-ready version of monthly orders.
+### 01–06: Feature Engineering
+These scripts create ML-ready feature views from the data warehouse.
 
-**Purpose**
-- Prepare a clean monthly time series
-- Ensure chronological ordering for forecasting notebooks
-- Support baseline and SARIMA modeling
+- Lag features (e.g., revenue_lag1, lag2, lag3)
+- Rolling metrics (e.g., 3-month, 6-month averages)
+- Aggregated KPIs (orders, revenue, AOV, customers)
+- Behavioral features (recency, historical return rate)
 
-**Output columns**
-- `month`
-- `orders`
-
----
-
-### 3. 03_monthly_kpi.sql
-
-Generates a monthly KPI dataset for revenue scenario analysis.
-
-**Purpose**
-- Create monthly revenue and order metrics
-- Calculate average order value (AOV)
-- Build the input dataset for scenario-based revenue forecasting
-- Export result to `monthly_kpi.csv`
-
-**Output columns**
-- `month`
-- `revenue`
-- `orders`
-- `aov`
+Key outputs:
+- `ml.feature_monthly_sales`
+- `ml.feature_return_risk`
+- `ml.feature_customer_churn`
 
 ---
 
-## Data Flow
+### 10–12: Training Datasets
+These scripts prepare clean, model-ready datasets.
 
-`dw.v_sales_enriched`
-→ `01_monthly_orders.sql`
-→ `orders_monthly.csv`
-→ forecasting models
+- Remove null values
+- Filter invalid records
+- Standardize feature inputs
 
-`dw.v_sales_enriched`
-→ `03_monthly_kpi.sql`
-→ `monthly_kpi.csv`
-→ revenue scenario analysis
+Key outputs:
+- `ml.train_feature_monthly_sales`
+- `ml.train_feature_return_risk`
+- `ml.train_feature_customer_churn`
 
 ---
 
-## Notes
+### 20–23: Data Validation
+These queries validate data quality and feature consistency.
 
-- Returned transactions are excluded using:
-  WHERE is_return = false
+- Null checks
+- Time-series continuity
+- Data coverage
+- Distribution checks
 
-- This ensures consistency with the data warehouse logic used across the project
+Purpose:
+Ensure reliability before training models
+
+---
+
+### 30–34: Analysis Layer
+These queries provide business insights based on ML features.
+
+Examples:
+- Return rate by price band
+- High-risk products identification
+- Churn distribution and segmentation
+- Feature-level analysis for interpretability
+
+---
+
+### 40–42: Prediction Output Tables
+These scripts define tables for storing model outputs.
+
+Key outputs:
+- `ml.prediction_monthly_sales`
+- `ml.prediction_return_risk`
+- `ml.prediction_customer_churn`
+
+These tables are populated by Python notebooks after model training.
+
+---
+
+## 🔁 End-to-End Flow
+
+Raw Data  
+→ Data Warehouse (DW)  
+→ Feature Views (01–06)  
+→ Training Views (10–12)  
+→ Validation (20–23)  
+→ ML Models (Notebook Layer)  
+→ Prediction Tables (40–42)  
+→ CSV / BI / Dashboard
+
+---
+
+## 💡 Why This Layer Matters
+
+This SQL layer transforms raw transactional data into machine learning-ready datasets.
+
+It demonstrates:
+
+- Strong SQL-based feature engineering
+- Clear separation of data pipeline stages
+- Integration between data warehouse and ML workflows
+- Production-style data preparation for predictive modeling
+
+This goes beyond simple querying and reflects real-world data engineering + analytics practices.
