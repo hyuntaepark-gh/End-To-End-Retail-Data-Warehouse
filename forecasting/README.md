@@ -4,7 +4,7 @@
 
 ---
 
-## Overview
+## 📌 Overview
 
 This module builds a complete end-to-end forecasting pipeline combining:
 
@@ -40,11 +40,15 @@ Python Forecasting Models
 Revenue Scenario Analysis
 ```
 
+✔ Fully reproducible  
+✔ ML-ready dataset  
+✔ Traceable from raw data → prediction → insight  
+
 ---
 
-## 🧱 SQL Pipeline (Updated)
+## 🧱 SQL Pipeline
 
-The forecasting system is built on a structured SQL pipeline:
+The forecasting layer is built on top of a structured SQL pipeline:
 
 - Feature Engineering (01–06)
 - Training Dataset (10–12)
@@ -52,17 +56,17 @@ The forecasting system is built on a structured SQL pipeline:
 - Analysis (30–34)
 - Prediction Output (40–42)
 
-This ensures the pipeline is:
+This ensures:
 
-- Reproducible
-- ML-ready
-- Fully traceable from raw data to prediction
+- Consistency between analytics and forecasting
+- High data reliability
+- Clear lineage for debugging and validation
 
 ---
 
 ## 📊 Dataset
 
-### Order Forecasting Dataset
+### 📦 Order Forecasting Dataset
 
 - Source: `data/orders_monthly.csv`
 - Target: `orders`
@@ -74,7 +78,7 @@ This ensures the pipeline is:
 
 ---
 
-### Revenue Scenario Dataset
+### 💰 Revenue Scenario Dataset
 
 - Source: `data/monthly_kpi.csv`
 
@@ -91,7 +95,7 @@ This ensures the pipeline is:
 
 ### Data Preparation
 
-- Converted month to datetime
+- Converted month to datetime format
 - Sorted chronologically
 - Train/test split (last 6 months)
 
@@ -102,12 +106,12 @@ This ensures the pipeline is:
 #### 1️⃣ Moving Average (Baseline)
 
 - Simple and interpretable
-- Stable under limited data
+- Performs well under limited data conditions
 
 #### 2️⃣ SARIMA
 
 - Captures trend and seasonality
-- Performance limited by short time series
+- Performance constrained by short time series
 
 ---
 
@@ -115,8 +119,8 @@ This ensures the pipeline is:
 
 | Model | MAPE | Insight |
 |------|------|--------|
-| Moving Average | ~30% | Stable baseline |
-| SARIMA | ~51% | Limited by short time series |
+| Moving Average | ~30% | Stable and reliable baseline |
+| SARIMA | ~51% | Underperforms due to limited history |
 
 ---
 
@@ -126,7 +130,8 @@ This ensures the pipeline is:
 
 ![orders_trend](./result/orders_trend.jpg)
 
-Order volume shows variability and an upward trend, motivating forecasting.
+Order volume shows variability and a gradual upward trend,
+highlighting the need for forecasting.
 
 ---
 
@@ -142,7 +147,7 @@ SARIMA struggles to capture recent spikes due to limited historical data.
 
 ![ma_forecast](./result/orders_forecast_ma.jpg)
 
-Moving Average provides more stable and reliable forecasts.
+Moving Average provides more stable and reliable forecasts under constrained data.
 
 ---
 
@@ -150,7 +155,12 @@ Moving Average provides more stable and reliable forecasts.
 
 ![revenue](./result/revenue_scenario.jpg)
 
-Revenue projections highlight that **order volume is the primary driver**, while AOV remains relatively stable.
+Revenue projections demonstrate that:
+
+👉 **Revenue = Orders × AOV**
+
+Order volume is the primary driver,
+while AOV remains relatively stable.
 
 ---
 
@@ -197,9 +207,9 @@ Revenue projections highlight that **order volume is the primary driver**, while
 ## 💡 Key Insights
 
 - Simple models outperform complex models under limited data conditions
-- Order volume is the primary revenue driver
+- Order volume is the primary driver of revenue
 - Return behavior varies significantly by product segment
-- Customer recency strongly correlates with churn
+- Customer recency strongly correlates with churn risk
 
 ---
 
@@ -207,10 +217,11 @@ Revenue projections highlight that **order volume is the primary driver**, while
 
 This forecasting pipeline enables:
 
-- Accurate demand planning
-- Revenue projection using AOV assumptions
-- Identification of high-risk products and churn-prone customers
-- Data-driven decision-making for operations and marketing
+- 📦 Demand planning based on predicted orders
+- 💰 Revenue projection using AOV assumptions
+- ⚠️ Identification of high-risk products (returns)
+- 👤 Detection of churn-prone customers
+- 📊 Data-driven decision-making across operations and marketing
 
 ---
 
@@ -222,29 +233,30 @@ Warehouse → SQL → Features → ML → Forecast → Business Insights
 
 ---
 
-
----
-
 ## ⚠️ Limitations
 
 - Limited historical data
 - No external variables (seasonality, promotions)
-- SARIMA underperforms with short series
+- SARIMA underperforms on short time series
 
 ---
 
 ## 🚀 Future Improvements
 
 - Extend dataset to 24–36 months
-- Add external features (holiday, promotions)
-- Apply ML models (XGBoost, Prophet)
-- Improve revenue modeling
+- Incorporate external features (holidays, promotions)
+- Apply advanced ML models (XGBoost, Prophet, LSTM)
+- Enhance revenue modeling with dynamic AOV
 
 ---
 
 ## 🧾 Summary
 
-Built a complete end-to-end forecasting pipeline combining SQL, time series modeling, and business scenario analysis.
+Built a complete end-to-end forecasting pipeline combining:
 
-The project focuses not only on prediction accuracy,
+- SQL-based data modeling
+- Time series forecasting
+- Business-driven revenue scenarios
+
+This project focuses not only on prediction accuracy,
 but on transforming forecasts into actionable business insights.
