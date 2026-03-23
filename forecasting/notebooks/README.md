@@ -1,127 +1,141 @@
-# 💰 Revenue Scenario Analysis
+# Forecasting Notebooks
 
-## Overview
+This folder contains the notebook layer for the forecasting and machine learning workflows built on top of the retail data warehouse.
 
-This module translates forecasted order volume into revenue projections
-by combining predicted demand with historical business KPIs.
-
-Instead of directly forecasting revenue,
-this approach uses a simple and interpretable assumption:
-
-Revenue = Orders × Average Order Value (AOV)
+These notebooks extend the SQL-based metric and feature views into predictive and decision-support outputs.
 
 ---
 
-## Core Strategy
+## Notebook Overview
 
-Revenue is not forecasted directly.
+### 01_orders_forecast.ipynb
+Forecasts future order volume using historical order trends.
 
-Instead, it is derived using a business-driven approach:
+**Purpose**
+- Predict future order counts
+- Establish the baseline demand forecasting layer
 
-Revenue ≈ Forecast Orders × Stable AOV
+**Typical Inputs**
+- Historical monthly order metrics
+- Forecast-ready SQL outputs from the warehouse
 
-This improves interpretability and aligns with real-world financial planning.
-
----
-
-## Objective
-
-The goal is to answer a key business question:
-
-"Given predicted order volume, what is the expected revenue?"
-
-This allows stakeholders to:
-- Estimate future performance
-- Plan inventory and marketing strategies
-- Evaluate upside and downside scenarios
+**Typical Outputs**
+- Forecasted orders
+- Evaluation metrics
+- Forecast charts
 
 ---
 
-## Methodology
+### 02_revenue_scenario.ipynb
+Transforms forecasted orders into revenue scenarios using business assumptions.
 
-### Step 1: Load Inputs
+**Core Logic**
+- Revenue = Orders × Average Order Value (AOV)
 
-- orders_forecast.csv  
-  Predicted monthly order volume
+**Purpose**
+- Estimate expected future revenue
+- Build baseline / upside / downside scenarios
+- Support financial planning and inventory decisions
 
-- monthly_kpi.csv  
-  Historical revenue, orders, and AOV
-
----
-
-### Step 2: AOV Assumption
-
-We assume that AOV remains relatively stable.
-
-Forecast Revenue = Predicted Orders × Recent Average AOV
-
-- AOV is calculated from recent historical data
-- This simplifies modeling and improves interpretability
+**Typical Outputs**
+- Revenue projections
+- Scenario comparison tables
+- Scenario charts
 
 ---
 
-### Step 3: Revenue Projection
+### 03_churn_model.ipynb
+Predicts customer churn risk using customer-level behavioral features.
 
-- Multiply predicted orders by AOV
-- Generate future revenue estimates
-- Compare with historical trends
+**Purpose**
+- Identify customers likely to stop purchasing
+- Support retention and CRM targeting
 
----
+**Typical Inputs**
+- `ml.train_feature_customer_churn`
 
-## Output
-
-| Column         | Description                    |
-|---------------|--------------------------------|
-| month         | Forecast month                |
-| pred_orders   | Predicted order volume        |
-| assumed_aov   | Assumed average order value   |
-| pred_revenue  | Estimated revenue             |
-
----
-
-## Key Insight
-
-- Order volume is the primary driver of revenue change
-- AOV remains relatively stable over time
-- Therefore, improving demand forecasting directly improves revenue planning
+**Typical Outputs**
+- Churn probability
+- Predicted churn label
+- Top at-risk customers
+- Output table / CSV for BI use
 
 ---
 
-## Business Interpretation
+### 04_return_risk_model.ipynb
+Predicts return risk at the transaction or product level.
 
-This approach reflects how real businesses operate:
+**Purpose**
+- Estimate probability of return
+- Prioritize high-risk products or orders
+- Support operational risk reduction
 
-- Demand (orders) is volatile and requires forecasting
-- Pricing (AOV) tends to be stable in the short term
+**Typical Inputs**
+- `ml.train_feature_return_risk`
 
-This enables:
-- More explainable forecasting
-- Easier communication with stakeholders
-- Faster scenario analysis without complex models
-
----
-
-## Limitations
-
-- Assumes stable AOV (may not hold during promotions or seasonality)
-- Short historical window (~13 months)
-- Does not incorporate external factors (marketing, holidays)
+**Typical Outputs**
+- Return probability
+- Predicted return label
+- High-risk SKU / invoice list
+- Output table / CSV for BI use
 
 ---
 
-## Why This Matters
+### 05_model_experiment.ipynb
+Contains model comparison, feature testing, and experimental analysis.
 
-This module demonstrates the transition from:
+**Purpose**
+- Compare alternative models
+- Evaluate feature usefulness
+- Improve predictive performance
 
-Data → Forecast → Business Decision
-
-Instead of focusing only on model accuracy,
-it emphasizes how predictions are used in real-world decision-making.
+**Typical Outputs**
+- Model comparison metrics
+- Experiment logs
+- Performance summaries
 
 ---
 
-## Next Step
+## End-to-End Flow
 
-- Add AOV scenario variations (increase / decrease)
-- Incorporate promotion or pricing effects
-- Extend to category-level or segment-level forecasting
+The notebook layer fits into the broader project pipeline:
+
+Raw Data  
+→ Data Foundation  
+→ Data Modeling  
+→ Business Analytics  
+→ SQL Feature Views  
+→ Notebook Models  
+→ Prediction Output Tables / CSV / BI
+
+---
+
+## Related SQL Objects
+
+These notebooks are designed to work with ML-ready SQL views and tables such as:
+
+- `ml.feature_monthly_sales`
+- `ml.feature_return_risk`
+- `ml.feature_customer_churn`
+- `ml.train_feature_monthly_sales`
+- `ml.train_feature_return_risk`
+- `ml.train_feature_customer_churn`
+- `ml.prediction_monthly_sales`
+- `ml.prediction_return_risk`
+- `ml.prediction_customer_churn`
+
+---
+
+## Why This Layer Matters
+
+This notebook layer shows that the project goes beyond descriptive analytics.
+
+It demonstrates how a structured retail warehouse can support:
+
+- demand forecasting
+- revenue planning
+- return risk scoring
+- churn prediction
+- model experimentation
+
+This makes the project closer to a real analytics + machine learning workflow rather than a SQL-only portfolio project.
