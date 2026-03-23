@@ -166,6 +166,8 @@ while AOV remains relatively stable.
 
 ## 🤖 ML Prediction Results
 
+This section demonstrates how machine learning models extend SQL-based analytics into predictive insights.
+
 ### 📊 Forecast vs Actual (ML Model)
 
 ![ml_forecast](./result/forecast_actual_vs_pred.jpg)
