@@ -164,6 +164,41 @@ while AOV remains relatively stable.
 
 ---
 
+## 🤖 ML Prediction Results
+
+### 📊 Forecast vs Actual (ML Model)
+
+![ml_forecast](./result/forecast_actual_vs_pred.png)
+
+The model captures overall patterns but shows directional deviation,
+highlighting limitations of tree-based models for time-series forecasting.
+
+---
+
+### ⚠️ Top 20 Predicted Return Risk
+
+![return_risk](./result/return_risk_top20.png)
+
+Products with high predicted return probability indicate operational
+or quality issues requiring further investigation.
+
+⚠️ Note: Probability saturation indicates class imbalance or model calibration issues,
+suggesting the need for further tuning.
+
+---
+
+### 👤 Top 20 Predicted Churn Customers
+
+![churn_risk](./result/churn_top20.png)
+
+High-risk customers identified by the model can be targeted
+with retention campaigns and personalized interventions.
+
+⚠️ Note: Probability saturation indicates class imbalance or model calibration issues,
+suggesting the need for further tuning.
+
+---
+
 ## 📊 SQL Validation & Feature Outputs
 
 ### Data Coverage
