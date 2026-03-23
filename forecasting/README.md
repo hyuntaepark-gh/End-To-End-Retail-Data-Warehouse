@@ -168,7 +168,7 @@ while AOV remains relatively stable.
 
 ### 📊 Forecast vs Actual (ML Model)
 
-![ml_forecast](./result/forecast_actual_vs_pred.png)
+![ml_forecast](./result/forecast_actual_vs_pred.jpg)
 
 The model captures overall patterns but shows directional deviation,
 highlighting limitations of tree-based models for time-series forecasting.
@@ -177,7 +177,7 @@ highlighting limitations of tree-based models for time-series forecasting.
 
 ### ⚠️ Top 20 Predicted Return Risk
 
-![return_risk](./result/return_risk_top20.png)
+![return_risk](./result/return_risk_top20.jpg)
 
 Products with high predicted return probability indicate operational
 or quality issues requiring further investigation.
@@ -189,7 +189,7 @@ suggesting the need for further tuning.
 
 ### 👤 Top 20 Predicted Churn Customers
 
-![churn_risk](./result/churn_top20.png)
+![churn_risk](./result/churn_top20.jpg)
 
 High-risk customers identified by the model can be targeted
 with retention campaigns and personalized interventions.
