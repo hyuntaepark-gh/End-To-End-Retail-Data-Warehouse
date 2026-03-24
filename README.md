@@ -35,6 +35,18 @@ and naturally extending into forecasting and scenario-based thinking.
 
 ---
 
+📊 Executive Dashboard (NEW 🔥)
+Executive Revenue Dashboard
+
+This dashboard analyzes key revenue drivers by breaking down revenue into:
+
+Order volume (Orders)
+Average order value (AOV)
+Month-over-month (MoM) performance
+Drop-point detection (operational risk signals)
+
+---
+
 ## 🔮 Forecasting & Decision Layer
 
 This project extends beyond traditional data warehousing by incorporating a forecasting layer.
@@ -54,7 +66,7 @@ This bridges the gap between data infrastructure and business strategy.
 This project follows a **layered data platform architecture**,
 governed by an explicit architecture and data lineage specification.
 
-**Raw Data → Data Foundation → Data Warehouse → Analytics → Forecasting → Insights**
+**Raw Data → Data Foundation → Data Warehouse → Analytics → Dashboard → Forecasting → Insights**
 
 Each layer has a clear responsibility and strict separation of concerns.
 
