@@ -37,16 +37,29 @@ and naturally extending into forecasting and scenario-based thinking.
 
 📊 Executive Dashboard
 
-Executive Revenue Dashboard
+### Revenue Performance Dashboard
 
 ![Dashboard](./business_analytics/00_dashboard/result/executive_revenue_dashboard.png)
 
 This dashboard analyzes key revenue drivers by breaking down revenue into:
 
-Order volume (Orders)
-Average order value (AOV)
-Month-over-month (MoM) performance
-Drop-point detection (operational risk signals)
+- Order volume (Orders)
+- Average order value (AOV)
+- Month-over-month (MoM) performance
+- Drop-point detection (operational risk signals)
+
+---
+
+### Return Risk & Product Performance Dashboard
+
+![Dashboard](./business_analytics/00_dashboard/product-return-risk-dashboard.png)
+
+This dashboard highlights return loss, return rate, and product performance segmentation.
+
+It identifies:
+- Products driving high return losses
+- High-revenue products with low return risk
+- Product-level return risk patterns for decision-making
 
 ---
 
