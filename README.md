@@ -39,7 +39,7 @@ and naturally extending into forecasting and scenario-based thinking.
 
 Executive Revenue Dashboard
 
-![Dashboard](business_analytics/00_dashboards/tableau/executive_revenue_dashboard.png)
+![Dashboard](./business_analytics/00_dashboards/tableau/executive_revenue_dashboard.png)
 
 This dashboard analyzes key revenue drivers by breaking down revenue into:
 
