@@ -303,6 +303,15 @@ confirming internal consistency and BI readiness.
 
 ---
 
+## Consumption Layer (Power BI)
+
+This dashboard demonstrates that the metric layer is production-ready.
+All KPIs are directly consumed from precomputed metric marts without BI-side calculations.
+
+![Power BI Executive KPI Dashboard](./result/powerbi_executive_kpi_dashboard.png)
+
+---
+
 ## Derived Recommendation
 
 Standardizing KPI definitions in a reusable metric layer
