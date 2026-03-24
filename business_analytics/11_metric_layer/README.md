@@ -303,13 +303,28 @@ confirming internal consistency and BI readiness.
 
 ---
 
-## Consumption Layer (Power BI)
+## 📊 Consumption Layer (Power BI)
 
 This dashboard demonstrates that the metric layer is production-ready.
-All KPIs are directly consumed from precomputed metric marts without BI-side calculations.
 
-![Power BI Executive KPI Dashboard](./result/powerbi_executive_kpi_dashboard.png)
+All KPIs are directly consumed from precomputed metric marts,
+without additional transformation or logic inside the BI tool.
 
+It highlights how business metrics can be standardized at the data layer
+and seamlessly visualized for decision-making.
+
+### Key Metrics
+
+- Revenue: 8.91M  
+- Orders: 19K  
+- Customers: 13K  
+- AOV: 6.34K  
+- Revenue MoM: -55.4%  
+- Orders MoM: -70.7%
+
+### Dashboard Preview
+
+![Executive KPI Dashboard](./result/powerbi_executive_kpi_dashboard.png)
 ---
 
 ## Derived Recommendation
