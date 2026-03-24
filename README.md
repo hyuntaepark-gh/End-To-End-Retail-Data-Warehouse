@@ -52,7 +52,7 @@ This dashboard analyzes key revenue drivers by breaking down revenue into:
 
 ### Return Risk & Product Performance Dashboard
 
-![Dashboard](./business_analytics/00_dashboard/product-return-risk-dashboard.png)
+![Dashboard](./business_analytics/00_dashboard/result/product-return-risk-dashboard.png)
 
 This dashboard highlights return loss, return rate, and product performance segmentation.
 
