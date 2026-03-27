@@ -31,6 +31,20 @@ An end-to-end retail data platform that transforms raw transactional data into b
 - 🤖 Forecasting Model (Revenue Prediction)
 - 📊 Business Analytics Layer (Customer, Revenue, LTV, Cohort)
 
+## ⚙️ Prerequisites
+
+Before running this project, ensure you have the following installed:
+
+- PostgreSQL (version 12 or higher)
+- Python 3.8+
+- pip (Python package manager)
+
+---
+
+### Install Python dependencies
+
+pip install -r requirements.txt
+
 ## ⚡ Quick Start
 
 ### 1. Setup PostgreSQL
@@ -57,6 +71,8 @@ data_operations/90_tests
 cd forecasting
 python main.py
 ```
+
+For full execution details, see [`RUN_ORDER.md`](./RUN_ORDER.md).
 
 ---
 
