@@ -37,6 +37,34 @@ and naturally extending into forecasting and scenario-based thinking.
 
 # 📊 Executive Dashboard
 
+## 📊 Executive KPI Dashboard (Power BI)
+
+![Dashboard](./business_analytics/00_dashboard/result/powerbi_executive_kpi_dashboard.png)
+
+This dashboard provides a **high-level executive overview of business performance**, 
+focusing on key KPIs and month-over-month changes.
+
+### Key Features
+
+- Core KPIs:
+  - Revenue
+  - Orders
+  - Customers
+  - Average Order Value (AOV)
+
+- Performance monitoring:
+  - Month-over-Month (MoM) change in revenue
+  - MoM change in orders
+
+- Decision signals:
+  - Rapid identification of performance drops
+  - Early detection of operational risks
+
+### Business Insights
+
+- Significant decline in both revenue and orders signals potential operational or demand-side issues
+- KPI-level monitoring enables fast executive response before deeper analysis
+
 ## 🧠 Retail Performance Dashboard (Customer Segmentation)
 
 ![Dashboard](./business_analytics/00_dashboard/result/customer_segmentation_kpi_dashboard.png)
