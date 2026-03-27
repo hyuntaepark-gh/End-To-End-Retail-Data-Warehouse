@@ -79,9 +79,20 @@ For full execution details, see [`RUN_ORDER.md`](./RUN_ORDER.md).
 ---
 
 ## 💡 Business Impact
-- Identifies key revenue drivers and customer segments
-- Enables data-driven decision making at executive level
-- Bridges raw data → analytics → predictive insights
+
+This project enables data-driven decision-making by:
+
+- Identifying key revenue drivers (volume vs. pricing)
+- Highlighting high-value customer segments for targeted retention
+- Detecting return-related operational risks
+- Providing forward-looking revenue forecasts for planning
+
+These insights directly support:
+
+- Marketing strategy optimization
+- Customer retention and lifecycle management
+- Operational risk reduction
+- Executive-level KPI monitoring and decision-making
 
 ---
 
