@@ -334,31 +334,17 @@ Each derived recommendation originates
 from a specific analytical module
 and rolls up into executive-level guidance.
 
-[01. Revenue Driver Analysis]
-        └─ Derived Recommendation
-              ↓
-[BR-1] Prioritize demand stimulation over pricing changes
-              ↓
---------------------------------------------------
+- [01. Revenue Driver Analysis] → [BR-1] Prioritize demand stimulation over pricing changes
 
-[02. Customer Segmentation]        [05. LTV Analysis]
-        └─ Derived Recommendation          └─ Derived Recommendation
-                     ↓                     ↓
-              [BR-2] Invest in retention for high-value customer segments
-                     ↓
---------------------------------------------------
+- [02. Customer Segmentation] + [05. LTV Analysis]  
+  → [BR-2] Invest in retention for high-value customer segments
 
-[04. Returns Analysis]             [09. Operational Risk Analysis]
-        └─ Derived Recommendation          └─ Derived Recommendation
-                     ↓                     ↓
-              [BR-3] Address returns through targeted operational reviews
-                     ↓
---------------------------------------------------
+- [04. Returns Analysis] + [09. Operational Risk Analysis]  
+  → [BR-3] Address returns through targeted operational reviews
 
-[08. Cohort Retention Analysis]
-        └─ Derived Recommendation
-                     ↓
-              [BR-4] Re-evaluate recent acquisition quality
+- [08. Cohort Retention Analysis]  
+  → [BR-4] Re-evaluate recent acquisition quality
+  
 ---
 
 ## Key Business Recommendations
