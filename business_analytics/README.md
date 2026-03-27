@@ -52,6 +52,34 @@ and decision-enabling metric abstraction.
 
 ---
 
+### 00. Data Mart
+
+**Business Question:**  
+What is the standardized analytical base dataset?
+
+**Focus:**
+- KPI-ready aggregated tables
+- Business-friendly data structures
+- Consistent analytical foundation
+
+📂 `00_data_mart/`
+
+---
+
+### 00. Dashboard
+
+**Business Question:**  
+How can key metrics be visualized for decision-makers?
+
+**Focus:**
+- KPI visualization
+- Executive-level dashboards
+- Metric monitoring and reporting
+
+📂 `00_dashboard/`
+
+---
+
 ### 01. Revenue Driver Analysis
 
 **Business Question:**  
@@ -214,24 +242,52 @@ be standardized and reused?
 
 ---
 
+## 📊 Outputs
+
+This layer produces decision-oriented analytical outputs including:
+
+- KPI decomposition results (Revenue, Orders, AOV)
+- Customer segmentation insights
+- Product performance analysis
+- Return impact evaluation
+- Cohort retention patterns
+- Operational risk signals
+- Standardized KPI metric layer
+
+All outputs are traceable to validated warehouse data
+and designed for direct business interpretation.
+
+---
+
 ## Design Principles
 
 All analytics in this layer adhere to the following principles:
 
 - Decision-first  
-  Each module is framed around a concrete business question.
-
 - Explainability  
-  Metrics are decomposed into interpretable drivers,
-  not reported in isolation.
-
 - Reproducibility  
-  All logic is implemented in deterministic SQL
-  with auditable outputs.
-
 - Validation-aware  
-  Sanity checks and reconciliation are performed
-  before interpretation.
+
+---
+
+## ▶️ How to Run
+
+Execute analytical SQL modules in sequence:
+
+- business_analytics/00_data_mart
+- business_analytics/01_revenue_driver_analysis
+- business_analytics/02_customer_segmentation
+- business_analytics/03_product_mix_analysis
+- business_analytics/04_returns_analysis
+- business_analytics/05_ltv_analysis
+- business_analytics/06_revenue_driver_x_segment
+- business_analytics/07_price_sensitivity_discount_proxy_analysis
+- business_analytics/08_cohort_retention
+- business_analytics/09_operational_risk_analysis
+- business_analytics/10_data_quality_assumptions
+- business_analytics/11_metric_layer
+
+Each module can be run independently depending on the business question.
 
 ---
 
@@ -242,9 +298,6 @@ This layer depends on the following upstream components:
 - ../data_foundation/README.md
 - ../data_modeling/README.md
 - ../data_operations/README.md
-
-All inputs are assumed to be standardized,
-validated, and reconciled.
 
 ---
 
@@ -273,78 +326,17 @@ focus on explaining why performance changes,
 this layer explicitly addresses
 what actions should be taken next.
 
-Recommendations are intentionally free of SQL,
-intermediate metrics,
-and implementation detail.
-They are written to be executive-readable,
-action-oriented,
-and directly traceable to validated analytical findings.
-
 ---
 
 ## Recommendation Traceability Map
 
-Each derived recommendation originates
-from a specific analytical module
-and rolls up into executive-level guidance.
-
-```
-
-[01. Revenue Driver Analysis]
-        └─ Derived Recommendation
-              ↓
-[BR-1] Prioritize demand stimulation over pricing changes
-              ↓
---------------------------------------------------
-
-[02. Customer Segmentation]        [05. LTV Analysis]
-        └─ Derived Recommendation          └─ Derived Recommendation
-                     ↓                     ↓
-              [BR-2] Invest in retention for high-value customer segments
-                     ↓
---------------------------------------------------
-
-[04. Returns Analysis]             [09. Operational Risk Analysis]
-        └─ Derived Recommendation          └─ Derived Recommendation
-                     ↓                     ↓
-              [BR-3] Address returns through targeted operational reviews
-                     ↓
---------------------------------------------------
-
-[08. Cohort Retention Analysis]
-        └─ Derived Recommendation
-                     ↓
-              [BR-4] Re-evaluate recent acquisition quality
-
-```
+[기존 그대로 유지]
 
 ---
 
 ## Key Business Recommendations
 
-1. Prioritize demand stimulation over pricing changes.  
-   Revenue volatility is primarily driven by order volume
-   rather than average order value,
-   suggesting acquisition and activation initiatives
-   should be prioritized over pricing adjustments.
-
-2. Invest in retention for high-value customer segments.  
-   A small number of customer segments
-   contribute disproportionately to total revenue,
-   indicating higher ROI from targeted retention
-   than from broad acquisition efforts.
-
-3. Address returns through targeted operational reviews.  
-   Returns are concentrated among a limited set of products,
-   pointing to quality, fulfillment,
-   or expectation-setting issues
-   that should be addressed selectively.
-
-4. Re-evaluate recent acquisition quality.  
-   Newer customer cohorts exhibit faster churn,
-   suggesting recent acquisition sources
-   may be attracting lower-intent customers
-   and should be assessed on long-term value.
+[기존 그대로 유지]
 
 ---
 
@@ -353,4 +345,3 @@ and rolls up into executive-level guidance.
 - Extend analyses with margin and profitability views
 - Integrate analytical outputs into BI dashboards
 - Apply the same framework to forecasting
-  and scenario-based modeling
