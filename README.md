@@ -35,14 +35,13 @@ and naturally extending into forecasting and scenario-based thinking.
 
 ---
 
-# 📊 Executive Dashboard
+# 📊 Executive Layer
 
 ## 📊 Executive KPI Dashboard (Power BI)
 
 ![Dashboard](./business_analytics/00_dashboard/result/powerbi_executive_kpi_dashboard.png)
 
-This dashboard provides a **high-level executive overview of business performance**, 
-focusing on key KPIs and month-over-month changes.
+High-level KPI monitoring dashboard designed for executive decision-making.
 
 ### Key Features
 
@@ -64,6 +63,8 @@ focusing on key KPIs and month-over-month changes.
 
 - Significant decline in both revenue and orders signals potential operational or demand-side issues
 - KPI-level monitoring enables fast executive response before deeper analysis
+
+---
 
 ## 🧠 Retail Performance Dashboard (Customer Segmentation)
 
