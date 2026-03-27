@@ -33,15 +33,21 @@ An end-to-end retail data platform that transforms raw transactional data into b
 
 ## ⚡ Quick Start
 
+### 1. Setup PostgreSQL
+
 ```
-# 1. Setup database
-psql -U username -d database -f 00_admin/schema.sql
+createdb retail_dw
+psql -d retail_dw -f data_operations/00_admin/schema.sql
+```
 
 # 2. Run data pipeline
+```
 -- run scripts in order:
 -- raw → staging → warehouse → analytics
+```
 
 # 3. Run forecasting
+```
 python forecasting/main.py
 ```
 
