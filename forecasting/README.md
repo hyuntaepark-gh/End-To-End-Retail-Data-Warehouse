@@ -297,3 +297,57 @@ Built a complete end-to-end forecasting pipeline combining:
 
 This project focuses not only on prediction accuracy,
 but on transforming forecasts into actionable business insights.
+
+## ▶️ How to Use
+
+This forecasting module combines SQL-based data preparation
+with Python-based modeling and analysis.
+
+### Step 1: Run SQL Pipeline
+
+Execute SQL scripts in:
+
+- forecasting/sql/
+
+This step generates feature-engineered datasets and validation outputs.
+
+---
+
+### Step 2: Review Datasets
+
+Check prepared datasets in:
+
+- forecasting/data/
+
+Key files:
+- orders_monthly.csv
+- monthly_kpi.csv
+
+---
+
+### Step 3: Run Forecasting Models
+
+Open and run notebooks in:
+
+- forecasting/notebooks/
+
+Models include:
+- Moving Average (baseline)
+- SARIMA
+- ML-based prediction models
+
+---
+
+### Step 4: Review Outputs
+
+Check generated results and visualizations in:
+
+- forecasting/result/
+
+---
+
+## 📌 Notes
+
+- This module depends on validated upstream warehouse data
+- SQL pipeline must be executed before running forecasting models
+- See root README for full pipeline execution order
