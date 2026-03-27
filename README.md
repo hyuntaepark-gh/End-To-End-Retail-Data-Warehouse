@@ -16,6 +16,35 @@ This repository demonstrates the complete lifecycle of data engineering and anal
 from raw data ingestion to forecasting and executive-ready business insights,
 all built on validated and traceable data models.
 
+## 🚀 Project Overview
+An end-to-end retail data platform that transforms raw transactional data into business-ready insights through a structured data warehouse, analytics layer, and forecasting system.
+
+## 🧰 Tech Stack
+- SQL (PostgreSQL)
+- Python (Pandas, Scikit-learn / forecasting)
+- Tableau (Dashboard Visualization)
+- Data Modeling (Star Schema, Dimensional Modeling)
+
+## 📊 Key Deliverables
+- 📈 Interactive Dashboard (Tableau)
+- 🧱 Data Warehouse (Raw → Staging → Mart)
+- 🤖 Forecasting Model (Revenue Prediction)
+- 📊 Business Analytics Layer (Customer, Revenue, LTV, Cohort)
+
+## ⚡ Quick Start
+
+```
+# 1. Setup database
+psql -U username -d database -f 00_admin/schema.sql
+
+# 2. Run data pipeline
+-- run scripts in order:
+-- raw → staging → warehouse → analytics
+
+# 3. Run forecasting
+python forecasting/main.py
+```
+
 ---
 
 ## Executive Summary
