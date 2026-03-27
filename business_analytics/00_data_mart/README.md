@@ -11,18 +11,25 @@ To provide a standardized, KPI-ready data layer that simplifies downstream analy
 - Prepares KPI-level datasets (Revenue, Orders, AOV)
 - Ensures consistency across all analytical modules
 
-## Outputs
-- KPI-ready aggregated tables
-- Standardized analytical datasets
-
 ## How to Use
 Run SQL scripts in:
 
-- 00_data_mart/
+- business_analytics/00_data_mart/
+
+This step must be completed before running downstream analytical modules.
 
 ## Why It Matters
 This layer ensures that all analytical modules operate on a consistent and validated data foundation,
 preventing discrepancies across analyses.
+
+## 🔗 Data Flow
+
+The datasets in this module are structured to support different levels of analysis:
+
+- `mart_sales_enriched.csv` → Base dataset (transaction-level)
+- `mart_customer_segments.csv` → Customer-level aggregation
+- `mart_kpi_monthly.csv` → Monthly KPI aggregation
+- `mart_kpi_monthly_mom_qoq.csv` → KPI trend and growth metrics
 
 ## 📊 Data Outputs
 
@@ -78,3 +85,16 @@ This module produces standardized analytical datasets used across downstream ana
 - Usage:
   - Performance trend analysis
   - Executive reporting
+
+---
+
+## 🔗 Downstream Usage
+
+These datasets are used across multiple analytical modules, including:
+
+- Revenue Driver Analysis
+- Customer Segmentation
+- Product Mix Analysis
+- Cohort Retention
+- Operational Risk Analysis
+- Metric Layer
