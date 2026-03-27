@@ -330,13 +330,62 @@ what actions should be taken next.
 
 ## Recommendation Traceability Map
 
-[기존 그대로 유지]
+Each derived recommendation originates
+from a specific analytical module
+and rolls up into executive-level guidance.
 
+[01. Revenue Driver Analysis]
+        └─ Derived Recommendation
+              ↓
+[BR-1] Prioritize demand stimulation over pricing changes
+              ↓
+--------------------------------------------------
+
+[02. Customer Segmentation]        [05. LTV Analysis]
+        └─ Derived Recommendation          └─ Derived Recommendation
+                     ↓                     ↓
+              [BR-2] Invest in retention for high-value customer segments
+                     ↓
+--------------------------------------------------
+
+[04. Returns Analysis]             [09. Operational Risk Analysis]
+        └─ Derived Recommendation          └─ Derived Recommendation
+                     ↓                     ↓
+              [BR-3] Address returns through targeted operational reviews
+                     ↓
+--------------------------------------------------
+
+[08. Cohort Retention Analysis]
+        └─ Derived Recommendation
+                     ↓
+              [BR-4] Re-evaluate recent acquisition quality
 ---
 
 ## Key Business Recommendations
 
-[기존 그대로 유지]
+1. Prioritize demand stimulation over pricing changes.  
+   Revenue volatility is primarily driven by order volume
+   rather than average order value,
+   suggesting acquisition and activation initiatives
+   should be prioritized over pricing adjustments.
+
+2. Invest in retention for high-value customer segments.  
+   A small number of customer segments
+   contribute disproportionately to total revenue,
+   indicating higher ROI from targeted retention
+   than from broad acquisition efforts.
+
+3. Address returns through targeted operational reviews.  
+   Returns are concentrated among a limited set of products,
+   pointing to quality, fulfillment,
+   or expectation-setting issues
+   that should be addressed selectively.
+
+4. Re-evaluate recent acquisition quality.  
+   Newer customer cohorts exhibit faster churn,
+   suggesting recent acquisition sources
+   may be attracting lower-intent customers
+   and should be assessed on long-term value.
 
 ---
 
