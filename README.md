@@ -47,6 +47,13 @@ python forecasting/main.py
 
 ---
 
+## 💡 Business Impact
+- Identifies key revenue drivers and customer segments
+- Enables data-driven decision making at executive level
+- Bridges raw data → analytics → predictive insights
+
+---
+
 ## Executive Summary
 
 This project implements an end-to-end retail data platform that connects
