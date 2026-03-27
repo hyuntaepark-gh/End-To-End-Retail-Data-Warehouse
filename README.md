@@ -503,10 +503,11 @@ End-To-End-Retail-Data-Warehouse/
 │
 ├── report/
 │
+├── README.md
+│
 ├── RUN_ORDER.md/
 │
-├── requirements.txt/
-│
-└── README.md
+└── requirements.txt/
+
 
 ```
