@@ -40,15 +40,22 @@ createdb retail_dw
 psql -d retail_dw -f data_operations/00_admin/schema.sql
 ```
 
-# 2. Run data pipeline
+### 2. Run data pipeline
+
+Execute SQL scripts in order:
+
 ```
--- run scripts in order:
--- raw → staging → warehouse → analytics
+data_foundation/10_raw
+data_foundation/20_staging
+data_modeling/
+data_operations/90_tests
 ```
 
-# 3. Run forecasting
+### 3. Run forecasting
+
 ```
-python forecasting/main.py
+cd forecasting
+python main.py
 ```
 
 ---
