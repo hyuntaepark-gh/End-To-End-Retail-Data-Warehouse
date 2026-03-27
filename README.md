@@ -19,6 +19,14 @@ all built on validated and traceable data models.
 ## 🚀 Project Overview
 An end-to-end retail data platform that transforms raw transactional data into business-ready insights through a structured data warehouse, analytics layer, and forecasting system.
 
+## 🎯 Key Highlights
+
+- End-to-end data pipeline (raw → warehouse → analytics → forecasting)
+- KPI-driven business analytics framework
+- Customer segmentation and LTV modeling
+- Time-series forecasting for revenue and demand
+- Decision-oriented dashboard design
+
 ## 🧰 Tech Stack
 - SQL (PostgreSQL)
 - Python (Pandas, Scikit-learn)
@@ -69,10 +77,8 @@ data_operations/90_tests
 
 ### 3. Run forecasting
 
-```
-cd forecasting
-python main.py
-```
+See [`forecasting/README.md`](./forecasting/README.md)
+for forecasting pipeline and execution details.
 
 For full execution details, see [`RUN_ORDER.md`](./RUN_ORDER.md).
 
@@ -236,6 +242,12 @@ Each layer has a clear responsibility and strict separation of concerns.
 | business_analytics | Decision-oriented analytics and KPI decomposition |
 | forecasting | Predictive modeling and forward-looking analysis |
 | insights | Executive-ready insights and strategic recommendations |
+
+---
+
+## 🗂️ Data Model (ERD)
+
+![ERD](./data_modeling/erd/dw_core_erd.png)
 
 ---
 
@@ -490,7 +502,7 @@ End-To-End-Retail-Data-Warehouse/
 │ └── README.md
 │
 ├── business_analytics/
-│ ├── 00_dashboards/
+│ ├── 00_dashboard/
 │ ├── 00_data_mart/
 │ ├── 01_revenue_driver_analysis/
 │ ├── 02_customer_segmentation/
@@ -516,7 +528,7 @@ End-To-End-Retail-Data-Warehouse/
 │
 ├── README.md
 │
-├── RUN_ORDER.md/
+├── RUN_ORDER.md
 │
 └── requirements.txt/
 
