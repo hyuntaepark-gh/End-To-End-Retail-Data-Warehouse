@@ -19,6 +19,12 @@ all built on validated and traceable data models.
 ## 🚀 Project Overview
 An end-to-end retail data platform that transforms raw transactional data into business-ready insights through a structured data warehouse, analytics layer, and forecasting system.
 
+## 🧰 Tech Stack
+- SQL (PostgreSQL)
+- Python (Pandas, Scikit-learn)
+- Tableau / Power BI
+- Data Modeling (Star Schema)
+
 ## 📊 Key Deliverables
 - 📈 Interactive Dashboard (Tableau)
 - 🧱 Data Warehouse (Raw → Staging → Mart)
