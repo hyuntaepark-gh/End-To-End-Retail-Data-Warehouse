@@ -35,9 +35,43 @@ and naturally extending into forecasting and scenario-based thinking.
 
 ---
 
-📊 Executive Dashboard
+# 📊 Executive Dashboard
 
-### Revenue Performance Dashboard
+## 🧠 Retail Performance Dashboard (Customer Segmentation)
+
+![Dashboard](./business_analytics/00_dashboard/result/customer_segmentation_kpi_dashboard.png)
+
+This dashboard provides an **executive-level overview of retail performance**
+combined with **customer segmentation analysis**.
+
+### Key Features
+
+- KPI monitoring:
+  - Total Revenue
+  - Total Orders
+  - Average Order Value (AOV)
+
+- Revenue breakdown by customer segment:
+  - High Value
+  - Mid Value
+  - Low Value
+
+- Behavioral analysis:
+  - Order frequency vs AOV distribution
+  - Segment-level purchasing patterns
+
+- Interactive analysis:
+  - Click-based filtering between segment distribution and behavior
+
+### Business Insights
+
+- High-value customers dominate total revenue contribution
+- Low-value segments show lower AOV and limited order frequency
+- Clear behavioral separation between segments enables targeted strategy
+
+---
+
+## 📊 Revenue Performance Dashboard
 
 ![Dashboard](./business_analytics/00_dashboard/result/executive_revenue_dashboard.png)
 
@@ -50,7 +84,7 @@ This dashboard analyzes key revenue drivers by breaking down revenue into:
 
 ---
 
-### Return Risk & Product Performance Dashboard
+## 📦 Return Risk & Product Performance Dashboard
 
 ![Dashboard](./business_analytics/00_dashboard/result/product-return-risk-dashboard.png)
 
@@ -318,12 +352,6 @@ This repository demonstrates:
 - Data quality–first engineering mindset
 - Decision-oriented analytics aligned with business impact
 - A reproducible, enterprise-style analytics framework
-  designed to support long-term decision-making at scale
-
-Suitable for:
-- Data Engineering and Analytics portfolios
-- Technical and business-facing interviews
-- Academic or NIW evidence
 
 ---
 
