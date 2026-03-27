@@ -43,7 +43,9 @@ Before running this project, ensure you have the following installed:
 
 ### Install Python dependencies
 
+```
 pip install -r requirements.txt
+```
 
 ## ⚡ Quick Start
 
