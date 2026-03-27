@@ -53,7 +53,6 @@ Historical data is extended into predictive models for forward-looking analysis.
 
 ### 7. Insights
 Analytical and predictive outputs are translated into business recommendations.
-
 ---
 
 ## ✅ Architectural Principles
