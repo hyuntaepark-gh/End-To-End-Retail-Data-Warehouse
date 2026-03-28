@@ -480,28 +480,28 @@ This repository demonstrates:
 
 End-To-End-Retail-Data-Warehouse/
 │
-├── architecture/
+├── architecture/       # Data warehouse architecture and lineage design
 │ ├── lineage_pipeline_diagram.png
 │ └── README.md
 │
-├── data_foundation/
+├── data_foundation/    # Data ingestion, staging, and base transformations
 │ ├── result/
 │ ├── sql/
 │ └── README.md
 │
-├── data_modeling/
+├── data_modeling/      # Star schema modeling (fact & dimension tables)
 │ ├── erd/
 │ │ └── dw_core_erd.png
 │ ├── result/
 │ ├── sql/
 │ └── README.md
 │
-├── data_operations/
+├── data_operations/    # ETL/ELT pipelines and data processing workflows
 │ ├── result/
 │ ├── sql/
 │ └── README.md
 │
-├── business_analytics/
+├── business_analytics/ # KPI dashboards, driver analysis, and business insights
 │ ├── 00_dashboard/
 │ ├── 00_data_mart/
 │ ├── 01_revenue_driver_analysis/
@@ -517,20 +517,20 @@ End-To-End-Retail-Data-Warehouse/
 │ ├── 11_metric_layer/
 │ └── README.md
 │
-├── forecasting/
+├── forecasting/        # Forecasting models and predictive analytics
 │ ├── data/
 │ ├── notebooks/
 │ ├── sql/
 │ ├── result/
 │ └── README.md
 │
-├── report/
+├── research/           # Research papers, workshop submissions, and publications
 │
-├── README.md
+├── requirements.txt    # Python dependencies and environment setup
 │
-├── RUN_ORDER.md
+├── RUN_ORDER.md        # Execution sequence for end-to-end pipeline
 │
-└── requirements.txt/
+└── README.md
 
 
 ```
