@@ -502,19 +502,19 @@ End-To-End-Retail-Data-Warehouse/
 │ └── README.md
 │
 ├── business_analytics/ # KPI dashboards, driver analysis, and business insights
-│ ├── 00_dashboard/
-│ ├── 00_data_mart/
-│ ├── 01_revenue_driver_analysis/
-│ ├── 02_customer_segmentation/
-│ ├── 03_product_mix_analysis/
-│ ├── 04_returns_analysis/
-│ ├── 05_ltv_analysis/
-│ ├── 06_revenue_driver_x_segment/
-│ ├── 07_price_sensitivity_discount_proxy_analysis/
-│ ├── 08_cohort_retention/
-│ ├── 09_operational_risk_analysis/
-│ ├── 10_data_quality_assumptions/
-│ ├── 11_metric_layer/
+│ ├── 00_dashboard/                                  # Executive KPI dashboards
+│ ├── 00_data_mart/                                  # Aggregated KPI data layer
+│ ├── 01_revenue_driver_analysis/                    # Revenue decomposition (Orders × AOV)
+│ ├── 02_customer_segmentation/                      # Customer segmentation and behavior analysis
+│ ├── 03_product_mix_analysis/                       # Product performance and category trends
+│ ├── 04_returns_analysis/                           # Return rate and operational impact
+│ ├── 05_ltv_analysis/                               # Customer lifetime value modeling
+│ ├── 06_revenue_driver_x_segment/                   # Revenue drivers across customer segments
+│ ├── 07_price_sensitivity_discount_proxy_analysis/  # Price elasticity and discount impact
+│ ├── 08_cohort_retention/                           # Retention and cohort behavior analysis
+│ ├── 09_operational_risk_analysis/                  # Risk signals and operational anomalies
+│ ├── 10_data_quality_assumptions/                   # Data validation and assumptions tracking
+│ ├── 11_metric_layer/                               # KPI definitions and metric standardization
 │ └── README.md
 │
 ├── forecasting/        # Forecasting models and predictive analytics
